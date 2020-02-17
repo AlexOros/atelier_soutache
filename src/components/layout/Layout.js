@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import { withTrans } from "../../i18n/withTrans"
 import { Header } from "../../components"
 // import Footer from "../components/Footer"
 
@@ -20,4 +19,4 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default withTrans(Layout)
+export default Layout

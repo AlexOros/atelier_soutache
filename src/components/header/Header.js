@@ -1,8 +1,8 @@
-import React, { Component, useState } from "react"
+import React, { Component, useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 
 const Header = () => {
-  const { t, i18n } = useTranslation()
+  const { i18n } = useTranslation()
 
   const [values, setValues] = useState({
     language: "en",
@@ -13,18 +13,13 @@ const Header = () => {
     i18n.changeLanguage(event.target.value)
     setValues(oldValues => ({
       ...oldValues,
-      [event.target.name]: event.target.value,
+      language: event.target.value,
     }))
   }
 
   return (
     <div>
-      <select
-        value={values.language}
-        onChange={handleChange}
-        disableUnderline
-        name="language"
-      >
+      <select value={values.language} onChange={handleChange} name="language">
         <option value="en">EN</option>
         <option value="ro">RO</option>
       </select>

@@ -5,12 +5,13 @@ import { useTranslation } from "react-i18next"
 import SEO from "../components/seo"
 
 const IndexPage = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation("home")
+
   return (
     <section>
-      <SEO title="Home" />
-      <h2>{t("title")}</h2>
-      <h4>{t("description")}</h4>
+      <SEO title={t("title")} />
+      <h2>{t("section-1.title")}</h2>
+      <h4>{t("section-1.description")}</h4>
     </section>
   )
 }
