@@ -7,7 +7,6 @@ import { Header } from "../../components"
 const Layout = ({ children }) => {
   return (
     <>
-      {/* <Sidebar></Sidebar> */}
       <Header />
       <main>{children}</main>
       {/* <Footer /> */}
