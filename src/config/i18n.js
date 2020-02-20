@@ -7,10 +7,12 @@ i18next.init({
     ro: {
       common: require("../locales/ro/common.json"),
       home: require("../locales/ro/home.json"),
+      about: require("../locales/ro/about.json"),
     },
     en: {
       common: require("../locales/en/common.json"),
       home: require("../locales/en/home.json"),
+      about: require("../locales/en/about.json"),
     },
   },
   load: "languageOnly",

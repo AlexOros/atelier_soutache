@@ -1,7 +1,13 @@
 import { createMuiTheme } from "@material-ui/core/styles"
 
+import { titleBase } from "./mixins"
+
 const theme = createMuiTheme({
   palette: {
+    primary: {
+      main: "#1191C8",
+    },
+
     pink: {
       light: "#fbe0df",
       main: "#f9d2d0",
@@ -15,7 +21,11 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: '"Poppins", "sans-serif"',
   },
+  spacing: factor => `${0.5 * factor}rem`,
+
+  mixins: {
+    titleBase,
+  },
 })
 
-console.log("𝕃𝕆𝔾 ⟹: theme", theme)
 export default theme

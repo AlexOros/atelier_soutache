@@ -1,5 +1,6 @@
 import Layout from "./layout/Layout"
 import Header from "./header/Header"
-import BrandTitle from "./brandTitle/BrandTitle"
+import Title from "./title/Title"
+import NavLink from "./navLink/NavLink"
 
-export { Layout, Header, BrandTitle }
+export { Layout, Header, Title, NavLink }

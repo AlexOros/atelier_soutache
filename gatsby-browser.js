@@ -1,6 +1,6 @@
 import React from "react"
 import { I18nextProvider, withTranslation } from "react-i18next"
-import { MuiThemeProvider } from "@material-ui/core/styles"
+import { MuiThemeProvider, responsiveFontSizes } from "@material-ui/core/styles"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { ThemeProvider } from "styled-components"
 
@@ -9,12 +9,13 @@ import GlobalStyle from "./src/theme/global-style"
 
 import { Layout } from "./src/components"
 import i18next from "./src/config/i18n"
+const responsiveTheme = responsiveFontSizes(theme)
 
 export const wrapRootElement = ({ element }) => {
   return (
     <I18nextProvider i18n={i18next}>
-      <MuiThemeProvider theme={theme}>
-        <ThemeProvider theme={theme}>
+      <MuiThemeProvider theme={responsiveTheme}>
+        <ThemeProvider theme={responsiveTheme}>
           <CssBaseline />
           <GlobalStyle />
           <Layout>{element}</Layout>
