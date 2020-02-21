@@ -4,17 +4,22 @@ import { useTranslation } from "react-i18next"
 import { Typography, Box } from "@material-ui/core"
 
 import SEO from "../components/seo"
-import { Title } from "../components"
+import { Title, Section } from "../components"
 const IndexPage = () => {
   const { t } = useTranslation("home")
 
   return (
-    <section>
+    <Box mt={[2, 4, 6]}>
       <SEO title={t("title")} />
-      <Typography variant="h5">
-        {t("title")} - {t("description")}
-      </Typography>
-    </section>
+
+      <Section deg={9}>
+        <Title
+          variant="h3"
+          title={t("section-1.title.1")}
+          subtitle={t("section-1.title.2")}
+        />
+      </Section>
+    </Box>
   )
 }
 

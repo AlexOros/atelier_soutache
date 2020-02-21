@@ -3,7 +3,9 @@
   "description": "Page description",
 
   "section-1": {
-    "title": "Beautiful handmade jewelry",
-    "description": "From romania with love"
+    "title": {
+      "1": "Beautiful",
+      "2": "handmade jewelry"
+    }
   }
 }

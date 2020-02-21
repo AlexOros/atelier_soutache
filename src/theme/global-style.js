@@ -43,7 +43,8 @@ const link = css`
 const GlobalStyle = createGlobalStyle`
   body {
     ${link}
-   
+     background: ${({ theme }) => theme.palette.background.paper};
+       overflow-x: hidden;
   
   }
 `

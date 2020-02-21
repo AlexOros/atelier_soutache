@@ -3,11 +3,11 @@ import { Typography } from "@material-ui/core"
 
 const StyledBrandTitle = styled(Typography)`
   position: relative;
+
   .title {
     font-weight: ${({ theme }) => theme.typography.fontWeightBold};
-    color: ${({ theme }) => theme.palette.text.secondary};
+    margin-right: ${({ theme }) => theme.spacing(1)};
   }
-
   ${({ theme }) => theme.mixins.titleBase}
 `
 
