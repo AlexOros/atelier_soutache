@@ -8,6 +8,7 @@ const StyledNavLink = styled(Link)`
   text-decoration: none;
   color: ${({ theme }) => theme.palette.text.primary};
   font-size: 1.1rem;
+
   ${({ theme }) => theme.breakpoints.up("md")} {
     font-size: 1.2rem;
   }

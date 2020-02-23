@@ -37,7 +37,7 @@ const titleBase = css`
     left: -5px;
     background: ${({ theme }) => theme.palette.text.primary};
     height: ${({ variant, active }) => {
-      if (active == 1) {
+      if (active === 1) {
         return `125%`
       }
       return 0
@@ -52,7 +52,7 @@ const titleBase = css`
     height: 1px;
     background: ${({ theme }) => theme.palette.text.primary};
     max-width: ${({ variant, active }) => {
-      if (active == 1) {
+      if (active === 1) {
         return `calc(${afterLineWidthMap[variant] || "35px"} + 1vw)`
       }
       return 0

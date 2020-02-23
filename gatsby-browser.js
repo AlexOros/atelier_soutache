@@ -1,5 +1,5 @@
 import React from "react"
-import { I18nextProvider, withTranslation } from "react-i18next"
+import { I18nextProvider } from "react-i18next"
 import { MuiThemeProvider, responsiveFontSizes } from "@material-ui/core/styles"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { ThemeProvider } from "styled-components"

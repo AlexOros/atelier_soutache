@@ -2,7 +2,6 @@ import { createGlobalStyle, css } from "styled-components"
 import theme from "./index"
 
 const primaryObjColor = theme.palette.primary
-const purpleObjColor = theme.palette.purple
 
 const link = css`
   a:not([class]) {
@@ -24,6 +23,7 @@ const link = css`
     background-repeat: no-repeat;
     background-position: 0 1em;
     background-position: -10000px 1.1em;
+    cursor: pointer;
   }
 
   a:hover:not([class]),
@@ -42,9 +42,8 @@ const link = css`
 
 const GlobalStyle = createGlobalStyle`
   body {
-    ${link}
-     background: ${({ theme }) => theme.palette.background.paper};
-       overflow-x: hidden;
+    ${link};
+    overflow-x: hidden;
   
   }
 `
