@@ -1,5 +1,5 @@
 /**
- * @returns a true or false value depending on whether or not the user is browsing with a mobile.
+ * @returns a true value if the user is browsing with a mobile device, return false otherwise.
  */
 const isMobile = () => {
   const toMatch = [
