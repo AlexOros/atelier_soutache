@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Box, Typography, Button, ClickAwayListener } from "@material-ui/core"
 import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded"
+import { useTranslation } from "react-i18next"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
@@ -24,6 +25,7 @@ const Product = () => {
     `
   )
   const [showDetails, setShowDetails] = useState(false)
+  const { t } = useTranslation("common")
 
   return (
     <ClickAwayListener onClickAway={() => setShowDetails(false)}>
@@ -50,7 +52,7 @@ const Product = () => {
             <span className="new">
               <span>$42 </span>
               <span>
-                <span className="stock">Stock: 0</span>
+                <span className="stock">{t("stock")}: 0</span>
               </span>
             </span>
           </Typography>
@@ -61,14 +63,14 @@ const Product = () => {
               startIcon={<ShoppingBasketRoundedIcon />}
               className="button"
             >
-              add to bag
+              {t("add_to_bag")}
             </Button>
             <Button
               size={!isMobile() ? "small" : "medium"}
               endIcon={<ArrowForwardRoundedIcon />}
               className="button"
             >
-              to Product
+              {t("to_product")}
             </Button>
           </Box>
         </Box>

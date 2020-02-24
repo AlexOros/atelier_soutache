@@ -1,5 +1,8 @@
 {
-  "cancel": "renunta",
-  "back": "inapoi",
-  "readMore": "citeste mai multe"
+  "cancel": "renunța",
+  "back": "înapoi",
+  "readMore": "citește mai multe",
+  "stock": "stoc",
+  "add_to_bag": "adaugă în poșetă",
+  "to_product": "vezi produs"
 }

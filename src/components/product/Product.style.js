@@ -42,6 +42,7 @@ const StyledProduct = styled(Box)`
   border-radius: 3px;
   margin-left: -16px;
   margin-right: -16px;
+  text-transform: capitalize;
 
   ${({ theme }) => theme.breakpoints.up("xs")} {
     margin-left: 0;
