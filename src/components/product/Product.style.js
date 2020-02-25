@@ -79,9 +79,14 @@ const StyledProduct = styled(Box)`
       transform: translate3d(-40px, 80px, 0px) scale(0.8);
       transition: all 0.7s;
       opacity: 0;
+      max-width: 300px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       ${({ theme }) => theme.breakpoints.up("sm")} {
-        font-size: 2rem;
+        font-size: 1.5rem;
+        max-width: 350px;
       }
 
       .first-word {

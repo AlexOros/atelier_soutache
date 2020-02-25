@@ -3,6 +3,7 @@ import styled from "styled-components"
 const StyledHeader = styled.header`
   position: relative;
   display: grid;
+  align-items: center;
   max-width: 1600px;
   z-index: ${({ theme }) => theme.zIndex.drawer};
   margin: 0 auto;
@@ -21,8 +22,8 @@ const StyledHeader = styled.header`
   }
 
   .shop {
-    /* justify-self: end; */
     display: flex;
+    align-items: center;
     justify-content: space-around;
   }
 
