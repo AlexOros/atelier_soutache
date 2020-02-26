@@ -3,27 +3,12 @@ import { Box, Typography, Button, ClickAwayListener } from "@material-ui/core"
 import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded"
 import { useTranslation } from "react-i18next"
-import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import { isMobile } from "../../utils"
 import StyledProduct from "./Product.style"
 
-const Product = () => {
-  const data = useStaticQuery(
-    graphql`
-      query MyQuery {
-        file {
-          childImageSharp {
-            # Specify the image processing specifications right in the query.
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    `
-  )
+const Product = ({ title, price, old_price, image, stock, categories }) => {
   const [showDetails, setShowDetails] = useState(false)
   const { t } = useTranslation("common")
 
@@ -36,11 +21,12 @@ const Product = () => {
         details={showDetails ? 1 : 0}
         boxShadow={3}
       >
-        <Img className="image" fluid={data.file.childImageSharp.fluid} alt="" />
+        <Img className="image" fluid={image.childImageSharp.fluid} alt="" />
         <Box px={2} pt={[4, 6, 8]} className="overlay">
           <Box letterSpacing={4}>
             <Typography className="title" variant="h3">
-              <span className="first-word">Red</span> Roses
+              <span className="first-word">{title.split(" ")[0]}</span>{" "}
+              {title.split(" ")[1]}
             </Typography>
           </Box>
           <Box className="hr">
@@ -48,11 +34,13 @@ const Product = () => {
           </Box>
 
           <Typography className="price" variant="body1">
-            <span className="old">$50</span>{" "}
+            {old_price && <span className="old">{old_price} &euro;</span>}
             <span className="new">
-              <span>$42 </span>
+              <span>{price} &euro;</span>
               <span>
-                <span className="stock">{t("stock")}: 0</span>
+                <span className="stock">
+                  {t("stock")}: {stock}
+                </span>
               </span>
             </span>
           </Typography>
@@ -74,9 +62,10 @@ const Product = () => {
             </Button>
           </Box>
         </Box>
-        <Box letterSpacing={4} pt={1} px={2} className="footer">
+        <Box letterSpacing={2} pt={1} px={2} className="footer">
           <Typography variant="body2">
-            <span className="first-word">Red</span> Roses
+            <span className="first-word">{title.split(" ")[0]}</span>{" "}
+            {title.split(" ")[1]}
           </Typography>
         </Box>
       </StyledProduct>

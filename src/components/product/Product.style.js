@@ -37,14 +37,18 @@ const showActiveOverlay = css`
 `
 
 const StyledProduct = styled(Box)`
+  align-self: center;
   position: relative;
-  max-width: 450px;
+  min-width: 320px;
   border-radius: 3px;
   margin-left: -16px;
   margin-right: -16px;
   text-transform: capitalize;
 
-  ${({ theme }) => theme.breakpoints.up("xs")} {
+  /* x// TODO add custom media queies here */
+
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    min-width: 500px;
     margin-left: 0;
     margin-right: 0;
   }
