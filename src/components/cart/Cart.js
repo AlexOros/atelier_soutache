@@ -27,10 +27,10 @@ const StyledCart = styled(Box)`
   }
 `
 
-const Cart = ({ handleClick }) => {
+const Cart = ({ handleClick, productsInCart }) => {
   return (
     <StyledCart>
-      <StyledBadge color="primary" badgeContent={1}>
+      <StyledBadge color="primary" badgeContent={productsInCart}>
         <ShoppingBasketRoundedIcon onClick={() => handleClick()} />
       </StyledBadge>
     </StyledCart>

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext, useCallback } from "react"
 import { useTranslation } from "react-i18next"
 import {
   Button,
@@ -10,13 +10,19 @@ import {
 import LanguageRoundedIcon from "@material-ui/icons/LanguageRounded"
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded"
 
+import { CartContext } from "../../context"
 import { NavLink, Cart } from "../../components"
 import StyledHeader from "./Header.style"
 
 const Header = () => {
   const { t, i18n } = useTranslation()
   const [anchorEl, setAnchorEl] = useState(null)
-  const [openCart, setOpenCart] = useState(false)
+  const {
+    productsInCart,
+    isCartOpened,
+    setIsCartOpened,
+    setProducts,
+  } = useContext(CartContext)
 
   const handleClose = lang => {
     if (lang) {
@@ -25,13 +31,13 @@ const Header = () => {
     setAnchorEl(null)
   }
 
-  const handleClickCart = () => {
-    setOpenCart(!openCart)
-  }
+  const handleClickCart = useCallback(() => {
+    setIsCartOpened(oldState => !oldState)
+  }, [setIsCartOpened])
 
   return (
-    <ClickAwayListener onClickAway={() => setOpenCart(false)}>
-      <StyledHeader openCart={openCart}>
+    <ClickAwayListener onClickAway={() => setIsCartOpened(false)}>
+      <StyledHeader openCart={isCartOpened}>
         <Box>
           <h5>Logo here</h5>
         </Box>
@@ -70,7 +76,7 @@ const Header = () => {
               </Menu>
             </Box>
           )}
-          <Cart handleClick={handleClickCart} />
+          <Cart productsInCart={productsInCart} handleClick={handleClickCart} />
         </Box>
 
         <Box boxShadow={3} className="quick-view">

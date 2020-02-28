@@ -9,6 +9,7 @@ import GlobalStyle from "./src/theme/global-style"
 
 import { Layout } from "./src/components"
 import i18next from "./src/config/i18n"
+
 const responsiveTheme = responsiveFontSizes(theme)
 
 export const wrapRootElement = ({ element }) => {
