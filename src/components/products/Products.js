@@ -1,32 +1,14 @@
-import React from "react"
-import { Box } from "@material-ui/core"
+import React, { useEffect, useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import styled from "styled-components"
 
+import { ProductsContext } from "../../context"
 import { Product } from "../../components"
+import StyledProducts from "./Products.style"
 
-const StyledProducts = styled(Box)`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 20px;
-  margin: 0 auto;
-
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    max-width: 450px;
-  }
-
-  ${({ theme }) => theme.breakpoints.up("md")} {
-    justify-items: center;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  ${({ theme }) => theme.breakpoints.up("lg")} {
-    justify-items: unset;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-`
-
-const Products = ({}) => {
+const Products = () => {
+  const { products, setProducts, handleAddProductToCart } = useContext(
+    ProductsContext
+  )
   const {
     allStrapiProduct: { nodes },
   } = useStaticQuery(graphql`
@@ -44,18 +26,23 @@ const Products = ({}) => {
               }
             }
           }
-          categories {
-            name
-          }
         }
       }
     }
   `)
 
+  useEffect(() => {
+    setProducts(nodes)
+  }, [setProducts, nodes])
+
   return (
     <StyledProducts>
-      {nodes.map(node => (
-        <Product key={node.id} {...node} />
+      {products.map(product => (
+        <Product
+          key={product.id}
+          {...product}
+          handleAddProductToCart={handleAddProductToCart}
+        />
       ))}
     </StyledProducts>
   )

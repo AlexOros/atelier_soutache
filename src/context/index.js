@@ -1,3 +1,3 @@
-import { CartProvider, CartContext } from "./cart.context"
+import { ProductsProvider, ProductsContext } from "./products.context"
 
-export { CartProvider, CartContext }
+export { ProductsProvider, ProductsContext }

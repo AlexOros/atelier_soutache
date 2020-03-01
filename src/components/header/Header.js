@@ -10,26 +10,25 @@ import {
 import LanguageRoundedIcon from "@material-ui/icons/LanguageRounded"
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded"
 
-import { CartContext } from "../../context"
+import { ProductsContext } from "../../context"
 import { NavLink, Cart } from "../../components"
 import StyledHeader from "./Header.style"
 
 const Header = () => {
   const { t, i18n } = useTranslation()
   const [anchorEl, setAnchorEl] = useState(null)
-  const {
-    productsInCart,
-    isCartOpened,
-    setIsCartOpened,
-    setProducts,
-  } = useContext(CartContext)
+  const [isCartOpened, setIsCartOpened] = useState(false)
+  const { nOfProductsInCart } = useContext(ProductsContext)
 
-  const handleClose = lang => {
-    if (lang) {
-      i18n.changeLanguage(lang)
-    }
-    setAnchorEl(null)
-  }
+  const handleClose = useCallback(
+    lang => {
+      if (lang) {
+        i18n.changeLanguage(lang)
+      }
+      setAnchorEl(null)
+    },
+    [i18n]
+  )
 
   const handleClickCart = useCallback(() => {
     setIsCartOpened(oldState => !oldState)
@@ -76,7 +75,10 @@ const Header = () => {
               </Menu>
             </Box>
           )}
-          <Cart productsInCart={productsInCart} handleClick={handleClickCart} />
+          <Cart
+            productsInCart={nOfProductsInCart}
+            handleClick={handleClickCart}
+          />
         </Box>
 
         <Box boxShadow={3} className="quick-view">

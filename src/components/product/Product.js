@@ -1,16 +1,32 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import { useTranslation } from "react-i18next"
+import Img from "gatsby-image"
 import { Box, Typography, Button, ClickAwayListener } from "@material-ui/core"
 import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded"
-import { useTranslation } from "react-i18next"
-import Img from "gatsby-image"
 
 import { isMobile } from "../../utils"
 import StyledProduct from "./Product.style"
 
-const Product = ({ title, price, old_price, image, stock, categories }) => {
+const Product = ({ handleAddProductToCart, ...product }) => {
+  const { title, price, old_price, image, stock } = product
   const [showDetails, setShowDetails] = useState(false)
+  const [outOfStock, setOutOfStock] = useState(false)
+  const [name, setName] = useState({ first: "", last: "" })
   const { t } = useTranslation("common")
+
+  useEffect(() => {
+    if (title) {
+      const [first, last] = title.split(" ")
+      setName(() => ({ first, last }))
+    }
+  }, [title])
+
+  useEffect(() => {
+    if (stock < 1) {
+      setTimeout(() => setOutOfStock(true), 500)
+    }
+  }, [stock])
 
   return (
     <ClickAwayListener onClickAway={() => setShowDetails(false)}>
@@ -25,8 +41,7 @@ const Product = ({ title, price, old_price, image, stock, categories }) => {
         <Box px={2} pt={[4, 6, 8]} className="overlay">
           <Box letterSpacing={4}>
             <Typography className="title" variant="h3">
-              <span className="first-word">{title.split(" ")[0]}</span>{" "}
-              {title.split(" ")[1]}
+              <span className="first-word">{name.first}</span> {name.last}
             </Typography>
           </Box>
           <Box className="hr">
@@ -47,9 +62,11 @@ const Product = ({ title, price, old_price, image, stock, categories }) => {
 
           <Box className="actions">
             <Button
+              disabled={outOfStock}
+              onClick={() => handleAddProductToCart(product)}
               size={!isMobile() ? "small" : "medium"}
               startIcon={<ShoppingBasketRoundedIcon />}
-              className="button"
+              className={`button ${outOfStock && "disabled"}`}
             >
               {t("add_to_bag")}
             </Button>
@@ -64,8 +81,7 @@ const Product = ({ title, price, old_price, image, stock, categories }) => {
         </Box>
         <Box letterSpacing={2} pt={1} px={2} className="footer">
           <Typography variant="body2">
-            <span className="first-word">{title.split(" ")[0]}</span>{" "}
-            {title.split(" ")[1]}
+            <span className="first-word">{name.first}</span> {name.last}
           </Typography>
         </Box>
       </StyledProduct>

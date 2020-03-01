@@ -155,6 +155,10 @@ const StyledProduct = styled(Box)`
       .button {
         color: ${({ theme }) => theme.palette.pink.light};
       }
+
+      .disabled {
+        opacity: 0.7;
+      }
     }
 
     ${({ details }) => details && showActiveOverlay};
