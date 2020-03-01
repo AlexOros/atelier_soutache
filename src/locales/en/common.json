@@ -1,8 +1,13 @@
 {
+  "close": "close",
   "cancel": "cancel",
   "back": "back",
   "readMore": "read more",
   "stock": "stock",
   "add_to_bag": "add to bag",
-  "to_product": "to product"
+  "my_bag": "my shopping bag",
+  "to_product": "to product",
+  "products": "product in",
+  "products_plural": "products in",
+  "no_product_in_bag": "your bag is empty"
 }

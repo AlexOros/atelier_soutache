@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 const StyledHeader = styled.header`
   position: relative;
@@ -26,19 +26,107 @@ const StyledHeader = styled.header`
     align-items: center;
     justify-content: space-around;
   }
-
-  .quick-view {
-    transition: all 0.7s;
-    z-index: ${({ theme }) => theme.zIndex.mobileStepper};
-    transform: ${({ openCart }) =>
-      openCart ? " translateX(0)" : " translateX(240px)"};
-    position: fixed;
-    right: 0;
-    top: 65px;
-    background: rgba(77, 77, 77, 0.99);
-    height: 50vh;
-    border-radius: 3px 0 0 3px;
-  }
 `
 
+const FOUR_ITEMS_HEIGHT = 583
+
+const itemBase = css`
+  padding: ${({ theme }) => theme.spacing(1)};
+  border-radius: 3px;
+  box-shadow: 1px 2px 12px rgba(251, 224, 223, 0.4);
+  transition: all 0.3s ease-in;
+  text-transform: capitalize;
+  min-height: 136px;
+`
+
+export const StyledCartDrawer = styled.div`
+  color: ${({ theme }) => theme.palette.pink.light};
+  transition: all 0.7s;
+  z-index: ${({ theme }) => theme.zIndex.mobileStepper};
+  transform: ${({ openCart }) =>
+    openCart ? " translateX(0)" : "translateX(440px)"};
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: rgba(77, 77, 77, 0.99);
+  height: 100vh;
+  box-shadow: ${({ theme }) => theme.shadows[3]};
+  border-radius: 3px 0 0 3px;
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    min-width: 400px;
+  }
+
+  .close {
+    margin: ${({ theme }) => theme.spacing(1)};
+    color: ${({ theme }) => theme.palette.pink.light};
+  }
+
+  .title {
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .count {
+    display: flex;
+    max-width: 150px;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  hr {
+    background: ${({ theme }) => theme.palette.pink.light};
+  }
+
+  .items {
+    max-height: ${FOUR_ITEMS_HEIGHT + "px"};
+    overflow-y: ${({ productsInCart }) =>
+      productsInCart > 4 ? "scroll" : "inherit"};
+
+    &::-webkit-scrollbar {
+      width: 11px;
+    }
+    & {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(77, 77, 77, 0.99);
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(77, 77, 77, 0.99);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: ${({ theme }) => theme.palette.pink.dark};
+      border-radius: 6px;
+      border: 3px solid  rgba(77, 77, 77, 0.99);
+    }
+  }
+
+  .no-item {
+    ${itemBase};
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+
+  .item {
+    ${itemBase};
+    display: grid;
+    grid-template-columns: 120px 1fr 50px;
+    grid-gap: 15px;
+    align-items: center;
+   
+    &:hover {
+      box-shadow:1px 2px 12px ${({ theme }) => theme.palette.pink.light};
+    }
+
+
+  .image {
+    border-radius: 50%;
+    max-width: 120px;
+    max-height: 120px;
+  }
+
+  button {
+    color: ${({ theme }) => theme.palette.pink.light};
+  }
+`
 export default StyledHeader

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import { useTranslation } from "react-i18next"
 import Img from "gatsby-image"
 import { Box, Typography, Button, ClickAwayListener } from "@material-ui/core"
@@ -8,10 +8,11 @@ import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded"
 import { isMobile } from "../../utils"
 import StyledProduct from "./Product.style"
 
-const Product = ({ handleAddProductToCart, ...product }) => {
+const Product = ({ handleAddProductToCart, product }) => {
   const { title, price, old_price, image, stock } = product
   const [showDetails, setShowDetails] = useState(false)
   const [outOfStock, setOutOfStock] = useState(false)
+  const [isMobileBool, setIsMobileBool] = useState()
   const [name, setName] = useState({ first: "", last: "" })
   const { t } = useTranslation("common")
 
@@ -25,15 +26,25 @@ const Product = ({ handleAddProductToCart, ...product }) => {
   useEffect(() => {
     if (stock < 1) {
       setTimeout(() => setOutOfStock(true), 500)
+    } else {
+      setOutOfStock(false)
     }
   }, [stock])
+
+  useEffect(() => {
+    setIsMobileBool(isMobile())
+  }, [])
+
+  const handleAddProductToCartWithCheck = useCallback(() => {
+    if (!stock < 1) handleAddProductToCart(product)
+  }, [stock, handleAddProductToCart, product])
 
   return (
     <ClickAwayListener onClickAway={() => setShowDetails(false)}>
       <StyledProduct
-        onMouseEnter={() => !isMobile() && setShowDetails(true)}
-        onMouseLeave={() => !isMobile() && setShowDetails(false)}
-        onClick={() => isMobile() && setShowDetails(true)}
+        onMouseEnter={() => !isMobileBool && setShowDetails(true)}
+        onMouseLeave={() => !isMobileBool && setShowDetails(false)}
+        onClick={() => isMobileBool && setShowDetails(true)}
         details={showDetails ? 1 : 0}
         boxShadow={3}
       >
@@ -63,15 +74,15 @@ const Product = ({ handleAddProductToCart, ...product }) => {
           <Box className="actions">
             <Button
               disabled={outOfStock}
-              onClick={() => handleAddProductToCart(product)}
-              size={!isMobile() ? "small" : "medium"}
+              onClick={handleAddProductToCartWithCheck}
+              size={!isMobileBool ? "small" : "medium"}
               startIcon={<ShoppingBasketRoundedIcon />}
               className={`button ${outOfStock && "disabled"}`}
             >
               {t("add_to_bag")}
             </Button>
             <Button
-              size={!isMobile() ? "small" : "medium"}
+              size={!isMobileBool ? "small" : "medium"}
               endIcon={<ArrowForwardRoundedIcon />}
               className="button"
             >

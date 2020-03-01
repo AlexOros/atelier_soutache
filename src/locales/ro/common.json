@@ -1,8 +1,14 @@
 {
+  "close": "închide",
   "cancel": "renunța",
   "back": "înapoi",
   "readMore": "citește mai multe",
   "stock": "stoc",
-  "add_to_bag": "adaugă în poșetă",
-  "to_product": "vezi produs"
+  "add_to_bag": "adaugă în geantă",
+  "my_bag": "geanta mea",
+  "to_product": "vezi produs",
+  "products_0": "produs în",
+  "products_1": "produse în",
+  "products_2": "produs în",
+  "no_product_in_bag": "Nici un produs in geantă"
 }

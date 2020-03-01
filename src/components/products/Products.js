@@ -24,6 +24,9 @@ const Products = () => {
               fluid(maxWidth: 900, quality: 100) {
                 ...GatsbyImageSharpFluid
               }
+              fixed(width: 200, height: 200) {
+                ...GatsbyImageSharpFixed
+              }
             }
           }
         }
@@ -40,7 +43,7 @@ const Products = () => {
       {products.map(product => (
         <Product
           key={product.id}
-          {...product}
+          product={product}
           handleAddProductToCart={handleAddProductToCart}
         />
       ))}

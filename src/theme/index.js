@@ -1,6 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles"
 import grey from "@material-ui/core/colors/grey"
 
+import { slideUp } from "./keyframes/slide"
 import { titleBase } from "./mixins"
 
 const theme = createMuiTheme({
@@ -26,6 +27,9 @@ const theme = createMuiTheme({
 
   mixins: {
     titleBase,
+  },
+  keyframes: {
+    slideUp,
   },
 })
 
