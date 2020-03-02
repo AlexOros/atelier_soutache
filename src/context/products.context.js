@@ -7,6 +7,26 @@ const ProductsProvider = ({ children }) => {
   const [cart, setCart] = useState([])
   const [productsInCart, setProductsInCart] = useState(0)
 
+  const handleEmptyCart = useCallback(() => {
+    setProducts(products =>
+      products.map(prod => {
+        prod.stock = prod.originalStock
+        return prod
+      })
+    )
+    setCart([])
+    setProductsInCart(0)
+  }, [])
+
+  const handleSetProducts = useCallback(products => {
+    setProducts(() =>
+      products.map(prod => {
+        prod.originalStock = prod.stock
+        return prod
+      })
+    )
+  }, [])
+
   const handleAddProductToCart = useCallback(
     product => {
       let existingProductInCart = null
@@ -48,9 +68,10 @@ const ProductsProvider = ({ children }) => {
           return oldCart.filter(prod => prod.id !== product.id)
         }
 
-        return oldCart.map(prod =>
-          prod.id === product.id ? (prod.quantity -= 1) : prod
-        )
+        return oldCart.map(prod => {
+          if (prod.id === product.id) prod.quantity -= 1
+          return prod
+        })
       })
 
       setProducts(oldProducts =>
@@ -59,7 +80,6 @@ const ProductsProvider = ({ children }) => {
             prod.stock += 1
             setProductsInCart(amount => (amount -= 1))
           }
-
           return prod
         })
       )
@@ -73,8 +93,9 @@ const ProductsProvider = ({ children }) => {
       value={{
         cart,
         productsInCart,
-        setProducts,
         products,
+        handleSetProducts,
+        handleEmptyCart,
         handleRemoveProductFromCart,
         handleAddProductToCart,
       }}

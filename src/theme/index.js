@@ -1,5 +1,4 @@
 import { createMuiTheme } from "@material-ui/core/styles"
-import grey from "@material-ui/core/colors/grey"
 
 import { slideUp } from "./keyframes/slide"
 import { titleBase } from "./mixins"
@@ -7,7 +6,17 @@ import { titleBase } from "./mixins"
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#1191C8",
+      light: "#797979",
+      main: "#606060",
+      dark: "#4f4f4f",
+      contrastText: "#fbe0df",
+    },
+
+    secondary: {
+      light: "#fbe0df",
+      main: "#f9d2d0",
+      dark: "#f7c4c1",
+      contrastText: "#606060",
     },
 
     pink: {

@@ -6,7 +6,7 @@ import { Product } from "../../components"
 import StyledProducts from "./Products.style"
 
 const Products = () => {
-  const { products, setProducts, handleAddProductToCart } = useContext(
+  const { products, handleSetProducts, handleAddProductToCart } = useContext(
     ProductsContext
   )
   const {
@@ -35,8 +35,8 @@ const Products = () => {
   `)
 
   useEffect(() => {
-    setProducts(nodes)
-  }, [setProducts, nodes])
+    handleSetProducts(nodes)
+  }, [handleSetProducts, nodes])
 
   return (
     <StyledProducts>

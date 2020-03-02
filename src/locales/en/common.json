@@ -1,4 +1,7 @@
 {
+  "yes": "yes",
+  "no": "no",
+  "checkout": "go to checkout",
   "close": "close",
   "cancel": "cancel",
   "back": "back",
@@ -9,5 +12,6 @@
   "to_product": "to product",
   "products": "product in",
   "products_plural": "products in",
-  "no_product_in_bag": "your bag is empty"
+  "no_product_in_bag": "your bag is empty",
+  "remove_all_products": "Remove all products from bag?"
 }

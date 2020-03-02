@@ -13,9 +13,12 @@ const Header = () => {
   const { t, i18n } = useTranslation()
   const [anchorEl, setAnchorEl] = useState(null)
   const [isCartOpened, setIsCartOpened] = useState(false)
-  const { productsInCart, cart, handleRemoveProductFromCart } = useContext(
-    ProductsContext
-  )
+  const {
+    productsInCart,
+    cart,
+    handleRemoveProductFromCart,
+    handleEmptyCart,
+  } = useContext(ProductsContext)
 
   const handleClose = useCallback(
     lang => {
@@ -79,6 +82,7 @@ const Header = () => {
         handleClose={() => setIsCartOpened(false)}
         cart={cart}
         openCart={isCartOpened}
+        handleEmptyCart={handleEmptyCart}
         productsInCart={productsInCart}
       />
     </StyledHeader>

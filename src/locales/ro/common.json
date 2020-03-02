@@ -1,4 +1,7 @@
 {
+  "yes": "da",
+  "no": "nu",
+  "checkout": "finalizează comanda",
   "close": "închide",
   "cancel": "renunța",
   "back": "înapoi",
@@ -10,5 +13,6 @@
   "products_0": "produs în",
   "products_1": "produse în",
   "products_2": "produs în",
-  "no_product_in_bag": "Nici un produs in geantă"
+  "no_product_in_bag": "Nici un produs in geantă",
+  "remove_all_products": "Scoate toate produsele din geantă?"
 }

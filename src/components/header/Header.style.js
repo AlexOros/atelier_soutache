@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-
+import { Box } from "@material-ui/core"
 const StyledHeader = styled.header`
   position: relative;
   display: grid;
@@ -37,9 +37,12 @@ const itemBase = css`
   transition: all 0.3s ease-in;
   text-transform: capitalize;
   min-height: 136px;
+  /* -- */
 `
 
 export const StyledCartDrawer = styled.div`
+  display: grid;
+  grid-template-rows: 125px 1fr 240px;
   color: ${({ theme }) => theme.palette.pink.light};
   transition: all 0.7s;
   z-index: ${({ theme }) => theme.zIndex.mobileStepper};
@@ -56,12 +59,14 @@ export const StyledCartDrawer = styled.div`
     min-width: 400px;
   }
 
+
+
   .close {
     margin: ${({ theme }) => theme.spacing(1)};
     color: ${({ theme }) => theme.palette.pink.light};
   }
 
-  .title {
+  .header-title {
     text-align: center;
     text-transform: capitalize;
   }
@@ -83,9 +88,18 @@ export const StyledCartDrawer = styled.div`
     overflow-y: ${({ productsInCart }) =>
       productsInCart > 4 ? "scroll" : "inherit"};
 
-    &::-webkit-scrollbar {
-      width: 11px;
+    .title {
+      max-width: 180px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+
+    &::-webkit-scrollbar {
+      width: 14px;
+      cursor: grab;
+    }
+
     & {
       scrollbar-width: thin;
       scrollbar-color: rgba(77, 77, 77, 0.99);
@@ -124,9 +138,18 @@ export const StyledCartDrawer = styled.div`
     max-width: 120px;
     max-height: 120px;
   }
+`
 
-  button {
-    color: ${({ theme }) => theme.palette.pink.light};
+export const StyledTotal = styled(Box)`
+  .total {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 120px 1fr 50px;
+  }
+
+  .euro {
+    font-weight: 400;
+    font-size: 1rem;
   }
 `
 export default StyledHeader
