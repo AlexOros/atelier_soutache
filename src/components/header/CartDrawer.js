@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React, { useMemo, useEffect, useState, useCallback } from "react"
 import { useTranslation } from "react-i18next"
 import {
   Typography,
@@ -10,6 +10,7 @@ import {
   makeStyles,
   Paper,
   ClickAwayListener,
+  Zoom,
 } from "@material-ui/core"
 import Img from "gatsby-image"
 import DeleteIcon from "@material-ui/icons/Delete"
@@ -117,22 +118,37 @@ const CartProduct = ({
   quantity,
   handleRemoveProductFromCart,
 }) => {
-  return (
-    <Box className="item" m={1}>
-      <Img className="image" fixed={image.childImageSharp.fixed} alt="" />
-      <div>
-        <Typography className="title" variant="body1">
-          {title}
-        </Typography>
-        <div>
-          {price} &euro; <span> &#x2715;</span> {quantity}
-        </div>
-      </div>
+  const [show, setShow] = useState(false)
 
-      <IconButton color="secondary" onClick={handleRemoveProductFromCart}>
-        <BackspaceIcon />
-      </IconButton>
-    </Box>
+  useEffect(() => {
+    setShow(true)
+  }, [])
+
+  const handleRemove = useCallback(() => {
+    if (quantity === 1) setShow(false)
+    setTimeout(() => {
+      handleRemoveProductFromCart()
+    }, 200)
+  }, [handleRemoveProductFromCart, quantity])
+
+  return (
+    <Zoom in={show}>
+      <Box className="item" m={1}>
+        <Img className="image" fixed={image.childImageSharp.fixed} alt="" />
+        <div>
+          <Typography className="title" variant="body1">
+            {title}
+          </Typography>
+          <div>
+            {price} &euro; <span> &#x2715;</span> {quantity}
+          </div>
+        </div>
+
+        <IconButton color="secondary" onClick={handleRemove}>
+          <BackspaceIcon />
+        </IconButton>
+      </Box>
+    </Zoom>
   )
 }
 
@@ -166,7 +182,7 @@ const CartDrawer = ({
         <Box mb={3} className={`header-title  ${openCart && "title-active"}`}>
           <Typography variant="h5">{t("my_bag")}</Typography>
           <span className="count">
-            {productsInCart} - {t("products", { productsInCart })}
+            {productsInCart} {t("products", { count: productsInCart })}
             <ShoppingBasketRoundedIcon />
           </span>
         </Box>
@@ -176,10 +192,10 @@ const CartDrawer = ({
         {cart.length ? (
           cart.map(item => (
             <CartProduct
+              key={item.id}
               handleRemoveProductFromCart={() =>
                 handleRemoveProductFromCart(item)
               }
-              key={item.id}
               {...item}
             />
           ))
