@@ -18,8 +18,9 @@ const Product = ({ handleAddProductToCart, product }) => {
 
   useEffect(() => {
     if (title) {
-      const [first, last] = title.split(" ")
-      setName(() => ({ first, last }))
+      const [first, ...last] = title.split(" ")
+
+      setName(() => ({ first, last: last.join(" ") }))
     }
   }, [title])
 

@@ -89,6 +89,7 @@ const StyledProduct = styled(Box)`
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      padding-bottom: 5px;
 
       ${({ theme }) => theme.breakpoints.up("sm")} {
         font-size: 1.5rem;

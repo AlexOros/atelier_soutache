@@ -1,11 +1,12 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { useEffect, useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
-
 import Pagination from "@material-ui/lab/Pagination"
+
+import { Box } from "@material-ui/core"
 import usePagination from "../../hooks/usePagination"
 import { ProductsContext } from "../../context"
 import { Product } from "../../components"
-import StyledProducts from "./Products.style"
+import { StyledProducts, StyledPaginationComponent } from "./Products.style"
 
 const query = graphql`
   query ProductsQuery {
@@ -38,27 +39,19 @@ const Products = () => {
     allStrapiProduct: { nodes },
   } = useStaticQuery(query)
 
-  const { page, maxPages, handleChangePage } = usePagination({
-    items: products,
-    itemsPerPage: 2,
-  })
-
   useEffect(() => {
     handleSetProducts(nodes)
   }, [handleSetProducts, nodes])
 
+  const { paginatedItems, maxPages, handleChangePage } = usePagination({
+    items: products,
+    itemsPerPage: 3,
+  })
+
   return (
-    <div>
-      <div>
-        <Pagination
-          onChange={handleChangePage}
-          size="large"
-          count={maxPages}
-          color="secondary"
-        />
-      </div>
+    <Box>
       <StyledProducts>
-        {page.map(product => (
+        {paginatedItems.map(product => (
           <Product
             key={product.id}
             product={product}
@@ -66,7 +59,11 @@ const Products = () => {
           />
         ))}
       </StyledProducts>
-    </div>
+
+      <StyledPaginationComponent my={3}>
+        <Pagination onChange={handleChangePage} size="large" count={maxPages} />
+      </StyledPaginationComponent>
+    </Box>
   )
 }
 

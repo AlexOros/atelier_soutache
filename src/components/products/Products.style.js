@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Box from "@material-ui/core/Box"
 
-const StyledProducts = styled(Box)`
+export const StyledProducts = styled(Box)`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
@@ -22,4 +22,13 @@ const StyledProducts = styled(Box)`
   }
 `
 
-export default StyledProducts
+export const StyledPaginationComponent = styled(Box)`
+  justify-self: 2 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button {
+    border-radius: 50%;
+    margin: 0 1px 0 1px;
+  }
+`
