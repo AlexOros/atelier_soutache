@@ -1,90 +1,120 @@
 import React, { useState, useContext, useCallback } from "react"
 import { useTranslation } from "react-i18next"
-import { Button, Menu, MenuItem, Box } from "@material-ui/core"
-import LanguageRoundedIcon from "@material-ui/icons/LanguageRounded"
-import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded"
+import { Box, IconButton, useMediaQuery } from "@material-ui/core"
+import MenuRoundedIcon from "@material-ui/icons/MenuRounded"
+import { useTheme } from "@material-ui/core/styles"
 
-import CartDrawer from "./CartDrawer"
 import { ProductsContext } from "../../context"
-import { NavLink, Cart } from "../../components"
+import {
+  NavLink,
+  CartIcon,
+  LanguageSelector,
+  Drawer,
+  Cart,
+} from "../../components"
 import StyledHeader from "./Header.style"
+import useWindowTopDistance from "../../hooks/useWindowTopDistance"
 
 const Header = () => {
-  const { t, i18n } = useTranslation()
-  const [anchorEl, setAnchorEl] = useState(null)
-  const [isCartOpened, setIsCartOpened] = useState(false)
+  const { t } = useTranslation()
+  const [isCartOpen, setIsCartOpen] = useState(false)
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false)
   const {
     productsInCart,
     cart,
     handleRemoveProductFromCart,
     handleEmptyCart,
   } = useContext(ProductsContext)
-
-  const handleClose = useCallback(
-    lang => {
-      if (lang) {
-        i18n.changeLanguage(lang)
-      }
-      setAnchorEl(null)
-    },
-    [i18n]
-  )
+  const { top } = useWindowTopDistance()
+  const theme = useTheme()
+  const showMobileHeader = useMediaQuery(theme.breakpoints.down("sm"))
 
   const handleClickCart = useCallback(() => {
-    setIsCartOpened(oldState => !oldState)
-  }, [setIsCartOpened])
+    let ms = 0
+    if (isNavbarOpen) {
+      ms = 500
+      setIsNavbarOpen(() => false)
+    }
+    setTimeout(() => setIsCartOpen(oldState => !oldState), ms)
+  }, [isNavbarOpen])
+
+  const handleClickNavbar = useCallback(() => {
+    let ms = 0
+    if (isCartOpen) {
+      ms = 500
+      setIsCartOpen(() => false)
+    }
+    setTimeout(() => setIsNavbarOpen(oldState => !oldState), ms)
+  }, [isCartOpen])
+
+  const getPageLinks = useCallback(
+    className => {
+      console.log("called")
+      return (
+        <Box className={className}>
+          <Box>
+            <NavLink to="/">{t("home:title")}</NavLink>
+          </Box>
+          <Box>
+            <NavLink to="/about">{t("about:title")}</NavLink>
+          </Box>
+        </Box>
+      )
+    },
+    [t]
+  )
 
   return (
-    <StyledHeader>
-      <Box>
-        <h5>Logo here</h5>
-      </Box>
-      <Box className="nav-links">
+    <StyledHeader isFixed={top > 40}>
+      <Box className="header">
         <Box>
-          <NavLink to="/">{t("home:title")}</NavLink>
+          {!showMobileHeader ? (
+            <h5>Logo here</h5>
+          ) : (
+            <IconButton
+              onClick={() => handleClickNavbar()}
+              color="primary"
+              aria-label="menu"
+            >
+              <MenuRoundedIcon />
+            </IconButton>
+          )}
         </Box>
-        <Box>
-          <NavLink to="/about">{t("about:title")}</NavLink>
-        </Box>
-      </Box>
 
-      <Box className="shop">
-        {i18n.language && (
-          <Box>
-            <Button
-              style={{ textTransform: "lowercase" }}
-              size="small"
-              startIcon={<LanguageRoundedIcon fontSize="small" />}
-              endIcon={<ExpandMoreRoundedIcon />}
-              aria-controls="simple-menu"
-              aria-haspopup="true"
-              onClick={e => setAnchorEl(e.currentTarget)}
-            >
-              {i18n.language}
-            </Button>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={() => handleClose()}
-            >
-              <MenuItem onClick={() => handleClose("ro")}>ro</MenuItem>
-              <MenuItem onClick={() => handleClose("en")}>en</MenuItem>
-            </Menu>
+        {!showMobileHeader ? (
+          getPageLinks("nav-links-desktop")
+        ) : (
+          <Box textAlign="center">
+            <h5>Logo here</h5>
           </Box>
         )}
-        <Cart productsInCart={productsInCart} handleClick={handleClickCart} />
-      </Box>
 
-      <CartDrawer
-        handleRemoveProductFromCart={handleRemoveProductFromCart}
-        handleClose={() => setIsCartOpened(false)}
-        cart={cart}
-        openCart={isCartOpened}
-        handleEmptyCart={handleEmptyCart}
-        productsInCart={productsInCart}
-      />
+        <Box className="shop">
+          {!showMobileHeader && <LanguageSelector />}
+          <CartIcon
+            productsInCart={productsInCart}
+            handleClick={handleClickCart}
+          />
+        </Box>
+        <Drawer
+          isDrawerOpen={isNavbarOpen}
+          handleCloseDrawer={() => setIsNavbarOpen(false)}
+        >
+          {getPageLinks("nav-links-mobile")}
+        </Drawer>
+        <Drawer
+          side="right"
+          isDrawerOpen={isCartOpen}
+          handleCloseDrawer={() => setIsCartOpen(false)}
+        >
+          <Cart
+            handleRemoveProductFromCart={handleRemoveProductFromCart}
+            handleEmptyCart={handleEmptyCart}
+            cart={cart}
+            productsInCart={productsInCart}
+          />
+        </Drawer>
+      </Box>
     </StyledHeader>
   )
 }

@@ -20,6 +20,8 @@ const IndexPage = () => {
         </Box>
         <Products />
       </Section>
+      <Section deg={-9}></Section>
+      <Section deg={9}></Section>
     </Box>
   )
 }

@@ -5,7 +5,23 @@ import Title from "./title/Title"
 import NavLink from "./navLink/NavLink"
 import Section from "./section/Section"
 import Product from "./product/Product"
-import Cart from "./cart/Cart"
+import CartIcon from "./cartIcon/CartIcon"
 import Products from "./products/Products"
+import LanguageSelector from "./languageSelector/LanguageSelector"
+import Drawer from "./drawer/Drawer"
+import Cart from "./cart/Cart"
 
-export { Layout, Header, Title, NavLink, Section, Product, Products, Cart, SEO }
+export {
+  Layout,
+  Header,
+  Title,
+  NavLink,
+  Section,
+  Product,
+  Products,
+  CartIcon,
+  Cart,
+  SEO,
+  LanguageSelector,
+  Drawer,
+}

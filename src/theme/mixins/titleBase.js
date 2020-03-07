@@ -32,7 +32,7 @@ const titleBase = css`
     content: "";
     display: block;
     position: absolute;
-    transition: all 200ms ease;
+    transition: all 350ms ease-in-out;
     top: ${({ variant }) => beforeLinePositionMap[variant]}px;
     left: -5px;
     background: ${({ theme }) => theme.palette.text.primary};
@@ -48,7 +48,7 @@ const titleBase = css`
   &:after {
     content: "";
     display: block;
-    transition: all 200ms ease;
+    transition: all 350ms ease-in-out;
     height: 1px;
     background: ${({ theme }) => theme.palette.text.primary};
     max-width: ${({ variant, active }) => {
