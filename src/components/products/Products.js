@@ -19,7 +19,7 @@ const query = graphql`
         image {
           childImageSharp {
             fluid(maxWidth: 900, quality: 100) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
             fixed(width: 200, height: 200) {
               ...GatsbyImageSharpFixed
@@ -31,7 +31,7 @@ const query = graphql`
   }
 `
 
-const Products = () => {
+const Products = ({ showPagination, amount = 6 }) => {
   const { products, handleSetProducts, handleAddProductToCart } = useContext(
     ProductsContext
   )
@@ -45,7 +45,7 @@ const Products = () => {
 
   const { paginatedItems, maxPages, handleChangePage } = usePagination({
     items: products,
-    itemsPerPage: 3,
+    itemsPerPage: amount,
   })
 
   return (
@@ -60,9 +60,15 @@ const Products = () => {
         ))}
       </StyledProducts>
 
-      <StyledPaginationComponent my={3}>
-        <Pagination onChange={handleChangePage} size="large" count={maxPages} />
-      </StyledPaginationComponent>
+      {showPagination && (
+        <StyledPaginationComponent my={3}>
+          <Pagination
+            onChange={handleChangePage}
+            size="large"
+            count={maxPages}
+          />
+        </StyledPaginationComponent>
+      )}
     </Box>
   )
 }

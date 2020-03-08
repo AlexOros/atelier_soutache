@@ -16,6 +16,7 @@ const StyledBadge = withStyles(theme => ({
 const StyledCart = styled(Box)`
   cursor: pointer;
   transition: all 200ms ease-in;
+  padding: ${({ theme }) => theme.spacing(1.5)};
 
   &:hover {
     color: ${({ theme }) => theme.palette.grey[600]};

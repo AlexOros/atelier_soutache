@@ -50,6 +50,7 @@ const Product = ({ handleAddProductToCart, product }) => {
         boxShadow={3}
       >
         <Img className="image" fluid={image.childImageSharp.fluid} alt="" />
+
         <Box px={2} pt={[4, 6, 8]} className="overlay">
           <Box letterSpacing={4}>
             <Typography className="title" variant="h3">

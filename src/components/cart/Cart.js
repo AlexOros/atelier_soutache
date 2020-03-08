@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const CartNoProduct = ({ t }) => (
-  <Box m={1} className="no-item" textAlign="center">
+  <Box m={[0.5, 1]} className="no-item" textAlign="center">
     <Typography variant="body1"> {t("no_product_in_bag")}</Typography>
   </Box>
 )
@@ -95,7 +95,7 @@ const Total = ({ totalSumInCart, t, handleEmptyCart }) => {
           </Box>
         </ClickAwayListener>
       </Box>
-      <Box m={6} textAlign="center">
+      <Box m={[2, 4, 6]} textAlign="center">
         <Button
           disabled={!totalSumInCart}
           fullWidth
@@ -132,7 +132,7 @@ const CartProduct = ({
 
   return (
     <Zoom in={show}>
-      <Box className="item" m={1}>
+      <Box className="item" m={[0.5, 1]}>
         <Img className="image" fixed={image.childImageSharp.fixed} alt="" />
         <div>
           <Typography className="title" variant="body1">

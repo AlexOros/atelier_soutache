@@ -34,7 +34,7 @@ const titleBase = css`
     position: absolute;
     transition: all 350ms ease-in-out;
     top: ${({ variant }) => beforeLinePositionMap[variant]}px;
-    left: -5px;
+    left: -4px;
     background: ${({ theme }) => theme.palette.text.primary};
     height: ${({ variant, active }) => {
       if (active === 1) {

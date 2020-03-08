@@ -2,6 +2,7 @@ import styled, { css } from "styled-components"
 import { Box } from "@material-ui/core"
 
 const FOUR_ITEMS_HEIGHT = 583
+const THREE_ITEMS_HEIGHT = 332
 
 const itemBase = css`
   padding: ${({ theme }) => theme.spacing(1)};
@@ -9,13 +10,17 @@ const itemBase = css`
   box-shadow: 1px 2px 12px rgba(251, 224, 223, 0.4);
   transition: all 0.3s ease-in;
   text-transform: capitalize;
-  min-height: 136px;
+  min-height: 100px;
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    min-height: 136px;
+  }
+
   /* -- */
 `
 
 export const StyledCartDrawer = styled.div`
   display: grid;
-  grid-template-rows: 100px 1fr 100px;
+  grid-template-rows:  60px 1fr 100px;
   
 
   ${({ theme }) => theme.breakpoints.up("md")} {
@@ -40,9 +45,9 @@ export const StyledCartDrawer = styled.div`
   }
 
   .items {
-    max-height: ${FOUR_ITEMS_HEIGHT + "px"};
+    max-height: ${THREE_ITEMS_HEIGHT + "px"};
     overflow-y: ${({ productsInCart }) =>
-      productsInCart > 4 ? "scroll" : "inherit"};
+      productsInCart > 3 ? "scroll" : "inherit"};
 
     ${({ theme }) => theme.breakpoints.up("md")} {
       max-height: ${FOUR_ITEMS_HEIGHT + "px"};
@@ -51,10 +56,14 @@ export const StyledCartDrawer = styled.div`
       }
 
     .title {
-      max-width: 180px;
+      max-width: 130px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+
+      ${({ theme }) => theme.breakpoints.up("md")} {
+        max-width: 180px;
+      }
     }
 
     &::-webkit-scrollbar {
@@ -86,19 +95,30 @@ export const StyledCartDrawer = styled.div`
   .item {
     ${itemBase};
     display: grid;
-    grid-template-columns: 120px 1fr 50px;
+    grid-template-columns: 80px 1fr 40px;
     grid-gap: 15px;
+
     align-items: center;
-   
+
     &:hover {
       box-shadow:1px 2px 12px ${({ theme }) => theme.palette.pink.light};
     }
 
+    ${({ theme }) => theme.breakpoints.up("md")} {
+      grid-template-columns: 120px 1fr 50px;
+      grid-gap: 15px;
+    }
+   
 
   .image {
     border-radius: 50%;
-    max-width: 120px;
-    max-height: 120px;
+    max-width: 80px;
+    max-height: 80px;
+
+    ${({ theme }) => theme.breakpoints.up("md")} {
+      max-width: 120px;
+      max-height: 120px;
+    }
   }
 `
 
@@ -106,7 +126,11 @@ export const StyledTotal = styled(Box)`
   .total {
     display: grid;
     grid-gap: 15px;
-    grid-template-columns: 120px 1fr 50px;
+    grid-template-columns: 80px 1fr 40px;
+
+    ${({ theme }) => theme.breakpoints.up("md")} {
+      grid-template-columns: 120px 1fr 50px;
+    }
   }
 
   .euro {

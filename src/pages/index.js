@@ -8,7 +8,8 @@ const IndexPage = () => {
 
   return (
     <Box mt={[2, 4, 6]}>
-      <SEO title={t("title")} description="Wtf my cohones?" />
+      {/* TODO add description in en and ro for each page */}
+      <SEO title={t("title")} />
 
       <Section deg={9}>
         <Box mx={2} my={[4, 6]}>

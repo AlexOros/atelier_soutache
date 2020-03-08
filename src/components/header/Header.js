@@ -3,7 +3,9 @@ import { useTranslation } from "react-i18next"
 import { Box, IconButton, useMediaQuery } from "@material-ui/core"
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded"
 import { useTheme } from "@material-ui/core/styles"
+import MenuOpenRoundedIcon from "@material-ui/icons/MenuOpenRounded"
 
+import { isMobile } from "../../utils"
 import { ProductsContext } from "../../context"
 import {
   NavLink,
@@ -47,21 +49,33 @@ const Header = () => {
     setTimeout(() => setIsNavbarOpen(oldState => !oldState), ms)
   }, [isCartOpen])
 
+  const handleCloseNavbar = useCallback(() => {
+    isMobile() && setTimeout(() => setIsNavbarOpen(false), 500)
+  }, [])
+
   const getPageLinks = useCallback(
     className => {
-      console.log("called")
       return (
         <Box className={className}>
           <Box>
-            <NavLink to="/">{t("home:title")}</NavLink>
+            <NavLink onClick={handleCloseNavbar} to="/">
+              {t("home:title")}
+            </NavLink>
           </Box>
           <Box>
-            <NavLink to="/about">{t("about:title")}</NavLink>
+            <NavLink onClick={handleCloseNavbar} to="/about">
+              {t("about:title")}
+            </NavLink>
+          </Box>
+          <Box>
+            <NavLink onClick={handleCloseNavbar} to="/shop">
+              Shop
+            </NavLink>
           </Box>
         </Box>
       )
     },
-    [t]
+    [handleCloseNavbar, t]
   )
 
   return (
@@ -97,11 +111,13 @@ const Header = () => {
           />
         </Box>
         <Drawer
+          closeIcon={<MenuOpenRoundedIcon />}
           isDrawerOpen={isNavbarOpen}
           handleCloseDrawer={() => setIsNavbarOpen(false)}
         >
           {getPageLinks("nav-links-mobile")}
         </Drawer>
+
         <Drawer
           side="right"
           isDrawerOpen={isCartOpen}

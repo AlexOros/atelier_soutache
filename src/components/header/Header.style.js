@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components"
-import { Box } from "@material-ui/core"
 
 const fixedStyle = css`
   position: sticky;
@@ -36,11 +35,14 @@ const StyledHeader = styled.header`
   }
 
   .nav-links-desktop {
+  
     display: grid;
     max-width: 800px;
     gap: ${({ theme }) => theme.spacing(4)};
     justify-self: center;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+
+   
   }
 
   .nav-links-mobile {
@@ -58,9 +60,11 @@ const StyledHeader = styled.header`
   }
 
   .shop {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      align-items: center;
+    }
   }
 `
 
