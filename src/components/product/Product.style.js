@@ -55,8 +55,19 @@ const StyledProduct = styled(Box)`
     min-width: unset;
   }
 
-  img {
+  .image {
     border-radius: 3px;
+  }
+
+  .more {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    background: ${({ details }) =>
+      details ? `rgba(251, 224, 223, 0.7)` : `rgba(251, 224, 223, 1)`};
+    transition: all 500ms ease-in-out;
+    padding: 10px;
   }
 
   .overlay {
@@ -152,9 +163,15 @@ const StyledProduct = styled(Box)`
       letter-spacing: 1px;
       transform: translateY(40px);
       transition: all 0.7s;
+      text-align: center;
+      margin-top: ${({ theme }) => theme.spacing(1)};
 
       .button {
+        font-size: 12px;
         color: ${({ theme }) => theme.palette.pink.light};
+        ${({ theme }) => theme.breakpoints.up("sm")} {
+          font-size: inherit;
+        }
       }
 
       .disabled {

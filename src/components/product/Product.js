@@ -1,9 +1,17 @@
 import React, { useState, useEffect, useCallback } from "react"
 import { useTranslation } from "react-i18next"
 import Img from "gatsby-image"
-import { Box, Typography, Button, ClickAwayListener } from "@material-ui/core"
+import {
+  Box,
+  Typography,
+  Button,
+  ClickAwayListener,
+  IconButton,
+} from "@material-ui/core"
 import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded"
+import EyeIcon from "../../assets/svg/view-more.svg"
+import EyeIconClosed from "../../assets/svg/view-more-close.svg"
 
 import { isMobile } from "../../utils"
 import StyledProduct from "./Product.style"
@@ -19,7 +27,6 @@ const Product = ({ handleAddProductToCart, product }) => {
   useEffect(() => {
     if (title) {
       const [first, ...last] = title.split(" ")
-
       setName(() => ({ first, last: last.join(" ") }))
     }
   }, [title])
@@ -37,18 +44,28 @@ const Product = ({ handleAddProductToCart, product }) => {
   }, [])
 
   const handleAddProductToCartWithCheck = useCallback(() => {
+    if (!showDetails) return
     if (!stock < 1) handleAddProductToCart(product)
-  }, [stock, handleAddProductToCart, product])
+  }, [showDetails, stock, handleAddProductToCart, product])
 
   return (
     <ClickAwayListener onClickAway={() => setShowDetails(false)}>
       <StyledProduct
         onMouseEnter={() => !isMobileBool && setShowDetails(true)}
         onMouseLeave={() => !isMobileBool && setShowDetails(false)}
-        onClick={() => isMobileBool && setShowDetails(true)}
         details={showDetails ? 1 : 0}
         boxShadow={3}
       >
+        {isMobileBool && (
+          <Box textAlign="right">
+            <IconButton
+              className="more"
+              onClick={() => setShowDetails(oldShowDetails => !oldShowDetails)}
+            >
+              {showDetails ? <EyeIconClosed /> : <EyeIcon />}
+            </IconButton>
+          </Box>
+        )}
         <Img className="image" fluid={image.childImageSharp.fluid} alt="" />
 
         <Box px={2} pt={[4, 6, 8]} className="overlay">
@@ -84,6 +101,7 @@ const Product = ({ handleAddProductToCart, product }) => {
               {t("add_to_bag")}
             </Button>
             <Button
+              mt={[1, 0]}
               size={!isMobileBool ? "small" : "medium"}
               endIcon={<ArrowForwardRoundedIcon />}
               className="button"

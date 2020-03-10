@@ -5,8 +5,12 @@ const fixedStyle = css`
   top: 0;
   left: 0;
   width: 100%;
-  height: 4.5rem;
+  height: 3.5rem;
   box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.05);
+  padding: ${({ theme }) => `0 ${theme.spacing(2)} `};
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    height: 4.5rem;
+  }
 
   /***** */
 `
@@ -35,7 +39,6 @@ const StyledHeader = styled.header`
   }
 
   .nav-links-desktop {
-  
     display: grid;
     max-width: 800px;
     gap: ${({ theme }) => theme.spacing(4)};
