@@ -10,7 +10,8 @@ const StyledSection = styled.section`
     content: "";
     position: absolute;
     top: 5%;
-    height: 90%;
+    height: ${({ height }) => `${height}%`};
+    width: ${({ width }) => `${width}%`};
     bottom: 0;
     left: 0;
     right: 0;
@@ -19,22 +20,14 @@ const StyledSection = styled.section`
     z-index: -1;
     transform: ${({ deg }) => `rotate(${deg}deg)`};
     background: ${({ theme }) => theme.palette.pink.light};
-
-    ${({ theme }) => theme.breakpoints.up("sm")} {
-      top: 12%;
-      height: 75%;
-    }
-    ${({ theme }) => theme.breakpoints.up("md")} {
-      top: 15%;
-      height: 70%;
-    }
+    margin: ${({ width }) => (width < 100 ? "0 auto" : "")};
   }
 `
 
-const Section = ({ children, deg = 9 }) => {
+const Section = ({ children, deg = 9, height = 90, width, ...restOfProps }) => {
   return (
-    <StyledSection deg={deg}>
-      <Box>{children}</Box>
+    <StyledSection deg={deg} height={height} width={width} {...restOfProps}>
+      {children}
     </StyledSection>
   )
 }

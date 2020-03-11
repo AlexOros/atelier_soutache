@@ -8,7 +8,7 @@ export default () => {
   const { t } = useTranslation("home")
 
   return (
-    <Box mt={[2, 4, 6]}>
+    <>
       <SEO title={t("title")} />
 
       <Section deg="-9">
@@ -17,6 +17,6 @@ export default () => {
         </Box>
         <Products showPagination amount={3} />
       </Section>
-    </Box>
+    </>
   )
 }

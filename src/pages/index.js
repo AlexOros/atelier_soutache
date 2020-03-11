@@ -7,7 +7,7 @@ const IndexPage = () => {
   const { t } = useTranslation("home")
 
   return (
-    <Box mt={[2, 4, 6]}>
+    <>
       {/* TODO add description in en and ro for each page */}
       <SEO title={t("title")} />
 
@@ -23,7 +23,7 @@ const IndexPage = () => {
       </Section>
       <Section deg={-9}></Section>
       <Section deg={9}></Section>
-    </Box>
+    </>
   )
 }
 

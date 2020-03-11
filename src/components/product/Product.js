@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react"
 import { useTranslation } from "react-i18next"
+import { navigate } from "gatsby"
 import Img from "gatsby-image"
 import {
   Box,
@@ -101,6 +102,7 @@ const Product = ({ handleAddProductToCart, product }) => {
               {t("add_to_bag")}
             </Button>
             <Button
+              onClick={() => navigate(product.slug)}
               mt={[1, 0]}
               size={!isMobileBool ? "small" : "medium"}
               endIcon={<ArrowForwardRoundedIcon />}

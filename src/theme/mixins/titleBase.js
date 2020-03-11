@@ -36,7 +36,7 @@ const titleBase = css`
     top: ${({ variant }) => beforeLinePositionMap[variant]}px;
     left: -4px;
     background: ${({ theme }) => theme.palette.text.primary};
-    height: ${({ variant, active }) => {
+    height: ${({ active }) => {
       if (active === 1) {
         return `125%`
       }

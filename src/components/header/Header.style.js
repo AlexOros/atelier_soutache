@@ -24,10 +24,12 @@ const StyledHeader = styled.header`
   background: ${({ theme }) => theme.palette.background.default};
   transition: all 0.5s;
   ${({ isFixed }) => isFixed && fixedStyle}
+  margin-bottom: ${({ theme }) => theme.spacing(2)};
 
   ${({ theme }) => theme.breakpoints.up("md")} {
     padding: ${({ theme, isFixed }) =>
       isFixed ? `0 ${theme.spacing(2)}` : theme.spacing(2)};
+    margin-bottom: ${({ theme }) => theme.spacing(14)};
   }
 
   .header {

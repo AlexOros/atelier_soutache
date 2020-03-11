@@ -16,6 +16,7 @@ const query = graphql`
         price
         old_price
         stock
+        slug
         image {
           childImageSharp {
             fluid(maxWidth: 900, quality: 100) {
