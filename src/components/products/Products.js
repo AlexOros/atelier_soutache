@@ -10,7 +10,7 @@ import { StyledProducts, StyledPaginationComponent } from "./Products.style"
 
 const query = graphql`
   query ProductsQuery {
-    allStrapiProduct {
+    allStrapiProduct(filter: { show_product: { eq: true } }) {
       nodes {
         title
         price

@@ -8,11 +8,13 @@ i18next.init({
       common: require("../locales/ro/common.json"),
       home: require("../locales/ro/home.json"),
       about: require("../locales/ro/about.json"),
+      product: require("../locales/ro/product.json"),
     },
     en: {
       common: require("../locales/en/common.json"),
       home: require("../locales/en/home.json"),
       about: require("../locales/en/about.json"),
+      product: require("../locales/en/product.json"),
     },
   },
   load: "languageOnly",

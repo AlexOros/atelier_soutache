@@ -79,7 +79,7 @@ const Header = () => {
   )
 
   return (
-    <StyledHeader isFixed={top > 40}>
+    <StyledHeader isFixed={top >= 80}>
       <Box className="header">
         <Box>
           {!showMobileHeader ? (

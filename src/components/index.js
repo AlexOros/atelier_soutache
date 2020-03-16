@@ -10,6 +10,7 @@ import Products from "./products/Products"
 import LanguageSelector from "./languageSelector/LanguageSelector"
 import Drawer from "./drawer/Drawer"
 import Cart from "./cart/Cart"
+import Info from "./info/Info"
 
 export {
   Layout,
@@ -24,4 +25,5 @@ export {
   SEO,
   LanguageSelector,
   Drawer,
+  Info,
 }

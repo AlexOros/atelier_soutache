@@ -11,7 +11,6 @@ const fixedStyle = css`
   ${({ theme }) => theme.breakpoints.up("md")} {
     height: 4.5rem;
   }
-
   /***** */
 `
 
@@ -29,7 +28,7 @@ const StyledHeader = styled.header`
   ${({ theme }) => theme.breakpoints.up("md")} {
     padding: ${({ theme, isFixed }) =>
       isFixed ? `0 ${theme.spacing(2)}` : theme.spacing(2)};
-    margin-bottom: ${({ theme }) => theme.spacing(14)};
+    margin-bottom: ${({ theme }) => theme.spacing(20)};
   }
 
   .header {
