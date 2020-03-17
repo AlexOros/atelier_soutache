@@ -6,6 +6,11 @@ const StyledExpansionPanel = styled(ExpansionPanel)`
     padding: 0 ${({ theme }) => theme.spacing(1)};
     font-size: ${({ theme }) => theme.typography.pxToRem(14)};
   }
+  .MuiExpansionPanelSummary-root {
+    .MuiButtonBase-root {
+      transition: all 300ms ease-in-out;
+    }
+  }
   .title {
     text-transform: capitalize;
     display: flex;

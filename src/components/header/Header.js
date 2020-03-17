@@ -72,6 +72,9 @@ const Header = () => {
               Shop
             </NavLink>
           </Box>
+          <Box>
+            <LanguageSelector color="secondary" />
+          </Box>
         </Box>
       )
     },

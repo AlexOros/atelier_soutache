@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import LanguageRoundedIcon from "@material-ui/icons/LanguageRounded"
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded"
 
-const LanguageSelector = () => {
+const LanguageSelector = ({ color = "primary" }) => {
   const { i18n } = useTranslation()
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -23,6 +23,7 @@ const LanguageSelector = () => {
       {i18n.language && (
         <Box>
           <Button
+            color={color}
             style={{ textTransform: "lowercase" }}
             size="small"
             startIcon={<LanguageRoundedIcon fontSize="small" />}

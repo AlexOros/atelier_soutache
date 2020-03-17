@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useState, useCallback } from "react"
+import React, { useMemo, useEffect, useState, useCallback, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import {
   Typography,
@@ -118,6 +118,7 @@ const CartProduct = ({
   handleRemoveProductFromCart,
 }) => {
   const [show, setShow] = useState(false)
+  const isDoneDeleting = useRef(true)
 
   useEffect(() => {
     setShow(true)
@@ -125,9 +126,13 @@ const CartProduct = ({
 
   const handleRemove = useCallback(() => {
     if (quantity === 1) setShow(false)
-    setTimeout(() => {
-      handleRemoveProductFromCart()
-    }, 200)
+    if (isDoneDeleting.current) {
+      isDoneDeleting.current = false
+      setTimeout(() => {
+        handleRemoveProductFromCart()
+        isDoneDeleting.current = true
+      }, 200)
+    }
   }, [handleRemoveProductFromCart, quantity])
 
   return (
@@ -152,24 +157,21 @@ const CartProduct = ({
 }
 
 const Cart = ({
-  cart,
+  cart = [],
   productsInCart,
-  handleClose,
   handleRemoveProductFromCart,
   handleEmptyCart,
 }) => {
   const { t } = useTranslation("common")
 
-  const totalSumInCart = useMemo(
-    () =>
-      cart.reduce((total, currItem) => {
-        currItem.quantity > 1
-          ? (total += currItem.price * currItem.quantity)
-          : (total += currItem.price)
-        return total
-      }, 0),
-    [cart]
-  )
+  const totalSumInCart = useMemo(() => {
+    return cart.reduce((total, currItem) => {
+      currItem.quantity > 1
+        ? (total += currItem.price * currItem.quantity)
+        : (total += currItem.price)
+      return total
+    }, 0)
+  }, [cart])
 
   return (
     <StyledCartDrawer productsInCart={productsInCart}>

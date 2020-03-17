@@ -64,6 +64,7 @@ const ProductsProvider = ({ children }) => {
         const existingProductInCart = oldCart.find(
           cartProd => cartProd.id === product.id
         )
+        if (!existingProductInCart) return
         if (existingProductInCart.quantity === 1) {
           return oldCart.filter(prod => prod.id !== product.id)
         }
