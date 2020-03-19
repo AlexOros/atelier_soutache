@@ -44,6 +44,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     ${link};
     overflow-x: hidden;
+    
   }
 `
 

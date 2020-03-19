@@ -2,7 +2,7 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 import { Box } from "@material-ui/core"
 
-import { Title, Section, SEO, Products } from "../components"
+import { Title, Section, SEO, Products, Testimonials } from "../components"
 const IndexPage = () => {
   const { t } = useTranslation("home")
 
@@ -23,6 +23,9 @@ const IndexPage = () => {
       </Section>
       <Section deg={-9}></Section>
       <Section deg={9}></Section>
+      <Box my={15}>
+        <Testimonials />
+      </Box>
     </>
   )
 }

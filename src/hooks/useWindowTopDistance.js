@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import throttle from "lodash.throttle"
 
 const useWindowSizeActions = () => {
@@ -10,7 +10,7 @@ const useWindowSizeActions = () => {
 
       window.addEventListener(
         "scroll",
-        throttle(() => setTop(window.pageYOffset), 200)
+        throttle(() => setTop(window.pageYOffset), 100)
       )
     }
 

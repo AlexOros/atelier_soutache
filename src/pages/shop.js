@@ -5,7 +5,7 @@ import { Box } from "@material-ui/core"
 import { Section, Products, Title, SEO } from "../components"
 
 export default () => {
-  const { t } = useTranslation("home")
+  const { t } = useTranslation("shop")
 
   return (
     <>
@@ -13,7 +13,7 @@ export default () => {
 
       <Section deg="-9">
         <Box mx={2} my={[4, 6]}>
-          <Title variant="h4" title="Shop" />
+          <Title variant="h4" title={t("title")} />
         </Box>
         <Products showPagination amount={3} />
       </Section>

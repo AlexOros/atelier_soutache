@@ -14,6 +14,7 @@ import {
 import { ProductsContext } from "../context"
 import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded"
+import ArrowBackIosRoundedIcon from "@material-ui/icons/ArrowBackIosRounded"
 import ReactMarkdown from "react-markdown"
 
 import { Section, SEO, Title, Info } from "../components"
@@ -99,6 +100,18 @@ export default ({ data }) => {
                 </Box>
               )}
             </Box>
+            <Box my={4}>
+              <Button
+                onClick={() => navigate("/shop")}
+                className="add-to-bag"
+                disabled={storeProduct && storeProduct.stock < 1}
+                startIcon={<ArrowBackIosRoundedIcon />}
+                variant="contained"
+                color="primary"
+              >
+                {t("common:shop")}
+              </Button>
+            </Box>
           </Box>
 
           <Box className="info">
@@ -125,7 +138,7 @@ export default ({ data }) => {
                 onClick={() => handleAddProductToCart(storeProduct)}
                 className="add-to-bag"
                 disabled={storeProduct && storeProduct.stock < 1}
-                endIcon={<ShoppingBasketRoundedIcon />}
+                startIcon={<ShoppingBasketRoundedIcon />}
                 variant="contained"
                 color="primary"
               >

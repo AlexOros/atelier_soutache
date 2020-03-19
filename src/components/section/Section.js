@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import Box from "@material-ui/core/Box"
 
 const StyledSection = styled.section`
   min-height: 100vh;
@@ -16,11 +15,12 @@ const StyledSection = styled.section`
     left: 0;
     right: 0;
     display: block;
-    margin: 0 calc(-50vw + 52%);
+    margin: 0 calc(-50vw + 53.6%);
     z-index: -1;
     transform: ${({ deg }) => `rotate(${deg}deg)`};
     background: ${({ theme }) => theme.palette.pink.light};
     margin: ${({ width }) => (width < 100 ? "0 auto" : "")};
+    overflow-x: hidden;
   }
 `
 

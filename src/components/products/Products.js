@@ -19,7 +19,7 @@ const query = graphql`
         slug
         image {
           childImageSharp {
-            fluid(maxWidth: 900, quality: 100) {
+            fluid(maxWidth: 900, quality: 80) {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
             fixed(width: 200, height: 200) {

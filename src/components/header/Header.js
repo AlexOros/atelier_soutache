@@ -69,12 +69,14 @@ const Header = () => {
           </Box>
           <Box>
             <NavLink onClick={handleCloseNavbar} to="/shop">
-              Shop
+              {t("shop:title")}
             </NavLink>
           </Box>
-          <Box>
-            <LanguageSelector color="secondary" />
-          </Box>
+          {className && className.includes("mobile") && (
+            <Box>
+              <LanguageSelector color="secondary" />
+            </Box>
+          )}
         </Box>
       )
     },
@@ -82,7 +84,7 @@ const Header = () => {
   )
 
   return (
-    <StyledHeader isFixed={top >= 80}>
+    <StyledHeader isFixed={top >= 10}>
       <Box className="header">
         <Box>
           {!showMobileHeader ? (
