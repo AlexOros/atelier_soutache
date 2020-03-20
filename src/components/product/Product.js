@@ -102,7 +102,7 @@ const Product = ({ handleAddProductToCart, product }) => {
               {t("add_to_bag")}
             </Button>
             <Button
-              onClick={() => navigate(product.slug)}
+              onClick={() => showDetails && navigate(product.slug)}
               mt={[1, 0]}
               size={!isMobileBool ? "small" : "medium"}
               endIcon={<ArrowForwardRoundedIcon />}

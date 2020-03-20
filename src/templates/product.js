@@ -100,18 +100,20 @@ export default ({ data }) => {
                 </Box>
               )}
             </Box>
-            <Box my={4}>
-              <Button
-                onClick={() => navigate("/shop")}
-                className="add-to-bag"
-                disabled={storeProduct && storeProduct.stock < 1}
-                startIcon={<ArrowBackIosRoundedIcon />}
-                variant="contained"
-                color="primary"
-              >
-                {t("common:shop")}
-              </Button>
-            </Box>
+            {!smallScreens && (
+              <Box my={4}>
+                <Button
+                  onClick={() => navigate("/shop")}
+                  className="add-to-bag"
+                  disabled={storeProduct && storeProduct.stock < 1}
+                  startIcon={<ArrowBackIosRoundedIcon />}
+                  variant="contained"
+                  color="primary"
+                >
+                  {t("common:shop")}
+                </Button>
+              </Box>
+            )}
           </Box>
 
           <Box className="info">
@@ -147,6 +149,20 @@ export default ({ data }) => {
             </Box>
 
             <Info infoData={infoData} />
+            {smallScreens && (
+              <Box my={4}>
+                <Button
+                  onClick={() => navigate("/shop")}
+                  className="add-to-bag"
+                  disabled={storeProduct && storeProduct.stock < 1}
+                  startIcon={<ArrowBackIosRoundedIcon />}
+                  variant="contained"
+                  color="primary"
+                >
+                  {t("common:shop")}
+                </Button>
+              </Box>
+            )}
           </Box>
         </Box>
       </Section>
