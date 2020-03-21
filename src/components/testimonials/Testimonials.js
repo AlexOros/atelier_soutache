@@ -22,7 +22,7 @@ const query = graphql`
         id
         avatar {
           childImageSharp {
-            fluid(maxWidth: 600, quality: 80) {
+            fluid(maxWidth: 400, quality: 80) {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }

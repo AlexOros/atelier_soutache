@@ -1,7 +1,13 @@
-import React, { useMemo, useState, useEffect, useContext } from "react"
+import React, {
+  useMemo,
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+} from "react"
 import { graphql, navigate } from "gatsby"
-import Img from "gatsby-image"
 import { useTranslation } from "react-i18next"
+import ReactImageMagnify from "react-image-magnify"
 import {
   Box,
   Button,
@@ -61,6 +67,58 @@ export default ({ data }) => {
     ]
   }, [i18n.language, product.info_en, product.info_ro, t])
 
+  const getMessageMouse = useCallback(
+    () =>
+      i18n.language === "ro"
+        ? "Misca mouse-ul peste imagine pentru a o mari"
+        : "Hover to zoom",
+
+    [i18n.language]
+  )
+
+  const getMessageTouch = useCallback(
+    () =>
+      i18n.language === "ro"
+        ? "Țineti apasat pentru a mari imaginea"
+        : "Long-Touch to zoom",
+    [i18n.language]
+  )
+
+  const memoAltName = useMemo(() => {
+    if (product.categories.length) {
+      return `${product.categories[0].name} ${product.title}`
+    }
+    return product.title
+  }, [product.categories, product.title])
+
+  const imageMagnifyOptions = useMemo(
+    () => ({
+      smallImage: {
+        alt: memoAltName,
+        isFluidWidth: true,
+        src: product.image.childImageSharp.fluid.tracedSVG,
+        srcSet: product.image.childImageSharp.fluid.srcSetWebp,
+      },
+      largeImage: {
+        src: product.image.childImageSharp.fluid.srcWebp,
+        width: 1200,
+        height: 800,
+      },
+      isHintEnabled: true,
+      hintTextMouse: getMessageMouse(),
+      hintTextTouch: getMessageTouch(),
+      shouldHideHintAfterFirstActivation: false,
+    }),
+    [
+      memoAltName,
+      product.image.childImageSharp.fluid.tracedSVG,
+      product.image.childImageSharp.fluid.srcSetWebp,
+      product.image.childImageSharp.fluid.srcWebp,
+      getMessageMouse,
+      getMessageTouch,
+    ]
+  )
+
   return (
     <StyledProductPage more={seeMore ? 1 : 0}>
       <SEO title={t("title")} />
@@ -73,7 +131,10 @@ export default ({ data }) => {
           <Box className="story">
             <Box className="image-container">
               <Box className="image" boxShadow={3}>
-                <Img fluid={product.image.childImageSharp.fluid} alt="" />
+                <ReactImageMagnify
+                  style={{ zIndex: 10, borderRadius: "10px" }}
+                  {...imageMagnifyOptions}
+                />
               </Box>
             </Box>
             <Box my={[1, 2, 3]} className="story-text">
@@ -181,9 +242,12 @@ export const query = graphql`
       story_ro
       story_en
       title
+      categories {
+        name
+      }
       image {
         childImageSharp {
-          fluid(webpQuality: 100, maxWidth: 1200) {
+          fluid(webpQuality: 90, maxWidth: 1200) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }

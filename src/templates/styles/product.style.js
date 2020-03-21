@@ -46,8 +46,6 @@ const StyledProductPage = styled(Box)`
       }
 
       .image {
-        width: 80vw;
-        max-height: 400px;
         ${({ theme }) => theme.breakpoints.down("xs")} {
           width: 100vw;
           border-radius: 0;
