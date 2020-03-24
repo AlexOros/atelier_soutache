@@ -57,7 +57,7 @@ const Testimonials = () => {
     allStrapiTestimonial: { nodes },
   } = useStaticQuery(query)
   const { i18n } = useTranslation("common")
-  // TODO add autoplay ? soem seconds, make mobile reponsive. Seee wtf is going on with the section overflow
+
   const memoizedSettings = useMemo(
     () => ({
       className: "center",
@@ -91,16 +91,7 @@ const Testimonials = () => {
                   <Typography variant="h6"> {name}</Typography>
                 </Box>
                 <Box>
-                  <Typography
-                    className="text"
-                    style={{
-                      overflowY:
-                        text_ro.length > 500 || text_en.length > 500
-                          ? "scroll"
-                          : "inherit",
-                    }}
-                    variant="body2"
-                  >
+                  <Typography variant="body2">
                     {i18n.language === "ro" ? text_ro : text_en}
                   </Typography>
                 </Box>

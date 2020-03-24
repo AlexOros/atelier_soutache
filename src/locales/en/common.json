@@ -14,5 +14,6 @@
   "products": "product in",
   "products_plural": "products in",
   "no_product_in_bag": "your bag is empty",
-  "remove_all_products": "Remove all products from bag?"
+  "remove_all_products": "Remove all products from bag?",
+  "find_out_more": "find out more"
 }

@@ -5,7 +5,7 @@ const showActiveFooter = css`
   transform: translate3d(50px, -180px, 0) scale(1.5);
   font-size: 50px;
   opacity: 0;
-  /* opacity: 0; */
+  /* */
 `
 
 const showActiveOverlay = css`
@@ -183,11 +183,16 @@ const StyledProduct = styled(Box)`
   }
 
   .footer {
-    max-width: 200px;
+    max-width: 230px;
     height: 40px;
     transform: translate3d(0, 0, 0) scale(1);
     transition: all 0.7s;
 
+    p {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
     ${({ details }) => details && showActiveFooter};
 
     .first-word {

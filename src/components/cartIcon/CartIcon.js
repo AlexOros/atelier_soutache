@@ -10,6 +10,7 @@ const StyledBadge = withStyles(theme => ({
     border: `2px solid ${theme.palette.background.paper}`,
     background: `${theme.palette.error.dark}`,
     padding: "0 4px",
+    background: "orangered",
   },
 }))(Badge)
 

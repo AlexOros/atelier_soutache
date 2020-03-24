@@ -23,7 +23,11 @@ const StyledHeader = styled.header`
   background: ${({ theme }) => theme.palette.background.default};
   transition: all 0.5s;
   ${({ isFixed }) => isFixed && fixedStyle}
-  margin-bottom: ${({ theme }) => theme.spacing(2)};
+  margin-bottom: ${({ theme }) => theme.spacing(8)};
+
+  ${({ theme }) => theme.breakpoints.up("sm")} {
+    margin-bottom: ${({ theme }) => theme.spacing(10)};
+  }
 
   ${({ theme }) => theme.breakpoints.up("md")} {
     padding: ${({ theme, isFixed }) =>

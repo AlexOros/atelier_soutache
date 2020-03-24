@@ -1,19 +1,22 @@
 import styled from "styled-components"
 import { Typography } from "@material-ui/core"
 
-const StyledBrandTitle = styled(Typography)`
+export const StyledBrandTitle = styled(Typography)`
   position: relative;
   display: inline-block;
+  ${({ theme }) => theme.mixins.titleBase}
+`
 
-  .title {
-    font-weight: ${({ theme }) => theme.typography.fontWeightBold};
-    margin-right: ${({ theme }) => theme.spacing(1)};
-  }
+export const StyledText = styled.span`
+  display: inline-block;
 
-  .word {
+  &::first-letter {
     text-transform: capitalize;
   }
-  ${({ theme }) => theme.mixins.titleBase}
+`
+
+export const StyledTitle = styled.span`
+  font-weight: ${({ theme }) => theme.typography.fontWeightBold};
 `
 
 export default StyledBrandTitle

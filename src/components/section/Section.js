@@ -4,6 +4,7 @@ import styled from "styled-components"
 const StyledSection = styled.section`
   min-height: 100vh;
   position: relative;
+  padding: ${({ theme }) => `${theme.spacing(15)} 0 `};
 
   &:before {
     content: "";

@@ -36,19 +36,20 @@ const StyledTestimonials = styled.div`
 
   .testimonial {
     display: grid;
-    grid-gap: 20px;
+
     align-items: center;
     justify-content: center;
 
     ${({ theme }) => theme.breakpoints.up("md")} {
       margin: 10px 60px 10px calc(50px + 10vw);
       grid-template-columns: 300px 1fr;
+      grid-gap: 20px;
     }
   }
 
   .image {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border-radius: 50vh;
     border: 8px solid ${({ theme }) => theme.palette.background.default};
 
@@ -65,43 +66,15 @@ const StyledTestimonials = styled.div`
 
   .arrows {
     display: none;
-   ${({ theme }) => theme.breakpoints.up("md")} {
-     display: inherit;
-     color: #555;
-     font-size: 30px;
+    ${({ theme }) => theme.breakpoints.up("md")} {
+      display: inherit;
+      color: #555;
+      font-size: 30px;
     }
   }
   .slick-prev:before,
   .slick-next:before {
     display: none;
-  }
-
-  .text {
-    max-height: 220px;
-    ${({ theme }) => theme.breakpoints.up("sm")} {
-      max-height: 180px;
-    }
-    ${({ theme }) => theme.breakpoints.up("md")} {
-      max-height: 150px;
-    }
-
-    &::-webkit-scrollbar {
-      width: 8px;
-      cursor: grab;
-    }
-
-    & {
-      scrollbar-width: thin;
-      scrollbar-color: rgba(77, 77, 77, 0.99);
-    }
-    &::-webkit-scrollbar-track {
-      background: rgba(77, 77, 77, 0.5);
-      border-radius: 6px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: ${({ theme }) => theme.palette.pink.dark};
-      border-radius: 6px;
-    
   }
 `
 
