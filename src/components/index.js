@@ -12,6 +12,7 @@ import Drawer from "./drawer/Drawer"
 import Cart from "./cart/Cart"
 import Info from "./info/Info"
 import Testimonials from "./testimonials/Testimonials"
+import Footer from "./footer/Footer"
 
 export {
   Layout,
@@ -28,4 +29,5 @@ export {
   Drawer,
   Info,
   Testimonials,
+  Footer,
 }

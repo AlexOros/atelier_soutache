@@ -1,3 +1,4 @@
 import titleBase from "./titleBase"
+import linkHover from "./linkHover"
 
-export { titleBase }
+export { titleBase, linkHover }

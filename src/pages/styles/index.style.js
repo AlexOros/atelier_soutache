@@ -5,6 +5,7 @@ const rotateAnimation = keyframes`
     100% { transform: rotate(360deg)}
 `
 const StyledHomePage = styled.div`
+  ${({ theme }) => theme.mixins.linkHover()}
   .section-1 {
     display: grid;
     grid-template-columns: 1fr;

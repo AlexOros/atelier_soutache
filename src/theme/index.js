@@ -1,7 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles"
 
 import { slideUp } from "./keyframes/slide"
-import { titleBase } from "./mixins"
+import { titleBase, linkHover } from "./mixins"
 
 const theme = createMuiTheme({
   palette: {
@@ -35,6 +35,7 @@ const theme = createMuiTheme({
 
   mixins: {
     titleBase,
+    linkHover,
   },
   keyframes: {
     slideUp,

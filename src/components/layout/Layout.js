@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import { Header } from "../../components"
+import { Header, Footer } from "../../components"
 import StyledMainLayout from "./Layout.style"
 
 const Layout = ({ children }) => {
@@ -9,6 +9,7 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <StyledMainLayout component="main">{children}</StyledMainLayout>
+      <Footer />
     </>
   )
 }
