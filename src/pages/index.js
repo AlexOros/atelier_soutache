@@ -72,10 +72,6 @@ const IndexPage = ({ data }) => {
             </Typography>
             <Typography variant="body1">
               {t("home:section-2.text.2")}
-              <a href="#" alt="a link">
-                This is a nice link
-              </a>{" "}
-              To follow.
             </Typography>
 
             <Button disableElevation variant="contained" color="primary">

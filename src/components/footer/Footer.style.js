@@ -5,6 +5,11 @@ export const StyledFooter = styled.footer`
   background: ${({ theme }) => theme.palette.primary.main};
   margin-top: ${({ theme }) => theme.spacing(13)};
   min-height: 30vh;
+  text-align: center;
+
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    text-align: inherit;
+  }
 
   .pages {
     display: flex;
@@ -29,25 +34,29 @@ export const StyledFooter = styled.footer`
     .column {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       padding: ${({ theme }) => theme.spacing(2)};
       margin-bottom: ${({ theme }) => theme.spacing(2)};
       ${({ theme }) => theme.breakpoints.up("md")} {
+        align-items: flex-start;
         margin-bottom: ${({ theme }) => theme.spacing(0)};
         grid-auto-rows: 2rem;
         padding: 0;
       }
-
-      .social {
-        display: flex;
-        justify-content: space-between;
-      }
-
+      ${({ theme }) => theme.mixins.linkHover("pink")}
       a {
         margin: ${({ theme }) => `${theme.spacing(1)} 0`};
       }
     }
   }
 
-  ${({ theme }) => theme.mixins.linkHover("pink")}
+  .social {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .copy {
+    text-align: center;
+    ${({ theme }) => theme.mixins.linkHover("pink")}
+  }
 `

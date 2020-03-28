@@ -1,7 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Box, Typography, Button } from "@material-ui/core"
+import { Box, Typography, IconButton } from "@material-ui/core"
 import { useTranslation } from "react-i18next"
+import FacebookIcon from "@material-ui/icons/Facebook"
+import InstagramIcon from "@material-ui/icons/Instagram"
 
 import { StyledFooter } from "./Footer.style"
 
@@ -52,13 +54,29 @@ const Footer = () => {
               www.ateliersoutache@gmail.com
             </a>
           </Box>
-          <Box my={3} className="social">
-            <Box>Facebook</Box>
-            <Box>Instagram</Box>
+          <Box my={1} className="social">
+            <a
+              href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconButton color="secondary">
+                <FacebookIcon fontSize="large" />
+              </IconButton>{" "}
+            </a>
+            <a
+              href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconButton color="secondary">
+                <InstagramIcon fontSize="large" />
+              </IconButton>
+            </a>
           </Box>
         </Box>
       </Box>
-      <Box py={3} px={1} textAlign="center">
+      <Box className="copy" pt={[0, 1, 3]} pb={3} px={1}>
         &copy; {new Date().getFullYear()} Atelier Soutache,{" "}
         {t("common:all_rights_reserved")}.
         <br /> {t("common:coded_by")}{" "}

@@ -11,6 +11,9 @@ const linkHover = color => {
         color === "pink" ? theme.palette.pink.light : theme.palette.info.main};
       text-decoration: none;
       position: relative;
+      ${({ theme }) => theme.breakpoints.down("sm")} {
+        text-decoration: underline;
+      }
     }
 
     a:after {
@@ -28,8 +31,10 @@ const linkHover = color => {
     }
     a:hover:after,
     a:focus:after {
-      width: 100%;
-      left: 0;
+      ${({ theme }) => theme.breakpoints.up("sm")} {
+        width: 100%;
+        left: 0;
+      }
     }
   `
 }
