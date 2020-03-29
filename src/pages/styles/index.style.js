@@ -18,11 +18,19 @@ const StyledHomePage = styled.div`
 
     .image {
       position: relative;
-      transform: translate(-10vw, 0);
+      margin: 0 calc(-50vw + 50%);
       display: none;
+      max-width: 600px;
+      max-height: 900px;
+
+      img {
+        max-height: 900px;
+      }
 
       ${({ theme }) => theme.breakpoints.up("md")} {
+        margin: 0;
         display: inline-block;
+        transform: translate(-10vw, 0);
       }
 
       ${({ theme }) => theme.breakpoints.up("2000")} {
@@ -53,23 +61,30 @@ const StyledHomePage = styled.div`
         position: relative;
 
         ${({ theme }) => theme.breakpoints.down("sm")} {
+          text-align: center;
           font-size: 2.6rem;
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 40%;
+          right: 0;
+          width: 50px;
+          height: 250px;
+          display: block;
+          background: ${({ theme }) => theme.palette.pink.light};
+          overflow-x: hidden;
+          opacity: 0.8;
+          z-index: -1;
+          animation: ${rotateAnimation} 30s infinite linear;
 
-          &:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 30%;
-            right: 0;
-            width: 50px;
-            height: 250px;
-            display: block;
-            background: ${({ theme }) => theme.palette.pink.light};
-            overflow-x: hidden;
-            opacity: 0.8;
-            z-index: -1;
-            animation: ${rotateAnimation} 30s infinite linear;
+          ${({ theme }) => theme.breakpoints.up("md")} {
+            top: -100px;
+            left: 45%;
+            width: 100px;
+            height: 450px;
           }
         }
       }

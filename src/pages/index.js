@@ -27,10 +27,10 @@ const IndexPage = ({ data }) => {
       <Box component="section" className="section-1">
         <Box className="image">
           <Img
-            fluid={heroImages[randomNumFromZeroTo(2)].childImageSharp.fluid}
+            fluid={heroImages[randomNumFromZeroTo(4)].childImageSharp.fluid}
           />
         </Box>
-        <Box className="content">
+        <Box my={[6, 4, 0]} className="content">
           <Box>
             <Typography variant="h1">
               <strong>{t("home:section-1.title.1")}</strong>{" "}
@@ -115,7 +115,7 @@ const IndexPage = ({ data }) => {
 }
 export const query = graphql`
   {
-    homeSection1: allFile(filter: { name: { regex: "/home-necklace/" } }) {
+    homeSection1: allFile(filter: { name: { regex: "/home-model/" } }) {
       nodes {
         publicURL
         childImageSharp {
@@ -126,7 +126,7 @@ export const query = graphql`
       }
     }
 
-    homeSection2: allFile(filter: { name: { regex: "/home-more/" } }) {
+    homeSection2: allFile(filter: { name: { regex: "/home-about/" } }) {
       nodes {
         publicURL
         childImageSharp {
