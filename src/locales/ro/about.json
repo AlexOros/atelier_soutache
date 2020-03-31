@@ -1,4 +1,11 @@
 {
   "title": "Despre",
-  "description": "Descriere pagina"
+  "description": "Descriere pagina",
+
+  "section-1": {
+    "title": {
+      "1": "Despre",
+      "2": "Atelier Soutache"
+    }
+  }
 }

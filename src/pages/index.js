@@ -24,7 +24,7 @@ const IndexPage = ({ data }) => {
 
       {/* ------------------ Section 1 ------------------- */}
 
-      <Box component="section" className="section-1">
+      <Section className="section-1" paddingTop={0}>
         <Box className="image">
           <Img
             fluid={heroImages[randomNumFromZeroTo(4)].childImageSharp.fluid}
@@ -52,7 +52,7 @@ const IndexPage = ({ data }) => {
             </Box>
           </Box>
         </Box>
-      </Box>
+      </Section>
 
       {/* ------------------ Section 2 ------------------- */}
 

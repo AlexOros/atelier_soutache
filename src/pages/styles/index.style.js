@@ -10,7 +10,6 @@ const StyledHomePage = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     gap: 2.3rem;
-    padding: ${({ theme }) => `0 0 ${theme.spacing(15)} 0 `};
 
     ${({ theme }) => theme.breakpoints.up("md")} {
       grid-template-columns: 1fr 1fr;
@@ -20,11 +19,11 @@ const StyledHomePage = styled.div`
       position: relative;
       margin: 0 calc(-50vw + 50%);
       display: none;
-      max-width: 600px;
-      max-height: 900px;
+      max-width: 450px;
+      max-height: 700px;
 
       img {
-        max-height: 900px;
+        max-height: 700px;
       }
 
       ${({ theme }) => theme.breakpoints.up("md")} {
@@ -40,13 +39,13 @@ const StyledHomePage = styled.div`
       &:before {
         content: "";
         position: absolute;
-        top: 5%;
+        top: 0;
         bottom: 0;
         left: 0;
         right: 0;
         display: block;
         transform: rotate(9deg);
-        background: ${({ theme }) => theme.palette.pink.light};
+        background: ${({ theme }) => theme.palette.background.default};
         overflow-x: hidden;
       }
     }
@@ -74,7 +73,7 @@ const StyledHomePage = styled.div`
           width: 50px;
           height: 250px;
           display: block;
-          background: ${({ theme }) => theme.palette.pink.light};
+          background: ${({ theme }) => theme.palette.background.default};
           overflow-x: hidden;
           opacity: 0.8;
           z-index: -1;

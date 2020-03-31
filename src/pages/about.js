@@ -1,19 +1,24 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import { Typography } from "@material-ui/core"
+import { Box } from "@material-ui/core"
 
-import { SEO } from "../components"
+import { SEO, Section, Title } from "../components"
 
 export default () => {
   const { t } = useTranslation("about")
 
   return (
-    <section>
+    <>
       <SEO title={t("title")} />
-      <Typography variant="h5">
-        {" "}
-        {t("title")} - {t("description")}
-      </Typography>
-    </section>
+      <Box my={10}>
+        <Title
+          align="center"
+          title={t("section-1.title.1")}
+          subtitle={t("section-1.title.2")}
+          variant="h4"
+        />
+      </Box>
+      <Section paddingTop={0} deg={-9}></Section>
+    </>
   )
 }

@@ -4,7 +4,7 @@ import styled from "styled-components"
 const StyledSection = styled.section`
   min-height: 100vh;
   position: relative;
-  padding: ${({ theme }) => `${theme.spacing(15)} 0 `};
+  padding: ${({ theme, paddingTop }) => `${theme.spacing(paddingTop)} 0 `};
 
   &:before {
     content: "";
@@ -19,15 +19,31 @@ const StyledSection = styled.section`
     margin: 0 calc(-50vw + 53.6%);
     z-index: -1;
     transform: ${({ deg }) => `rotate(${deg}deg)`};
-    background: ${({ theme }) => theme.palette.pink.light};
+    background: ${({ theme, showShape }) =>
+      showShape && theme.palette.pink.light};
     margin: ${({ width }) => (width < 100 ? "0 auto" : "")};
     overflow-x: hidden;
   }
 `
 
-const Section = ({ children, deg = 9, height = 90, width, ...restOfProps }) => {
+const Section = ({
+  children,
+  deg = 9,
+  height = 90,
+  width,
+  showShape = true,
+  paddingTop = 15,
+  ...restOfProps
+}) => {
   return (
-    <StyledSection deg={deg} height={height} width={width} {...restOfProps}>
+    <StyledSection
+      showShape={showShape}
+      paddingTop={paddingTop}
+      deg={deg}
+      height={height}
+      width={width}
+      {...restOfProps}
+    >
       {children}
     </StyledSection>
   )
