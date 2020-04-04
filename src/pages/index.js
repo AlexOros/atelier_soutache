@@ -74,7 +74,12 @@ const IndexPage = ({ data }) => {
               {t("home:section-2.text.2")}
             </Typography>
 
-            <Button disableElevation variant="contained" color="primary">
+            <Button
+              onClick={() => navigate("/about")}
+              disableElevation
+              variant="contained"
+              color="primary"
+            >
               {t("common:find_out_more")}
             </Button>
           </Box>
