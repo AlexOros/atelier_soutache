@@ -1,4 +1,5 @@
-import React, { useMemo, useEffect, useState, useCallback, useRef } from "react"
+import React, { useEffect, useState, useCallback, useRef } from "react"
+import { navigate } from "gatsby"
 import { useTranslation } from "react-i18next"
 import {
   Typography,
@@ -37,7 +38,7 @@ const CartNoProduct = ({ t }) => (
   </Box>
 )
 
-const Total = ({ totalSumInCart, t, handleEmptyCart }) => {
+const Total = ({ totalSumInCart, t, handleEmptyCart, handleCloseDrawer }) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const classes = useStyles()
   const handleTogglePopper = event => {
@@ -97,6 +98,10 @@ const Total = ({ totalSumInCart, t, handleEmptyCart }) => {
       </Box>
       <Box m={[2, 4, 6]} textAlign="center">
         <Button
+          onClick={() => {
+            navigate("/checkout")
+            handleCloseDrawer()
+          }}
           disabled={!totalSumInCart}
           fullWidth
           color="secondary"
@@ -161,17 +166,10 @@ const Cart = ({
   productsInCart,
   handleRemoveProductFromCart,
   handleEmptyCart,
+  totalSumInCart,
+  handleCloseDrawer,
 }) => {
   const { t } = useTranslation("common")
-
-  const totalSumInCart = useMemo(() => {
-    return cart.reduce((total, currItem) => {
-      currItem.quantity > 1
-        ? (total += currItem.price * currItem.quantity)
-        : (total += currItem.price)
-      return total
-    }, 0)
-  }, [cart])
 
   return (
     <StyledCartDrawer productsInCart={productsInCart}>
@@ -203,6 +201,7 @@ const Cart = ({
       <Box my={1}>
         <Divider />
         <Total
+          handleCloseDrawer={handleCloseDrawer}
           handleEmptyCart={handleEmptyCart}
           t={t}
           totalSumInCart={totalSumInCart}

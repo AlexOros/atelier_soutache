@@ -22,7 +22,7 @@ const query = graphql`
             fluid(maxWidth: 900, quality: 80) {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
-            fixed(width: 200, height: 200) {
+            fixed(width: 400, height: 400) {
               ...GatsbyImageSharpFixed
             }
           }

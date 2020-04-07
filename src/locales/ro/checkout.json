@@ -1,0 +1,11 @@
+{
+  "title": "Comanda",
+  "description": "Page description",
+
+  "section-1": {
+    "title": {
+      "1": "Finalizare",
+      "2": "Comanda"
+    }
+  }
+}

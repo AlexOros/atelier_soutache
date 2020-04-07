@@ -130,7 +130,7 @@ export default ({ data }) => {
           )}
           <Box className="story">
             <Box className="image-container">
-              <Box className="image" boxShadow={3}>
+              <Box className="image">
                 <ReactImageMagnify
                   style={{ zIndex: 10, borderRadius: "10px" }}
                   {...imageMagnifyOptions}

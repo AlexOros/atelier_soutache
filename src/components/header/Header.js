@@ -24,9 +24,11 @@ const Header = () => {
   const {
     productsInCart,
     cart,
+    totalSumInCart,
     handleRemoveProductFromCart,
     handleEmptyCart,
   } = useContext(ProductsContext)
+
   const { top } = useWindowTopDistance()
   const theme = useTheme()
   const showMobileHeader = useMediaQuery(theme.breakpoints.down("sm"))
@@ -129,10 +131,12 @@ const Header = () => {
           handleCloseDrawer={() => setIsCartOpen(false)}
         >
           <Cart
+            handleCloseDrawer={() => setIsCartOpen(false)}
             handleRemoveProductFromCart={handleRemoveProductFromCart}
             handleEmptyCart={handleEmptyCart}
             cart={cart}
             productsInCart={productsInCart}
+            totalSumInCart={totalSumInCart}
           />
         </Drawer>
       </Box>

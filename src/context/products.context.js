@@ -1,4 +1,4 @@
-import React, { createContext, useState, useCallback } from "react"
+import React, { createContext, useState, useCallback, useMemo } from "react"
 
 const ProductsContext = createContext()
 
@@ -6,6 +6,15 @@ const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
   const [productsInCart, setProductsInCart] = useState(0)
+
+  const totalSumInCart = useMemo(() => {
+    return cart.reduce((total, currItem) => {
+      currItem.quantity > 1
+        ? (total += currItem.price * currItem.quantity)
+        : (total += currItem.price)
+      return total
+    }, 0)
+  }, [cart])
 
   const handleEmptyCart = useCallback(() => {
     setProducts(products =>
@@ -95,6 +104,7 @@ const ProductsProvider = ({ children }) => {
         cart,
         productsInCart,
         products,
+        totalSumInCart,
         handleSetProducts,
         handleEmptyCart,
         handleRemoveProductFromCart,

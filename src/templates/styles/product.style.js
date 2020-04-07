@@ -46,6 +46,7 @@ const StyledProductPage = styled(Box)`
       }
 
       .image {
+        box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
         ${({ theme }) => theme.breakpoints.down("xs")} {
           width: 100vw;
           border-radius: 0;

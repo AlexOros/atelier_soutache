@@ -14,6 +14,7 @@ i18next.init({
       privacy_policy: require("../locales/ro/privacy_policy.json"),
       shipping_and_returns: require("../locales/ro/shipping_and_returns.json"),
       terms_and_services: require("../locales/ro/terms_and_services.json"),
+      checkout: require("../locales/ro/checkout.json"),
     },
     en: {
       common: require("../locales/en/common.json"),
@@ -24,6 +25,7 @@ i18next.init({
       privacy_policy: require("../locales/en/privacy_policy.json"),
       shipping_and_returns: require("../locales/en/shipping_and_returns.json"),
       terms_and_services: require("../locales/en/terms_and_services.json"),
+      checkout: require("../locales/en/checkout.json"),
     },
   },
   load: "languageOnly",
