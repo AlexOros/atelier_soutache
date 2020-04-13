@@ -40,6 +40,17 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // Arbitrary name for the remote schema Query type
+        typeName: "ATAPI",
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: "products",
+        // Url to query from
+        url: "http://localhost:1337/graphql",
+      },
+    },
 
     {
       resolve: `gatsby-plugin-material-ui`,

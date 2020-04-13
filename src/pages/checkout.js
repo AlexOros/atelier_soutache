@@ -105,7 +105,6 @@ const Checkout = () => {
     totalSumInCart,
     handleRemoveProductFromCart,
   } = useContext(ProductsContext)
-  console.log("𝕃𝕆𝔾 ⟹: Checkout -> cart", cart)
 
   const [paypalIsLoaded, setPaypalIsLoaded] = useState(false)
 
