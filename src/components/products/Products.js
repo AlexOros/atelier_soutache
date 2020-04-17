@@ -13,6 +13,7 @@ const query = graphql`
     allStrapiProduct(filter: { show_product: { eq: true } }) {
       nodes {
         title
+        strapiId
         price
         old_price
         stock
