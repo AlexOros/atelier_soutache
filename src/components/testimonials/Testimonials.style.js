@@ -3,9 +3,10 @@ import styled from "styled-components"
 const StyledTestimonials = styled.div`
   position: relative;
   max-width: 100vw;
-  margin: 0 auto;
+  margin: 0 calc(-50vw + 50%);
 
   ${({ theme }) => theme.breakpoints.up("sm")} {
+    margin: 0 auto;
     max-width: 90vw;
   }
 
@@ -36,11 +37,12 @@ const StyledTestimonials = styled.div`
 
   .testimonial {
     display: grid;
-
     align-items: center;
     justify-content: center;
+    padding: 0 ${({ theme }) => theme.spacing(2)};
 
     ${({ theme }) => theme.breakpoints.up("md")} {
+      padding: 0;
       margin: 10px 60px 10px calc(50px + 10vw);
       grid-template-columns: 300px 1fr;
       grid-gap: 20px;
@@ -48,8 +50,8 @@ const StyledTestimonials = styled.div`
   }
 
   .image {
-    width: 130px;
-    height: 130px;
+    width: 180px;
+    height: 180px;
     border-radius: 50vh;
     border: 8px solid ${({ theme }) => theme.palette.background.default};
 
@@ -62,19 +64,6 @@ const StyledTestimonials = styled.div`
   .avatar {
     text-align: center;
     justify-self: center;
-  }
-
-  .arrows {
-    display: none;
-    ${({ theme }) => theme.breakpoints.up("md")} {
-      display: inherit;
-      color: #555;
-      font-size: 30px;
-    }
-  }
-  .slick-prev:before,
-  .slick-next:before {
-    display: none;
   }
 `
 

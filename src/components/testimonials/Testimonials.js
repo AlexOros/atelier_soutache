@@ -1,15 +1,13 @@
-import React, { useMemo } from "react"
+import React from "react"
 import { useTranslation } from "react-i18next"
-import { Box, IconButton, Typography } from "@material-ui/core"
+import { Box, Typography } from "@material-ui/core"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
-import Slider from "react-slick"
-import ArrowBackIosRoundedIcon from "@material-ui/icons/ArrowBackIosRounded"
-import ArrowForwardIosRoundedIcon from "@material-ui/icons/ArrowForwardIosRounded"
 
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
+import { Slider } from "../../components"
 import StyledTestimonials from "./Testimonials.style"
 
 const query = graphql`
@@ -32,52 +30,15 @@ const query = graphql`
   }
 `
 
-const SampleNextArrow = ({ className, onClick }) => (
-  <Box style={{ top: "43%" }} className={className} onClick={onClick}>
-    <IconButton className="arrows" onClick={onClick}>
-      <ArrowForwardIosRoundedIcon />
-    </IconButton>
-  </Box>
-)
-
-const SamplePrevArrow = ({ className, onClick }) => (
-  <Box
-    style={{ left: "-50px", top: "43%" }}
-    className={className}
-    onClick={onClick}
-  >
-    <IconButton className="arrows" onClick={onClick}>
-      <ArrowBackIosRoundedIcon />
-    </IconButton>
-  </Box>
-)
-
 const Testimonials = () => {
   const {
     allStrapiTestimonial: { nodes },
   } = useStaticQuery(query)
   const { i18n } = useTranslation("common")
 
-  const memoizedSettings = useMemo(
-    () => ({
-      className: "center",
-      dots: true,
-      autoPlay: true,
-      infinite: true,
-      swipeToSlide: true,
-      speed: 800,
-      autoplaySpeed: 1000,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />,
-    }),
-    []
-  )
-
   return (
     <StyledTestimonials>
-      <Slider {...memoizedSettings}>
+      <Slider>
         {nodes.length &&
           nodes.map(({ avatar, name, text_en, text_ro }, index) => (
             <Box key={index}>

@@ -12,7 +12,11 @@ const StyledHomePage = styled.div`
     gap: 2.3rem;
 
     ${({ theme }) => theme.breakpoints.up("md")} {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.5fr;
+    }
+
+    ${({ theme }) => theme.breakpoints.up("lg")} {
+      grid-template-columns: 1fr 2fr;
     }
 
     .image {
@@ -29,7 +33,7 @@ const StyledHomePage = styled.div`
       ${({ theme }) => theme.breakpoints.up("md")} {
         margin: 0;
         display: inline-block;
-        transform: translate(-10vw, 0);
+        transform: translate(-4vw, 0);
       }
 
       ${({ theme }) => theme.breakpoints.up("2000")} {
@@ -53,7 +57,15 @@ const StyledHomePage = styled.div`
     .content {
       display: flex;
       justify-content: center;
-      align-items: center;
+
+      ${({ theme }) => theme.breakpoints.down("sm")} {
+        margin-top: ${({ theme }) => theme.spacing(20)};
+      }
+
+      ${({ theme }) => theme.breakpoints.up("md")} {
+        justify-content: center;
+        margin-top: ${({ theme }) => theme.spacing(30)};
+      }
 
       h1 {
         font-size: 3rem;
@@ -75,7 +87,6 @@ const StyledHomePage = styled.div`
           display: block;
           background: ${({ theme }) => theme.palette.background.default};
           overflow-x: hidden;
-          opacity: 0.8;
           z-index: -1;
           animation: ${rotateAnimation} 30s infinite linear;
 

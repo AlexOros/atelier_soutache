@@ -84,7 +84,7 @@ export default ({ data }) => {
           </Box>
           <Box p={[1, 2, 4]} pt={[4, 2, 4]} className="text">
             {memoEmptyArray.map((skip, index) => (
-              <Box my={[2, 3]}>
+              <Box key={index} my={[2, 3]}>
                 <Typography variant="body1">
                   {t(`section-1.text.${index}`)}
                 </Typography>
