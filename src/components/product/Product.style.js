@@ -39,6 +39,7 @@ const showActiveOverlay = css`
 const StyledProduct = styled(Box)`
   align-self: center;
   position: relative;
+  max-height: 340px;
   max-width: 450px;
   border-radius: 3px;
   margin-left: -16px;
@@ -56,6 +57,7 @@ const StyledProduct = styled(Box)`
   }
 
   .image {
+    max-height: 300px;
     border-radius: 3px;
   }
 
