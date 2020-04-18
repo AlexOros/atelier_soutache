@@ -1,4 +1,4 @@
-import SEO from "./seo"
+import SEO from "./seo/seo"
 import Layout from "./layout/Layout"
 import Header from "./header/Header"
 import Title from "./title/Title"
