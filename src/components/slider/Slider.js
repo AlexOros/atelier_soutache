@@ -9,7 +9,11 @@ import "slick-carousel/slick/slick-theme.css"
 import { SliderBaseStyle } from "./Slider.style"
 
 const SampleNextArrow = ({ className, onClick }) => (
-  <Box style={{ top: "43%" }} className={className} onClick={onClick}>
+  <Box
+    style={{ top: "43%", right: "-50px" }}
+    className={className}
+    onClick={onClick}
+  >
     <IconButton className="slick-arrow" onClick={onClick}>
       <ArrowForwardIosRoundedIcon />
     </IconButton>
@@ -18,7 +22,7 @@ const SampleNextArrow = ({ className, onClick }) => (
 
 const SamplePrevArrow = ({ className, onClick }) => (
   <Box
-    style={{ left: "-50px", top: "43%" }}
+    style={{ left: "-80px", top: "43%" }}
     className={className}
     onClick={onClick}
   >
@@ -31,8 +35,7 @@ const SamplePrevArrow = ({ className, onClick }) => (
 const Slider = ({ children, options }) => {
   const memoizedSettings = useMemo(
     () => ({
-      className: "center",
-      dots: true,
+      dots: false,
       autoPlay: true,
       infinite: true,
       swipeToSlide: true,

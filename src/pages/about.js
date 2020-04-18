@@ -5,7 +5,7 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 
-import { SEO, Section, Title } from "../components"
+import { SEO, Section, Title, Slider } from "../components"
 
 const StyledHero = styled.div`
   display: grid;
@@ -56,10 +56,24 @@ const StyledHero = styled.div`
   }
 `
 
+const StyledStorySection = styled.div`
+  max-width: 640px;
+  margin: 0 auto;
+  .image {
+    padding: 4px;
+  }
+`
+
+const SLIDER_OPTIONS = {
+  centerPadding: "20px",
+  className: "center",
+  centerMode: true,
+}
+
 export default ({ data }) => {
   const {
     hero: { nodes: heroImg },
-    slider: { nodes: sliderImg },
+    slider: { nodes: sliderImages },
   } = data
   const { t } = useTranslation("about")
 
@@ -93,7 +107,25 @@ export default ({ data }) => {
           </Box>
         </StyledHero>
       </Section>
-      <Section paddingTop={0} deg={9}></Section>
+      <Section paddingTop={0} deg={9}>
+        <Box mb={[4, 6, 8]} mt={[4, 8, 10]}>
+          <Title
+            align="left"
+            title={t("section-2.title.1")}
+            subtitle={t("section-2.title.2")}
+            variant="h4"
+          />
+        </Box>
+        <StyledStorySection>
+          <Slider options={SLIDER_OPTIONS}>
+            {sliderImages.map(({ id, childImageSharp }) => (
+              <Box className="image" maxWidth={600} key={id}>
+                <Img fluid={childImageSharp.fluid} />
+              </Box>
+            ))}
+          </Slider>
+        </StyledStorySection>
+      </Section>
     </>
   )
 }
