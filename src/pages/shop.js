@@ -15,7 +15,7 @@ export default () => {
         <Box mx={2} my={[4, 6]}>
           <Title variant="h4" title={t("title")} />
         </Box>
-        <Products showPagination amount={3} />
+        <Products showPagination amount={6} />
       </Section>
     </>
   )

@@ -47,13 +47,13 @@ const StyledProduct = styled(Box)`
   text-transform: capitalize;
 
   ${({ theme }) => theme.breakpoints.up("md")} {
-    min-width: 450px;
+    min-width: 500px;
     margin-left: 0;
     margin-right: 0;
   }
 
   ${({ theme }) => theme.breakpoints.up("lg")} {
-    min-width: unset;
+    margin: 0 auto;
   }
 
   .image {

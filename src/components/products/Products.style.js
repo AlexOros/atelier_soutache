@@ -6,17 +6,16 @@ export const StyledProducts = styled(Box)`
   grid-template-columns: 1fr;
   grid-gap: 20px;
   margin: 0 auto;
+  width: 100%;
+  max-width: 450px;
 
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    max-width: 450px;
-  }
-
-  ${({ theme }) => theme.breakpoints.up("md")} {
+  ${({ theme }) => theme.breakpoints.up("1060")} {
+    max-width: unset;
     justify-items: center;
     grid-template-columns: 1fr 1fr;
   }
 
-  ${({ theme }) => theme.breakpoints.up("lg")} {
+  ${({ theme }) => theme.breakpoints.up("1600")} {
     justify-items: unset;
     grid-template-columns: 1fr 1fr 1fr;
   }
