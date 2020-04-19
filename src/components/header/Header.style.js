@@ -49,6 +49,12 @@ const StyledHeader = styled.header`
    
   }
 
+  .language-select-mobile {
+    position: absolute;
+    top: ${({ theme }) => theme.spacing(2)};
+    left: ${({ theme }) => theme.spacing(2)};
+  }
+
   .nav-links-mobile {
     display: grid;
     margin-top: ${({ theme }) => theme.spacing(2)};

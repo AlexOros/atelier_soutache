@@ -43,16 +43,11 @@ const Header = () => {
   }, [isNavbarOpen])
 
   const handleClickNavbar = useCallback(() => {
-    let ms = 0
-    if (isCartOpen) {
-      ms = 500
-      setIsCartOpen(() => false)
-    }
-    setTimeout(() => setIsNavbarOpen(oldState => !oldState), ms)
-  }, [isCartOpen])
+    setIsNavbarOpen(oldState => !oldState)
+  }, [])
 
   const handleCloseNavbar = useCallback(() => {
-    isMobile() && setTimeout(() => setIsNavbarOpen(false), 500)
+    isMobile() && setIsNavbarOpen(false)
   }, [])
 
   const getPageLinks = useCallback(
@@ -74,11 +69,6 @@ const Header = () => {
               {t("shop:title")}
             </NavLink>
           </Box>
-          {className && className.includes("mobile") && (
-            <Box>
-              <LanguageSelector color="secondary" />
-            </Box>
-          )}
         </Box>
       )
     },
@@ -122,6 +112,9 @@ const Header = () => {
           isDrawerOpen={isNavbarOpen}
           handleCloseDrawer={() => setIsNavbarOpen(false)}
         >
+          <Box className="language-select-mobile">
+            <LanguageSelector color="secondary" />
+          </Box>
           {getPageLinks("nav-links-mobile")}
         </Drawer>
 
