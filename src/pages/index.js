@@ -5,10 +5,11 @@ import Img from "gatsby-image"
 import { Box, Typography, IconButton, Button } from "@material-ui/core"
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded"
 import ArrowForwardIosRoundedIcon from "@material-ui/icons/ArrowForwardIosRounded"
+import { useSpring, animated } from "react-spring"
 
 import { randomNumFromZeroTo } from "../utils"
 import { Title, Section, SEO, Products, Testimonials } from "../components"
-import StyledHomePage from "./styles/index.style"
+import StyledHomePage from "./index.style"
 
 const IndexPage = ({ data }) => {
   const {
@@ -30,6 +31,7 @@ const IndexPage = ({ data }) => {
             fluid={heroImages[randomNumFromZeroTo(4)].childImageSharp.fluid}
           />
         </Box>
+
         <Box my={[6, 4, 0]} className="content">
           <Box>
             <Typography variant="h1">

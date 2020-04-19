@@ -2,10 +2,10 @@ import React, { useEffect, useState, useContext, useCallback } from "react"
 import { Fade, Box, Typography, IconButton } from "@material-ui/core"
 import BackspaceIcon from "@material-ui/icons/Backspace"
 import styled, { css } from "styled-components"
-import { ProductsContext } from "../context"
+import { ProductsContext } from "../../context"
 import { useTranslation } from "react-i18next"
 import Img from "gatsby-image"
-import { Title, Section } from "../components"
+import { Title, Section } from "../../components"
 import { navigate } from "gatsby"
 
 const itemBase = css`

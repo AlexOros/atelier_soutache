@@ -1,3 +1,6 @@
+/**
+ * Creating creating a page based on each product slug
+ */
 exports.createPages = async function({ actions, graphql }) {
   try {
     const { data } = await graphql(`
