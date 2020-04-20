@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Pagination from "@material-ui/lab/Pagination"
 import { config, animated, useTrail } from "react-spring"
@@ -8,6 +8,7 @@ import usePagination from "../../hooks/usePagination"
 import { ProductsContext } from "../../context"
 import { Product } from "../../components"
 import { StyledProducts, StyledPaginationComponent } from "./Products.style"
+import useEffectAfterMount from "../../hooks/useEffectAfterMount"
 
 const query = graphql`
   query ProductsQuery {
@@ -51,12 +52,17 @@ const Products = ({ showPagination, amount = 6 }) => {
     handleSetProducts(nodes)
   }, [handleSetProducts, nodes])
 
+  useEffectAfterMount(() => {
+    setReset(() => false)
+  }, [paginatedItems])
+
+  const [reset, setReset] = useState(false)
   const trail = useTrail(paginatedItems.length, {
     config: { ...config.gentle, tension: 200 },
     opacity: 1,
     y: 0,
     from: { opacity: 0, y: 100 },
-    reset: true,
+    reset,
   })
 
   return (
@@ -81,7 +87,10 @@ const Products = ({ showPagination, amount = 6 }) => {
       {showPagination && (
         <StyledPaginationComponent my={3}>
           <Pagination
-            onChange={handleChangePage}
+            onChange={(event, nextPage) => {
+              handleChangePage(event, nextPage)
+              setReset(() => true)
+            }}
             size="large"
             count={maxPages}
           />

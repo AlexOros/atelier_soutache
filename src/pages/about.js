@@ -34,7 +34,6 @@ const StyledHero = styled.div`
 
     ${({ theme }) => theme.breakpoints.up("md")} {
       margin: 0;
-
       max-width: 400px;
       width: inherit;
       justify-self: inherit;
@@ -58,7 +57,7 @@ const StyledHero = styled.div`
 `
 
 const StyledStorySection = styled.div`
-  max-width: 640px;
+  max-width: 540px;
   margin: 0 auto;
   .image {
     padding: 4px;
