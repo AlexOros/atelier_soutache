@@ -20,6 +20,7 @@ i18next.init({
       common: require("../locales/en/common.json"),
       home: require("../locales/en/home.json"),
       about: require("../locales/en/about.json"),
+      product: require("../locales/en/product.json"),
       shop: require("../locales/en/shop.json"),
       payment_methods: require("../locales/en/payment_methods.json"),
       privacy_policy: require("../locales/en/privacy_policy.json"),

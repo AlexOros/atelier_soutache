@@ -25,6 +25,7 @@ import ReactMarkdown from "react-markdown"
 
 import { Section, SEO, Title, Info } from "../components"
 import StyledProductPage from "./styles/product.style"
+import { getRevealAnimation } from "../utils"
 
 export default ({ data }) => {
   const { strapiProduct: product } = data
@@ -52,8 +53,8 @@ export default ({ data }) => {
     smallScreens ? setSeeMore(false) : setSeeMore(true)
   }, [smallScreens])
 
-  const infoData = useMemo(() => {
-    return [
+  const infoData = useMemo(
+    () => [
       {
         title: t("product:product_info"),
         text: i18n.language === "ro" ? product.info_ro : product.info_en,
@@ -61,11 +62,12 @@ export default ({ data }) => {
       },
       {
         title: t("product:shipping_info"),
-        text: i18n.language === "ro" ? product.info_ro : product.info_en,
+        text: t("product:shipping_info_text"),
         panel: "panel2",
       },
-    ]
-  }, [i18n.language, product.info_en, product.info_ro, t])
+    ],
+    [i18n.language, product.info_en, product.info_ro, t]
+  )
 
   const getMessageMouse = useCallback(
     () =>
@@ -121,14 +123,32 @@ export default ({ data }) => {
 
   return (
     <StyledProductPage more={seeMore ? 1 : 0}>
-      <SEO title={t("title")} />
+      <SEO title={product.title} />
 
-      <Section height="90" deg="9">
+      <Section paddingTop={5} height="90" deg="9">
         <Box className="product">
           {smallScreens && (
-            <Title variant="h5" title={name.first} subtitle={name.last} />
+            <Title
+              {...getRevealAnimation("slide-right")}
+              variant="h5"
+              title={name.first}
+              subtitle={name.last}
+            />
           )}
-          <Box className="story">
+          <Box {...getRevealAnimation("slide-right")} className="story">
+            {!smallScreens && (
+              <Box mb={4}>
+                <Button
+                  onClick={() => window.history.back()}
+                  className="add-to-bag"
+                  startIcon={<ArrowBackIosRoundedIcon />}
+                  variant="contained"
+                  color="primary"
+                >
+                  {t("common:back")}
+                </Button>
+              </Box>
+            )}
             <Box className="image-container">
               <Box className="image">
                 <ReactImageMagnify
@@ -161,23 +181,9 @@ export default ({ data }) => {
                 </Box>
               )}
             </Box>
-            {!smallScreens && (
-              <Box my={4}>
-                <Button
-                  onClick={() => navigate("/shop")}
-                  className="add-to-bag"
-                  disabled={storeProduct && storeProduct.stock < 1}
-                  startIcon={<ArrowBackIosRoundedIcon />}
-                  variant="contained"
-                  color="primary"
-                >
-                  {t("common:shop")}
-                </Button>
-              </Box>
-            )}
           </Box>
 
-          <Box className="info">
+          <Box {...getRevealAnimation("slide-left")} className="info">
             <Box ml={[0, -5]} mt={[-1, -4]} mb={[2, 3, 4]}>
               {!smallScreens && (
                 <Title variant="h5" title={name.first} subtitle={name.last} />
@@ -213,14 +219,14 @@ export default ({ data }) => {
             {smallScreens && (
               <Box my={4}>
                 <Button
-                  onClick={() => navigate("/shop")}
+                  onClick={() => window.history.goBack()}
                   className="add-to-bag"
                   disabled={storeProduct && storeProduct.stock < 1}
                   startIcon={<ArrowBackIosRoundedIcon />}
                   variant="contained"
                   color="primary"
                 >
-                  {t("common:shop")}
+                  {t("common:back")}
                 </Button>
               </Box>
             )}

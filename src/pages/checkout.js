@@ -11,7 +11,7 @@ import { getRevealAnimation } from "../utils"
 import StyledSummary from "./styles/checkout.style"
 
 const Checkout = () => {
-  const { t } = useTranslation(["common", "checkout"])
+  const { t, i18n } = useTranslation(["common", "checkout"])
   const { cart, totalSumInCart, handleRemoveProductFromCart } = useContext(
     ProductsContext
   )
@@ -79,6 +79,20 @@ const Checkout = () => {
             </Box>
           </Box>
         </StyledSummary>
+        <Box
+          borderRadius={3}
+          bgcolor="white"
+          p={2}
+          maxWidth={600}
+          textAlign="center"
+          mx="auto"
+        >
+          <Typography variant="h5">
+            {i18n.language === "ro"
+              ? "Serviciul nu este disponibil momentan"
+              : "Service not available, coming soon..."}
+          </Typography>
+        </Box>
       </Section>
     </>
   )

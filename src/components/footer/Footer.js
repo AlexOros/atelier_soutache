@@ -28,14 +28,14 @@ const Footer = () => {
             Help
           </Typography>
           <Box className="column links">
-            <Link to="/shipping-and-returns ">
+            <Link /*to="/shipping-and-returns"*/>
               {t("shipping_and_returns:title")}
             </Link>
-            <Link to="/payment-methods">{t("payment_methods:title")}</Link>
-            <Link to="/terms-and-services">
+            <Link /*to="/payment-methods"*/>{t("payment_methods:title")}</Link>
+            <Link /*to="/terms-and-services"*/>
               {t("terms_and_services:title")}
             </Link>
-            <Link to="/privacy-policy">{t("privacy_policy:title")}</Link>
+            <Link /*to="/privacy-policy"*/>{t("privacy_policy:title")}</Link>
             <a
               href="https://anpc.ro/"
               target="_blank"
@@ -56,7 +56,7 @@ const Footer = () => {
           </Box>
           <Box my={1} className="social">
             <a
-              href="https://www.google.com"
+              href="https://www.facebook.com/DianaAtelierSoutache"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -65,7 +65,7 @@ const Footer = () => {
               </IconButton>{" "}
             </a>
             <a
-              href="https://www.google.com"
+              href="https://www.instagram.com/ateliersoutache/"
               target="_blank"
               rel="noopener noreferrer"
             >
