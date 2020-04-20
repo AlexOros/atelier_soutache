@@ -15,6 +15,7 @@
     "body-scroll-lock": "^2.6.4",
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
+    "gatsby-plugin-exclude": "^1.0.2",
     "gatsby-plugin-manifest": "^2.2.39",
     "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-offline": "^3.0.32",
@@ -38,6 +39,7 @@
     "react-markdown": "^4.3.1",
     "react-slick": "^0.25.2",
     "react-spring": "^8.0.27",
+    "sal.js": "^0.7.4",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.0.1"
   },

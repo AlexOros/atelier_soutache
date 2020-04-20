@@ -17,8 +17,8 @@ module.exports = {
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {
-    //     name: `gatsby-starter-default`,
-    //     short_name: `starter`,
+    //     name: `Atelier Soutache`,
+    //     short_name: `Soutache`,
     //     start_url: `/`,
     //     background_color: `#663399`,
     //     theme_color: `#663399`,
@@ -27,6 +27,11 @@ module.exports = {
     //   },
     // },
 
+    {
+      resolve: "gatsby-plugin-exclude",
+      // Ignoring anything inside the styles folder in pages
+      options: { paths: ["/styles/", "/styles/**"] },
+    },
     {
       resolve: `gatsby-source-strapi`,
       options: {
@@ -51,7 +56,6 @@ module.exports = {
         url: "http://localhost:1337/graphql",
       },
     },
-
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {

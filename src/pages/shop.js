@@ -2,7 +2,7 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 import { Box } from "@material-ui/core"
 
-import { Section, Products, Title, SEO } from "../../components"
+import { Section, Products, Title, SEO } from "../components"
 
 export default () => {
   const { t } = useTranslation("shop")

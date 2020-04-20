@@ -4,8 +4,9 @@ import { Box, Typography } from "@material-ui/core"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import { getRevealAnimation } from "../utils"
 
-import { SEO, Section, Title, Slider } from "../../components"
+import { SEO, Section, Title, Slider } from "../components"
 
 const StyledHero = styled.div`
   display: grid;
@@ -83,9 +84,11 @@ export default ({ data }) => {
     <>
       <SEO title={t("title")} />
 
+      {/* ------------------ Section 1 ------------------- */}
       <Section paddingTop={0} deg={-9}>
         <Box mb={[0, 6, 8]} mt={[4, 8, 10]}>
           <Title
+            {...getRevealAnimation("slide-down")}
             align="center"
             title={t("section-1.title.1")}
             subtitle={t("section-1.title.2")}
@@ -93,10 +96,15 @@ export default ({ data }) => {
           />
         </Box>
         <StyledHero>
-          <Box className="image">
+          <Box className="image" {...getRevealAnimation("slide-right")}>
             <Img fluid={heroImg[0].childImageSharp.fluid} />
           </Box>
-          <Box p={[1, 2, 4]} pt={[4, 2, 4]} className="text">
+          <Box
+            p={[1, 2, 4]}
+            pt={[4, 2, 4]}
+            className="text"
+            {...getRevealAnimation("slide-left")}
+          >
             {memoEmptyArray.map((skip, index) => (
               <Box key={index} my={[2, 3]}>
                 <Typography variant="body1">
@@ -107,16 +115,19 @@ export default ({ data }) => {
           </Box>
         </StyledHero>
       </Section>
+
+      {/* ------------------ Section 2 ------------------- */}
       <Section paddingTop={0} deg={9}>
         <Box mb={[4, 6, 8]} mt={[4, 8, 10]}>
           <Title
+            {...getRevealAnimation("slide-right")}
             align="left"
             title={t("section-2.title.1")}
             subtitle={t("section-2.title.2")}
             variant="h4"
           />
         </Box>
-        <StyledStorySection>
+        <StyledStorySection {...getRevealAnimation("slide-left")}>
           <Slider options={SLIDER_OPTIONS}>
             {sliderImages.map(({ id, childImageSharp }) => (
               <Box className="image" maxWidth={600} key={id}>

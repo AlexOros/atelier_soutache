@@ -15,8 +15,8 @@ import i18next from "./src/api/i18n"
 const responsiveTheme = responsiveFontSizes(theme)
 
 // Wraps every page in a component
-export const wrapPageElement = ({ element, props }) => {
-  return <Layout props={props}>{element}</Layout>
+export const wrapPageElement = ({ element }) => {
+  return <Layout>{element}</Layout>
 }
 
 export const wrapRootElement = ({ element }) => {

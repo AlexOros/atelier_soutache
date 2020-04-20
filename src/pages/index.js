@@ -5,11 +5,10 @@ import Img from "gatsby-image"
 import { Box, Typography, IconButton, Button } from "@material-ui/core"
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded"
 import ArrowForwardIosRoundedIcon from "@material-ui/icons/ArrowForwardIosRounded"
-import { useSpring, animated } from "react-spring"
 
-import { randomNumFromZeroTo } from "../utils"
+import { randomNumFromZeroTo, getRevealAnimation } from "../utils"
 import { Title, Section, SEO, Products, Testimonials } from "../components"
-import StyledHomePage from "./index.style"
+import StyledHomePage from "./styles/home.style"
 
 const IndexPage = ({ data }) => {
   const {
@@ -26,14 +25,14 @@ const IndexPage = ({ data }) => {
       {/* ------------------ Section 1 ------------------- */}
 
       <Section className="section-1" paddingTop={0}>
-        <Box className="image">
+        <Box {...getRevealAnimation("slide-right")} className="image">
           <Img
             fluid={heroImages[randomNumFromZeroTo(4)].childImageSharp.fluid}
           />
         </Box>
 
         <Box my={[6, 4, 0]} className="content">
-          <Box>
+          <Box {...getRevealAnimation("slide-left")}>
             <Typography variant="h1">
               <strong>{t("home:section-1.title.1")}</strong>{" "}
               <span>{t("home:section-1.title.2")}</span>
@@ -61,6 +60,7 @@ const IndexPage = ({ data }) => {
       <Section className="section-2" deg={-9}>
         <Box className="title" mt={[-2, -5]} mb={[4, 6]}>
           <Title
+            {...getRevealAnimation("slide-right")}
             variant="h4"
             title={t("home:section-2.title.1")}
             subtitle={t("home:section-2.title.2")}
@@ -68,7 +68,12 @@ const IndexPage = ({ data }) => {
         </Box>
 
         <Box className="content">
-          <Box p={[1, 2, 4]} pt={[4, 2, 4]} className="text">
+          <Box
+            p={[1, 2, 4]}
+            pt={[4, 2, 4]}
+            className="text"
+            {...getRevealAnimation("slide-right")}
+          >
             <Typography variant="body1">
               {t("home:section-2.text.1")}
             </Typography>
@@ -85,7 +90,11 @@ const IndexPage = ({ data }) => {
               {t("common:find_out_more")}
             </Button>
           </Box>
-          <Box className="image" style={{ textTransform: "capitalize" }}>
+          <Box
+            {...getRevealAnimation("slide-left")}
+            className="image"
+            style={{ textTransform: "capitalize" }}
+          >
             <Img fluid={moreImage[0].childImageSharp.fluid} />
           </Box>
         </Box>
@@ -93,7 +102,7 @@ const IndexPage = ({ data }) => {
 
       {/* ------------------ Section 3 ------------------- */}
 
-      <Box my={[5, 15]}>
+      <Box my={[5, 15]} {...getRevealAnimation("slide-right")}>
         <Testimonials />
       </Box>
 
@@ -101,11 +110,17 @@ const IndexPage = ({ data }) => {
 
       <Section deg={9}>
         <Box mt={[-2, -5]} mb={[1, 4, 6]} mx={3}>
-          <Title align="right" variant="h4" title="Soutache..." />
+          <Title
+            {...getRevealAnimation("slide-left")}
+            align="right"
+            variant="h4"
+            title="Soutache..."
+          />
         </Box>
         <Products />
         <Box my={5} textAlign="center">
           <Button
+            {...getRevealAnimation("slide-left")}
             onClick={() => navigate("/shop")}
             size="large"
             endIcon={<ArrowForwardIosRoundedIcon />}

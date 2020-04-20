@@ -33,11 +33,6 @@ const StyledHomePage = styled.div`
       ${({ theme }) => theme.breakpoints.up("md")} {
         margin: 0;
         display: inline-block;
-        transform: translate(-4vw, 0);
-      }
-
-      ${({ theme }) => theme.breakpoints.up("2000")} {
-        transform: translate(0, 0);
       }
 
       &:before {
@@ -121,6 +116,7 @@ const StyledHomePage = styled.div`
       display: grid;
       grid-template-columns: 1fr;
       align-items: center;
+      grid-gap: ${({ theme }) => theme.spacing(2)};
 
       ${({ theme }) => theme.breakpoints.up("md")} {
         grid-template-columns: 1fr 1.3fr;
@@ -161,13 +157,9 @@ const StyledHomePage = styled.div`
       }
 
       ${({ theme }) => theme.breakpoints.up("md")} {
-        transform: translate(10vw, 0);
         grid-row: inherit;
       }
 
-      ${({ theme }) => theme.breakpoints.up("2000")} {
-        transform: translate(0, 0);
-      }
       img {
         width: 100%;
         height: 100%;
