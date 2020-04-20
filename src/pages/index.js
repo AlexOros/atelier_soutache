@@ -9,6 +9,7 @@ import ArrowForwardIosRoundedIcon from "@material-ui/icons/ArrowForwardIosRounde
 import { randomNumFromZeroTo, getRevealAnimation } from "../utils"
 import { Title, Section, SEO, Products, Testimonials } from "../components"
 import StyledHomePage from "./styles/home.style"
+import useIsVisible from "../hooks/useIsVisible"
 
 const IndexPage = ({ data }) => {
   const {
@@ -16,6 +17,8 @@ const IndexPage = ({ data }) => {
     homeSection2: { nodes: moreImage },
   } = data
   const { t } = useTranslation(["home", "common"])
+
+  const [areProductsVisible, setProductsRef] = useIsVisible({ threshold: 1 })
 
   return (
     <StyledHomePage>
@@ -117,7 +120,7 @@ const IndexPage = ({ data }) => {
             title="Soutache..."
           />
         </Box>
-        <Products />
+        <Box ref={setProductsRef}>{areProductsVisible && <Products />}</Box>
         <Box my={5} textAlign="center">
           <Button
             {...getRevealAnimation("slide-left")}

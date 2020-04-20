@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Pagination from "@material-ui/lab/Pagination"
+import { config, animated, useTrail } from "react-spring"
 
 import { Box } from "@material-ui/core"
 import usePagination from "../../hooks/usePagination"
@@ -41,24 +42,39 @@ const Products = ({ showPagination, amount = 6 }) => {
     allStrapiProduct: { nodes },
   } = useStaticQuery(query)
 
-  useEffect(() => {
-    handleSetProducts(nodes)
-  }, [handleSetProducts, nodes])
-
   const { paginatedItems, maxPages, handleChangePage } = usePagination({
     items: products,
     itemsPerPage: amount,
   })
 
+  useEffect(() => {
+    handleSetProducts(nodes)
+  }, [handleSetProducts, nodes])
+
+  const trail = useTrail(paginatedItems.length, {
+    config: { ...config.gentle, tension: 200 },
+    opacity: 1,
+    y: 0,
+    from: { opacity: 0, y: 100 },
+    reset: true,
+  })
+
   return (
     <Box>
       <StyledProducts>
-        {paginatedItems.map(product => (
-          <Product
-            key={product.id}
-            product={product}
-            handleAddProductToCart={handleAddProductToCart}
-          />
+        {trail.map(({ y, ...rest }, index) => (
+          <animated.div
+            key={paginatedItems[index].id}
+            style={{
+              ...rest,
+              transform: y.interpolate(y => `translate3d(${y}px,0,0)`),
+            }}
+          >
+            <Product
+              product={paginatedItems[index]}
+              handleAddProductToCart={handleAddProductToCart}
+            />
+          </animated.div>
         ))}
       </StyledProducts>
 
