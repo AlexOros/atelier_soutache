@@ -1,12 +1,14 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import { Box } from "@material-ui/core"
+import { Box, useMediaQuery, useTheme } from "@material-ui/core"
 
 import { Section, Products, Title, SEO } from "../components"
 import { getRevealAnimation } from "../utils"
 
 export default () => {
   const { t } = useTranslation("shop")
+  const theme = useTheme()
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"))
 
   return (
     <>
@@ -21,7 +23,7 @@ export default () => {
             title={t("title")}
           />
         </Box>
-        <Products showPagination amount={6} />
+        <Products showPagination amount={isSmallScreen ? 2 : 6} />
       </Section>
     </>
   )

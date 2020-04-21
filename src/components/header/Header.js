@@ -1,6 +1,6 @@
 import React, { useState, useContext, useCallback } from "react"
 import { useTranslation } from "react-i18next"
-import { Box, IconButton, useMediaQuery, ButtonBase } from "@material-ui/core"
+import { Box, IconButton, useMediaQuery } from "@material-ui/core"
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded"
 import { useTheme } from "@material-ui/core/styles"
 import MenuOpenRoundedIcon from "@material-ui/icons/MenuOpenRounded"
@@ -31,7 +31,7 @@ const Header = () => {
     handleEmptyCart,
   } = useContext(ProductsContext)
 
-  const { top } = useWindowTopDistance()
+  const isLargerThenTen = useWindowTopDistance(10)
   const theme = useTheme()
   const showMobileHeader = useMediaQuery(theme.breakpoints.down("sm"))
 
@@ -78,7 +78,7 @@ const Header = () => {
   )
 
   return (
-    <StyledHeader isFixed={top >= 10}>
+    <StyledHeader isFixed={isLargerThenTen}>
       <Box className="header">
         <Box>
           {!showMobileHeader ? (

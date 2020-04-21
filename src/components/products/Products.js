@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import Pagination from "@material-ui/lab/Pagination"
 import { config, animated, useTrail } from "react-spring"
 
-import { Box } from "@material-ui/core"
+import { Box, useTheme, useMediaQuery } from "@material-ui/core"
 import usePagination from "../../hooks/usePagination"
 import { ProductsContext } from "../../context"
 import { Product } from "../../components"
@@ -42,6 +42,8 @@ const Products = ({ showPagination, amount = 6 }) => {
   const {
     allStrapiProduct: { nodes },
   } = useStaticQuery(query)
+  const theme = useTheme()
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"))
 
   const { paginatedItems, maxPages, handleChangePage } = usePagination({
     items: products,
@@ -91,7 +93,7 @@ const Products = ({ showPagination, amount = 6 }) => {
               handleChangePage(event, nextPage)
               setReset(() => true)
             }}
-            size="large"
+            size={isSmallScreen ? "small" : "large"}
             count={maxPages}
           />
         </StyledPaginationComponent>

@@ -1,27 +1,29 @@
 import { useState, useEffect } from "react"
 import throttle from "lodash.throttle"
 
-const useWindowSizeActions = () => {
-  const [top, setTop] = useState(null)
+const useWindowSizeActions = maxNumber => {
+  const [isLarger, setIsPassedMaxNumber] = useState(false)
 
   useEffect(() => {
     if (window) {
-      setTop(window.pageXOffset)
-
       window.addEventListener(
         "scroll",
-        throttle(() => setTop(window.pageYOffset), 100)
+        throttle(() => {
+          if (window.pageYOffset >= maxNumber) {
+            setIsPassedMaxNumber(true)
+          } else {
+            setIsPassedMaxNumber(false)
+          }
+        }, 100)
       )
     }
 
     return () => {
       window.removeEventListener("scroll", () => {})
     }
-  }, [])
+  }, [maxNumber])
 
-  return {
-    top,
-  }
+  return isLarger
 }
 
 export default useWindowSizeActions
