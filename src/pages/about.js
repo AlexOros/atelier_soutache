@@ -21,9 +21,29 @@ const StyledHero = styled.div`
   }
 
   .image {
+    position: relative;
     width: 400px;
     justify-self: center;
     margin-top: ${({ theme }) => theme.spacing(8)};
+    max-height: 583px;
+
+    img {
+      max-height: 583px;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: block;
+      background: ${({ theme }) => theme.palette.background.default};
+      overflow: hidden;
+      animation: ${({ theme }) => theme.keyframes.tiltLeft} 2s 600ms forwards
+        ease-in-out;
+    }
 
     ${({ theme }) => theme.breakpoints.down("420")} {
       margin: 0 calc(-50vw + 50%);

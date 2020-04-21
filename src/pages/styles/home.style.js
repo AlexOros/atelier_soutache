@@ -1,9 +1,5 @@
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 
-const rotateAnimation = keyframes`
-    0% { transform: rotate(1deg)}
-    100% { transform: rotate(360deg)}
-`
 const StyledHomePage = styled.div`
   ${({ theme }) => theme.mixins.linkHover()}
   .section-1 {
@@ -24,15 +20,10 @@ const StyledHomePage = styled.div`
       margin: 0 calc(-50vw + 50%);
       display: none;
       max-width: 450px;
-      max-height: 700px;
+      max-height: 674px;
 
       img {
-        max-height: 700px;
-      }
-
-      ${({ theme }) => theme.breakpoints.up("md")} {
-        margin: 0;
-        display: inline-block;
+        max-height: 674px;
       }
 
       &:before {
@@ -43,9 +34,15 @@ const StyledHomePage = styled.div`
         left: 0;
         right: 0;
         display: block;
-        transform: rotate(9deg);
         background: ${({ theme }) => theme.palette.background.default};
-        overflow-x: hidden;
+        overflow: hidden;
+        animation: ${({ theme }) => theme.keyframes.tiltRight} 2s 600ms forwards
+          ease-in-out;
+      }
+
+      ${({ theme }) => theme.breakpoints.up("md")} {
+        margin: 0;
+        display: inline-block;
       }
     }
 
@@ -83,7 +80,8 @@ const StyledHomePage = styled.div`
           background: ${({ theme }) => theme.palette.background.default};
           overflow-x: hidden;
           z-index: -1;
-          animation: ${rotateAnimation} 30s infinite linear;
+          animation: ${({ theme }) => theme.keyframes.rotate} 30s 600ms infinite
+            linear;
 
           ${({ theme }) => theme.breakpoints.up("md")} {
             top: -100px;

@@ -111,8 +111,8 @@ const IndexPage = ({ data }) => {
 
       {/* ------------------ Section 4 ------------------- */}
 
-      <Section deg={9}>
-        <Box mt={[-2, -5]} mb={[1, 4, 6]} mx={3}>
+      <Section paddingTop={0} deg={9}>
+        <Box mt={[2, 5]} mb={[4, 6]} mx={3}>
           <Title
             {...getRevealAnimation("slide-left")}
             align="right"

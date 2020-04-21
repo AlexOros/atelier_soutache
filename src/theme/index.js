@@ -1,6 +1,6 @@
 import { createMuiTheme } from "@material-ui/core/styles"
 
-import { slideUp } from "./keyframes/slide"
+import animationsKeyFrames from "./keyframes"
 import { titleBase, linkHover } from "./mixins"
 
 const theme = createMuiTheme({
@@ -37,9 +37,7 @@ const theme = createMuiTheme({
     titleBase,
     linkHover,
   },
-  keyframes: {
-    slideUp,
-  },
+  keyframes: animationsKeyFrames,
 })
 
 export default theme

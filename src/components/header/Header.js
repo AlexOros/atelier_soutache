@@ -1,9 +1,11 @@
 import React, { useState, useContext, useCallback } from "react"
 import { useTranslation } from "react-i18next"
-import { Box, IconButton, useMediaQuery } from "@material-ui/core"
+import { Box, IconButton, useMediaQuery, ButtonBase } from "@material-ui/core"
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded"
 import { useTheme } from "@material-ui/core/styles"
 import MenuOpenRoundedIcon from "@material-ui/icons/MenuOpenRounded"
+import LogoLargeImage from "../../../static/logo_large.png"
+import { navigate } from "gatsby"
 
 import { isMobile } from "../../utils"
 import { ProductsContext } from "../../context"
@@ -80,7 +82,12 @@ const Header = () => {
       <Box className="header">
         <Box>
           {!showMobileHeader ? (
-            <h5>Logo here</h5>
+            <img
+              onClick={() => navigate("/")}
+              className="logo-large"
+              src={LogoLargeImage}
+              alt="logo"
+            />
           ) : (
             <IconButton
               onClick={() => handleClickNavbar()}
@@ -96,7 +103,7 @@ const Header = () => {
           getPageLinks("nav-links-desktop")
         ) : (
           <Box textAlign="center">
-            <h5>Logo here</h5>
+            <div>Mobile Logo Here</div>
           </Box>
         )}
 

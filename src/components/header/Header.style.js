@@ -24,7 +24,6 @@ const StyledHeader = styled.header`
   transition: all 0.5s;
   ${({ isFixed }) => isFixed && fixedStyle}
 
-
   ${({ theme }) => theme.breakpoints.up("md")} {
     margin-bottom: ${({ theme }) => theme.spacing(12)};
     padding: ${({ theme, isFixed }) =>
@@ -39,14 +38,17 @@ const StyledHeader = styled.header`
     max-width: 1600px;
   }
 
+  .logo-large {
+    max-width: 340px;
+    cursor: pointer;
+  }
+
   .nav-links-desktop {
     display: grid;
     max-width: 800px;
     gap: ${({ theme }) => theme.spacing(4)};
     justify-self: center;
     grid-template-columns: 1fr 1fr 1fr;
-
-   
   }
 
   .language-select-mobile {
@@ -70,11 +72,10 @@ const StyledHeader = styled.header`
   }
 
   .shop {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-around;
-      align-items: center;
-    }
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    align-items: center;
   }
 `
 

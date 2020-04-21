@@ -54,19 +54,10 @@ const Product = ({ handleAddProductToCart, product }) => {
       <StyledProduct
         onMouseEnter={() => !isMobileBool && setShowDetails(true)}
         onMouseLeave={() => !isMobileBool && setShowDetails(false)}
+        onClick={() => isMobileBool && setShowDetails(oldShowDetails => true)}
         details={showDetails ? 1 : 0}
         boxShadow={3}
       >
-        {isMobileBool && (
-          <Box textAlign="right">
-            <IconButton
-              className="more"
-              onClick={() => setShowDetails(oldShowDetails => !oldShowDetails)}
-            >
-              {showDetails ? <EyeIconClosed /> : <EyeIcon />}
-            </IconButton>
-          </Box>
-        )}
         <Img className="image" fluid={image.childImageSharp.fluid} alt="" />
 
         <Box px={2} pt={[4, 6, 8]} className="overlay">
