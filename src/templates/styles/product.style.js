@@ -103,7 +103,9 @@ const StyledProductPage = styled(Box)`
       }
     }
 
-    .add-to-bag {
+    .button-group {
+      display: flex;
+      justify-content: space-between;
     }
   }
 `

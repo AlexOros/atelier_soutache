@@ -60,10 +60,10 @@ const Products = ({ showPagination, amount = 6 }) => {
 
   const [reset, setReset] = useState(false)
   const trail = useTrail(paginatedItems.length, {
-    config: { ...config.gentle, tension: 200 },
+    config: { ...config.gentle, tension: 250, mass: 0.7 },
     opacity: 1,
     y: 0,
-    from: { opacity: 0, y: 100 },
+    from: { opacity: 0, y: 50 },
     reset,
   })
 

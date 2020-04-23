@@ -127,28 +127,13 @@ export default ({ data }) => {
 
       <Section paddingTop={5} height="90" deg="9">
         <Box className="product">
-          {smallScreens && (
-            <Title
-              {...getRevealAnimation("slide-right")}
-              variant="h5"
-              title={name.first}
-              subtitle={name.last}
-            />
-          )}
           <Box {...getRevealAnimation("slide-right")} className="story">
-            {!smallScreens && (
-              <Box mb={4}>
-                <Button
-                  onClick={() => window.history.back()}
-                  className="add-to-bag"
-                  startIcon={<ArrowBackIosRoundedIcon />}
-                  variant="contained"
-                  color="primary"
-                >
-                  {t("common:back")}
-                </Button>
-              </Box>
-            )}
+            <Box mb={4}>
+              {smallScreens && (
+                <Title variant="h4" title={name.first} subtitle={name.last} />
+              )}
+            </Box>
+
             <Box className="image-container">
               <Box className="image">
                 <ReactImageMagnify
@@ -202,10 +187,19 @@ export default ({ data }) => {
               )}
             </Box>
 
-            <Box my={4}>
+            <Box my={4} className="button-group">
+              <Button
+                onClick={() => window && window.history.back()}
+                disabled={storeProduct && storeProduct.stock < 1}
+                startIcon={<ArrowBackIosRoundedIcon />}
+                variant="contained"
+                color="primary"
+              >
+                {t("common:back")}
+              </Button>
+
               <Button
                 onClick={() => handleAddProductToCart(storeProduct)}
-                className="add-to-bag"
                 disabled={storeProduct && storeProduct.stock < 1}
                 startIcon={<ShoppingBasketRoundedIcon />}
                 variant="contained"
@@ -216,20 +210,6 @@ export default ({ data }) => {
             </Box>
 
             <Info infoData={infoData} />
-            {smallScreens && (
-              <Box my={4}>
-                <Button
-                  onClick={() => window.history.goBack()}
-                  className="add-to-bag"
-                  disabled={storeProduct && storeProduct.stock < 1}
-                  startIcon={<ArrowBackIosRoundedIcon />}
-                  variant="contained"
-                  color="primary"
-                >
-                  {t("common:back")}
-                </Button>
-              </Box>
-            )}
           </Box>
         </Box>
       </Section>

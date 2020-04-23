@@ -31,7 +31,7 @@ const Header = () => {
     handleEmptyCart,
   } = useContext(ProductsContext)
 
-  const isLargerThenTen = useWindowTopDistance(10)
+  const hasScrolledMoreThen20px = useWindowTopDistance(20)
   const theme = useTheme()
   const showMobileHeader = useMediaQuery(theme.breakpoints.down("sm"))
 
@@ -78,7 +78,7 @@ const Header = () => {
   )
 
   return (
-    <StyledHeader isFixed={isLargerThenTen}>
+    <StyledHeader isFixed={hasScrolledMoreThen20px}>
       <Box className="header">
         <Box>
           {!showMobileHeader ? (
