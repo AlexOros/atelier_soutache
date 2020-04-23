@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { Link } from "gatsby"
 import { Box, Typography, IconButton } from "@material-ui/core"
 import { useTranslation } from "react-i18next"
@@ -9,6 +9,11 @@ import { StyledFooter } from "./Footer.style"
 
 const Footer = () => {
   const { t } = useTranslation()
+
+  const memoYear = useMemo(() => {
+    console.log("useMemo called ")
+    return new Date().getFullYear()
+  }, [])
 
   return (
     <StyledFooter>
@@ -77,8 +82,7 @@ const Footer = () => {
         </Box>
       </Box>
       <Box className="copy" pt={[0, 1, 3]} pb={3} px={1}>
-        &copy; {new Date().getFullYear()} Atelier Soutache,{" "}
-        {t("common:all_rights_reserved")}.
+        &copy; {memoYear} Atelier Soutache, {t("common:all_rights_reserved")}.
         <br /> {t("common:coded_by")}{" "}
         <a
           href="https://www.linkedin.com/in/oros-alexandru/"
