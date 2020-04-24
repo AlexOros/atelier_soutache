@@ -43,6 +43,10 @@ const StyledHeader = styled.header`
     cursor: pointer;
   }
 
+  .logo-small {
+    max-width: 150px;
+  }
+
   .nav-links-desktop {
     display: grid;
     max-width: 800px;

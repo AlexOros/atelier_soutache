@@ -90,7 +90,7 @@ const Checkout = () => {
           <Typography variant="h5">
             {i18n.language === "ro"
               ? "Serviciul nu este disponibil momentan"
-              : "Service not available, coming soon..."}
+              : "Checkout service not available yet, coming soon..."}
           </Typography>
         </Box>
       </Section>

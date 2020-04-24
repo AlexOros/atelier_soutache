@@ -37,12 +37,12 @@ const Section = ({
 }) => {
   return (
     <StyledSection
+      {...restOfProps}
       showShape={showShape}
       paddingTop={paddingTop}
       deg={deg}
       height={height}
       width={width}
-      {...restOfProps}
     >
       {children}
     </StyledSection>

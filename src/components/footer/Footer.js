@@ -10,10 +10,7 @@ import { StyledFooter } from "./Footer.style"
 const Footer = () => {
   const { t } = useTranslation()
 
-  const memoYear = useMemo(() => {
-    console.log("useMemo called ")
-    return new Date().getFullYear()
-  }, [])
+  const memoYear = useMemo(() => new Date().getFullYear(), [])
 
   return (
     <StyledFooter>

@@ -190,7 +190,6 @@ export default ({ data }) => {
             <Box my={4} className="button-group">
               <Button
                 onClick={() => window && window.history.back()}
-                disabled={storeProduct && storeProduct.stock < 1}
                 startIcon={<ArrowBackIosRoundedIcon />}
                 variant="contained"
                 color="primary"

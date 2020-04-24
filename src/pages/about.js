@@ -76,6 +76,8 @@ const StyledHero = styled.div`
   }
 `
 
+const getStartingNumber = str => str.replace(/\D+/, "")
+
 const StyledStorySection = styled.div`
   max-width: 540px;
   margin: 0 auto;
@@ -97,7 +99,15 @@ export default ({ data }) => {
   } = data
   const { t } = useTranslation("about")
 
-  const memoEmptyArray = useMemo(() => new Array(6).fill(""), [])
+  const sortedSliderImages = useMemo(
+    () =>
+      sliderImages.sort(
+        (a, b) =>
+          Number(getStartingNumber(a.name)) - Number(getStartingNumber(b.name))
+      ),
+    [sliderImages]
+  )
+  const sixEmptyElementArray = useMemo(() => new Array(6).fill(""), [])
 
   return (
     <>
@@ -124,7 +134,7 @@ export default ({ data }) => {
             className="text"
             {...getRevealAnimation("slide-left")}
           >
-            {memoEmptyArray.map((skip, index) => (
+            {sixEmptyElementArray.map((skip, index) => (
               <Box key={index} my={[2, 3]}>
                 <Typography variant="body1">
                   {t(`section-1.text.${index}`)}
@@ -148,7 +158,7 @@ export default ({ data }) => {
         </Box>
         <StyledStorySection {...getRevealAnimation("slide-left")}>
           <Slider options={SLIDER_OPTIONS}>
-            {sliderImages.map(({ id, childImageSharp }) => (
+            {sortedSliderImages.map(({ id, childImageSharp }) => (
               <Box className="image" maxWidth={600} key={id}>
                 <Img fluid={childImageSharp.fluid} />
               </Box>
@@ -174,6 +184,7 @@ export const query = graphql`
 
     slider: allFile(filter: { name: { regex: "/story/" } }) {
       nodes {
+        name
         childImageSharp {
           fluid(maxWidth: 1600, webpQuality: 80) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG

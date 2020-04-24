@@ -4,7 +4,6 @@ import { Box, IconButton, useMediaQuery } from "@material-ui/core"
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded"
 import { useTheme } from "@material-ui/core/styles"
 import MenuOpenRoundedIcon from "@material-ui/icons/MenuOpenRounded"
-import LogoLargeImage from "../../../static/logo_large.png"
 import { navigate } from "gatsby"
 
 import { isMobile } from "../../utils"
@@ -18,6 +17,8 @@ import {
 } from "../../components"
 import StyledHeader from "./Header.style"
 import useWindowTopDistance from "../../hooks/useWindowTopDistance"
+import LogoLargeImage from "../../../static/logo_large.png"
+import LogoSmallImage from "../../../static/logo_small.png"
 
 const Header = () => {
   const { t } = useTranslation()
@@ -103,7 +104,12 @@ const Header = () => {
           getPageLinks("nav-links-desktop")
         ) : (
           <Box textAlign="center">
-            <div>Mobile Logo Here</div>
+            <img
+              onClick={() => navigate("/")}
+              className="logo-small"
+              src={LogoSmallImage}
+              alt="logo"
+            />
           </Box>
         )}
 
