@@ -6,6 +6,7 @@ export const StyledFooter = styled.footer`
   margin-top: ${({ theme }) => theme.spacing(13)};
   min-height: 30vh;
   text-align: center;
+  font-weight: ${({ theme }) => theme.typography.fontWeightMedium};
 
   ${({ theme }) => theme.breakpoints.up("md")} {
     text-align: inherit;
