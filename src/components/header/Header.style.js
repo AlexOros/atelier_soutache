@@ -44,7 +44,7 @@ const StyledHeader = styled.header`
   }
 
   .logo-small {
-    max-width: 150px;
+    max-width: 180px;
   }
 
   .nav-links-desktop {
