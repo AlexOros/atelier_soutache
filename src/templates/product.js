@@ -62,7 +62,9 @@ export default ({ data }) => {
       },
       {
         title: t("product:shipping_info"),
-        text: t("product:shipping_info_text"),
+        text: t("product:shipping_info_text", {
+          interpolation: { escapeValue: false },
+        }),
         panel: "panel2",
       },
     ],

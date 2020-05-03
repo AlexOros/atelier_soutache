@@ -16,6 +16,9 @@ const StyledExpansionPanel = styled(ExpansionPanel)`
     display: flex;
     justify-content: space-between;
   }
+  .link {
+    ${({ theme }) => theme.mixins.linkHover()}
+  }
 `
 
 export default StyledExpansionPanel

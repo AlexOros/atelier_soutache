@@ -1,5 +1,11 @@
 {
   "product_info": "Informații Produs",
-  "shipping_info": "Informații Transport",
-  "shipping_info_text": "*"
+  "shipping_info": "Informații Livrare",
+  "shipping_info_text": {
+    "0": "Livrarea se va face la adresa de expediere indicată de client.",
+    "1": "<strong>Timpul de livrare este de de 3-5 zile lucrătoare</strong>. Trimitem coletele de Luni până Vineri; zilele de sărbători legale sunt considerate zile nelucrătoare. Calculul zilelor de livrare începe după transmiterea confirmării de expediere.",
+    "2": "În cazul în care un produs nu mai este disponibil sau din orice alt motiv nu poate fi trimis vom trimite o notificare către client.",
+    "3": "În cazul <strong> bijuteriilor personalizate </strong>, timpul de livrare este de pȃnă la <strong>15-20 zile lucrătoare </strong>."
+  },
+  "to_shipping_and_return": "Pentru mai multe informații mergeți pe pagina TRANSORT SI RETUR"
 }
