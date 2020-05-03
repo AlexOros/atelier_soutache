@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Atelier Soutache`,
@@ -35,7 +39,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://localhost:1337`,
+        apiURL: process.env.GATSBY_API_BASE_URL,
         queryLimit: 1000, // Default to 100
         contentTypes: [`product`, `testimonial`],
         // Possibility to login with a strapi user, when content types are not publically available (optional).
@@ -53,7 +57,7 @@ module.exports = {
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
         fieldName: "products",
         // Url to query from
-        url: "http://localhost:1337/graphql",
+        url: `${process.env.GATSBY_API_BASE_URL}/graphql`,
       },
     },
     {
