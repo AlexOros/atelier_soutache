@@ -39,8 +39,8 @@ export default ({ data }) => {
 
   useEffect(() => {
     if (products.length === 0) navigate("/")
-    setStore(() => products.find(prod => prod.id === product.id))
-  }, [product.id, products])
+    setStore(() => products.find(prod => prod.strapiId === product.strapiId))
+  }, [product.strapiId, products])
 
   useEffect(() => {
     if (product.title) {
@@ -168,12 +168,12 @@ export default ({ data }) => {
             </Box>
           </Box>
 
-          <Box {...getRevealAnimation("slide-left")} className="info">
-            <Box ml={[0, -5]} mt={[-1, -4]} mb={[2, 3, 4]}>
-              {!smallScreens && (
+          <Box {...getRevealAnimation("slide-left")} className="info" mt={2}>
+            {!smallScreens && (
+              <Box ml={[0, -5]} mt={[-1, -4]} mb={[2, 3, 4]}>
                 <Title variant="h5" title={name.first} subtitle={name.last} />
-              )}
-            </Box>
+              </Box>
+            )}
             <Box mb={1} className="price">
               {product.old_price && (
                 <span className="old">{product.old_price} &euro;</span>
@@ -219,6 +219,7 @@ export default ({ data }) => {
 export const query = graphql`
   query($slug: String!) {
     strapiProduct(slug: { eq: $slug }) {
+      strapiId
       info_en
       info_ro
       old_price

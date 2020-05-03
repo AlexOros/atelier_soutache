@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Pagination from "@material-ui/lab/Pagination"
 import { config, animated, useTrail } from "react-spring"
-import uuid from "short-uuid"
 
 import { Box, useTheme, useMediaQuery } from "@material-ui/core"
 import usePagination from "../../hooks/usePagination"
@@ -37,9 +36,11 @@ const query = graphql`
 `
 
 const Products = ({ showPagination, amount = 6 }) => {
-  const { products, handleSetProducts, handleAddProductToCart } = useContext(
-    ProductsContext
-  )
+  const {
+    products,
+    handleSetInitialProducts,
+    handleAddProductToCart,
+  } = useContext(ProductsContext)
   const {
     allStrapiProduct: { nodes },
   } = useStaticQuery(query)
@@ -52,8 +53,8 @@ const Products = ({ showPagination, amount = 6 }) => {
   })
 
   useEffect(() => {
-    handleSetProducts(nodes)
-  }, [handleSetProducts, nodes])
+    handleSetInitialProducts(nodes)
+  }, [handleSetInitialProducts, nodes])
 
   useEffectAfterMount(() => {
     setReset(() => false)
@@ -74,7 +75,7 @@ const Products = ({ showPagination, amount = 6 }) => {
         {paginatedItems.length &&
           trail.map(({ y, ...rest }, index) => (
             <animated.div
-              key={uuid.generate()}
+              key={paginatedItems[index].strapiId}
               style={{
                 ...rest,
                 transform: y.interpolate(y => `translate3d(${y}px,0,0)`),

@@ -27,9 +27,9 @@ const ProductsProvider = ({ children }) => {
     setProductsInCart(0)
   }, [])
 
-  const handleSetProducts = useCallback(products => {
+  const handleSetInitialProducts = useCallback(products => {
     setProducts(() =>
-      products.map(prod => {
+      products.reverse().map(prod => {
         prod.originalStock = prod.stock
         return prod
       })
@@ -38,15 +38,17 @@ const ProductsProvider = ({ children }) => {
 
   const handleAddProductToCart = useCallback(
     product => {
+      if (product.stock < 1) return
+
       let existingProductInCart = null
       setProducts(oldProducts =>
         oldProducts.map(prod => {
-          if (prod.id === product.id && product.stock > 0) {
+          if (prod.strapiId === product.strapiId && product.stock > 0) {
             prod.stock -= 1
 
             setProductsInCart(amount => (amount += 1))
             existingProductInCart = cart.find(
-              cartProd => cartProd.id === product.id
+              cartProd => cartProd.strapiId === product.strapiId
             )
           }
           return prod
@@ -56,7 +58,7 @@ const ProductsProvider = ({ children }) => {
       setCart(oldCartProducts => {
         if (existingProductInCart) {
           return oldCartProducts.map(cartProd =>
-            cartProd.id === product.id
+            cartProd.strapiId === product.strapiId
               ? { ...cartProd, quantity: cartProd.quantity + 1 }
               : cartProd
           )
@@ -71,22 +73,22 @@ const ProductsProvider = ({ children }) => {
     product => {
       setCart(oldCart => {
         const existingProductInCart = oldCart.find(
-          cartProd => cartProd.id === product.id
+          cartProd => cartProd.strapiId === product.strapiId
         )
         if (!existingProductInCart) return
         if (existingProductInCart.quantity === 1) {
-          return oldCart.filter(prod => prod.id !== product.id)
+          return oldCart.filter(prod => prod.strapiId !== product.strapiId)
         }
 
         return oldCart.map(prod => {
-          if (prod.id === product.id) prod.quantity -= 1
+          if (prod.strapiId === product.strapiId) prod.quantity -= 1
           return prod
         })
       })
 
       setProducts(oldProducts =>
         oldProducts.map(prod => {
-          if (prod.id === product.id) {
+          if (prod.strapiId === product.strapiId) {
             prod.stock += 1
             setProductsInCart(amount => (amount -= 1))
           }
@@ -105,7 +107,7 @@ const ProductsProvider = ({ children }) => {
         productsInCart,
         products,
         totalSumInCart,
-        handleSetProducts,
+        handleSetInitialProducts,
         handleEmptyCart,
         handleRemoveProductFromCart,
         handleAddProductToCart,

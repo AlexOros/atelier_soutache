@@ -3,88 +3,12 @@ import { useTranslation } from "react-i18next"
 import { Box, Typography } from "@material-ui/core"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import styled from "styled-components"
+
 import { getRevealAnimation } from "../utils"
-
 import { SEO, Section, Title, Slider } from "../components"
-
-const StyledHero = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  max-width: 1200px;
-  margin: 0 auto;
-  grid-gap: 2rem;
-  justify-content: center;
-
-  ${({ theme }) => theme.breakpoints.up("md")} {
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .image {
-    position: relative;
-    width: 400px;
-    justify-self: center;
-    margin-top: ${({ theme }) => theme.spacing(8)};
-    max-height: 583px;
-
-    img {
-      max-height: 583px;
-    }
-
-    &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: block;
-      background: ${({ theme }) => theme.palette.background.default};
-      overflow: hidden;
-      animation: ${({ theme }) => theme.keyframes.tiltLeft} 2s 600ms forwards
-        ease-in-out;
-    }
-
-    ${({ theme }) => theme.breakpoints.down("420")} {
-      margin: 0 calc(-50vw + 50%);
-      margin-top: ${({ theme }) => theme.spacing(8)};
-      width: inherit;
-      justify-self: inherit;
-    }
-
-    ${({ theme }) => theme.breakpoints.up("md")} {
-      margin: 0;
-      max-width: 400px;
-      width: inherit;
-      justify-self: inherit;
-    }
-  }
-
-  .text:first-letter {
-    font-size: 1.4rem;
-    font-weight: bold;
-  }
-
-  .text {
-    margin: 0 calc(-30vw + 30%);
-    max-width: 600px;
-    justify-self: center;
-    background: ${({ theme }) => theme.palette.background.default};
-    ${({ theme }) => theme.breakpoints.up("md")} {
-      max-width: 700px;
-    }
-  }
-`
+import { StyledHero, StyledStorySection } from "./styles/about.style.js"
 
 const getStartingNumber = str => str.replace(/\D+/, "")
-
-const StyledStorySection = styled.div`
-  max-width: 540px;
-  margin: 0 auto;
-  .image {
-    padding: 4px;
-  }
-`
 
 const SLIDER_OPTIONS = {
   centerPadding: "20px",
@@ -92,7 +16,7 @@ const SLIDER_OPTIONS = {
   centerMode: true,
 }
 
-export default ({ data }) => {
+const AboutPage = ({ data }) => {
   const {
     hero: { nodes: heroImg },
     slider: { nodes: sliderImages },
@@ -107,7 +31,6 @@ export default ({ data }) => {
       ),
     [sliderImages]
   )
-  const sixEmptyElementArray = useMemo(() => new Array(6).fill(""), [])
 
   return (
     <>
@@ -134,11 +57,9 @@ export default ({ data }) => {
             className="text"
             {...getRevealAnimation("slide-left")}
           >
-            {sixEmptyElementArray.map((skip, index) => (
+            {Object.values(t("section-1.text")).map((text, index) => (
               <Box key={index} my={[2, 3]}>
-                <Typography variant="body1">
-                  {t(`section-1.text.${index}`)}
-                </Typography>
+                <Typography variant="body1">{text}</Typography>
               </Box>
             ))}
           </Box>
@@ -158,8 +79,8 @@ export default ({ data }) => {
         </Box>
         <StyledStorySection {...getRevealAnimation("slide-left")}>
           <Slider options={SLIDER_OPTIONS}>
-            {sortedSliderImages.map(({ id, childImageSharp }) => (
-              <Box className="image" maxWidth={600} key={id}>
+            {sortedSliderImages.map(({ childImageSharp }, index) => (
+              <Box className="image" maxWidth={600} key={index}>
                 <Img fluid={childImageSharp.fluid} />
               </Box>
             ))}
@@ -194,3 +115,5 @@ export const query = graphql`
     }
   }
 `
+
+export default AboutPage

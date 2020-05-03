@@ -1,18 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState, useEffect, useCallback, useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { navigate } from "gatsby"
 import Img from "gatsby-image"
-import {
-  Box,
-  Typography,
-  Button,
-  ClickAwayListener,
-  IconButton,
-} from "@material-ui/core"
+import { Box, Typography, Button, ClickAwayListener } from "@material-ui/core"
 import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded"
-import EyeIcon from "../../assets/svg/view-more.svg"
-import EyeIconClosed from "../../assets/svg/view-more-close.svg"
 
 import { isMobile } from "../../utils"
 import StyledProduct from "./Product.style"
@@ -21,7 +13,6 @@ const Product = ({ handleAddProductToCart, product }) => {
   const { title, price, old_price, image, stock } = product
   const [showDetails, setShowDetails] = useState(false)
   const [outOfStock, setOutOfStock] = useState(false)
-  const [isMobileBool, setIsMobileBool] = useState()
   const [name, setName] = useState({ first: "", last: "" })
   const { t } = useTranslation("common")
 
@@ -40,17 +31,17 @@ const Product = ({ handleAddProductToCart, product }) => {
     }
   }, [stock])
 
-  useEffect(() => {
-    setIsMobileBool(isMobile())
-  }, [])
+  const isMobileBool = useMemo(() => isMobile(), [])
 
   const handleAddProductToCartWithCheck = useCallback(() => {
     if (!showDetails) return
-    if (!stock < 1) handleAddProductToCart(product)
-  }, [showDetails, stock, handleAddProductToCart, product])
+    handleAddProductToCart(product)
+  }, [showDetails, handleAddProductToCart, product])
 
   return (
-    <ClickAwayListener onClickAway={() => setShowDetails(false)}>
+    <ClickAwayListener
+      onClickAway={() => isMobileBool && setShowDetails(false)}
+    >
       <StyledProduct
         onMouseEnter={() => !isMobileBool && setShowDetails(true)}
         onMouseLeave={() => !isMobileBool && setShowDetails(false)}

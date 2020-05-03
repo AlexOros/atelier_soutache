@@ -117,7 +117,8 @@ const IndexPage = ({ data }) => {
             {...getRevealAnimation("slide-left")}
             align="right"
             variant="h4"
-            title="Soutache..."
+            title="Recent"
+            subtitle="Adaugate"
           />
         </Box>
         <Box ref={setProductsRef}>{areProductsVisible && <Products />}</Box>

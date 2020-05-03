@@ -187,7 +187,7 @@ const Cart = ({
         {cart.length ? (
           cart.map(item => (
             <CartProduct
-              key={item.id}
+              key={item.strapiId}
               handleRemoveProductFromCart={() =>
                 handleRemoveProductFromCart(item)
               }
