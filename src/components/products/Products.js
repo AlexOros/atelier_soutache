@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Pagination from "@material-ui/lab/Pagination"
 import { config, animated, useTrail } from "react-spring"
+import uuid from "short-uuid"
 
 import { Box, useTheme, useMediaQuery } from "@material-ui/core"
 import usePagination from "../../hooks/usePagination"
@@ -70,20 +71,21 @@ const Products = ({ showPagination, amount = 6 }) => {
   return (
     <Box>
       <StyledProducts>
-        {trail.map(({ y, ...rest }, index) => (
-          <animated.div
-            key={paginatedItems[index].id}
-            style={{
-              ...rest,
-              transform: y.interpolate(y => `translate3d(${y}px,0,0)`),
-            }}
-          >
-            <Product
-              product={paginatedItems[index]}
-              handleAddProductToCart={handleAddProductToCart}
-            />
-          </animated.div>
-        ))}
+        {paginatedItems.length &&
+          trail.map(({ y, ...rest }, index) => (
+            <animated.div
+              key={uuid.generate()}
+              style={{
+                ...rest,
+                transform: y.interpolate(y => `translate3d(${y}px,0,0)`),
+              }}
+            >
+              <Product
+                product={paginatedItems[index]}
+                handleAddProductToCart={handleAddProductToCart}
+              />
+            </animated.div>
+          ))}
       </StyledProducts>
 
       {showPagination && (

@@ -41,6 +41,7 @@
     "react-slick": "^0.25.2",
     "react-spring": "^8.0.27",
     "sal.js": "^0.7.5",
+    "short-uuid": "^3.1.1",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.1.0"
   },
