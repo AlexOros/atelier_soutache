@@ -15,10 +15,10 @@ import {
   Drawer,
   Cart,
 } from "../../components"
-import StyledHeader from "./Header.style"
 import useWindowTopDistance from "../../hooks/useWindowTopDistance"
 import LogoLargeImage from "../../../static/logo_large.png"
 import LogoSmallImage from "../../../static/logo_small.png"
+import StyledHeader from "./Header.style"
 
 const Header = () => {
   const { t } = useTranslation()
@@ -58,17 +58,17 @@ const Header = () => {
       return (
         <Box className={className}>
           <Box>
-            <NavLink onClick={handleCloseNavbar} to="/">
+            <NavLink to="/" onClick={handleCloseNavbar}>
               {t("home:title")}
             </NavLink>
           </Box>
           <Box>
-            <NavLink onClick={handleCloseNavbar} to="/about">
+            <NavLink to="/about" onClick={handleCloseNavbar}>
               {t("about:title")}
             </NavLink>
           </Box>
           <Box>
-            <NavLink onClick={handleCloseNavbar} to="/shop">
+            <NavLink to="/shop" onClick={handleCloseNavbar}>
               {t("shop:title")}
             </NavLink>
           </Box>

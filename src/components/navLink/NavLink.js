@@ -19,7 +19,11 @@ const NavLink = ({ children, ...restOfProps }) => {
   const [isActive, setIsActive] = useState(false)
 
   const handleIsActive = useCallback(({ isCurrent }) => {
-    setIsActive(isCurrent)
+    setTimeout(() => {
+      // Error: Cannot update a component <SomeComponent> while rendering a different component
+      // See https://github.com/facebook/react/issues/18178#issuecomment-595846312
+      setIsActive(() => isCurrent)
+    }, 0)
   }, [])
 
   return (
