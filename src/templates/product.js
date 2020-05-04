@@ -24,7 +24,7 @@ import ArrowBackIosRoundedIcon from "@material-ui/icons/ArrowBackIosRounded"
 import ReactMarkdown from "react-markdown"
 
 import { Section, SEO, Title, Info } from "../components"
-import StyledProductPage from "./styles/product.style"
+import StyledProductPage from "../assets/styles/productPage.style"
 import { getRevealAnimation } from "../utils"
 
 export default ({ data }) => {

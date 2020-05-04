@@ -8,7 +8,7 @@ import ArrowForwardIosRoundedIcon from "@material-ui/icons/ArrowForwardIosRounde
 
 import { randomNumFromZeroTo, getRevealAnimation } from "../utils"
 import { Title, Section, SEO, Products, Testimonials } from "../components"
-import StyledHomePage from "./styles/home.style"
+import StyledHomePage from "../assets/styles/homePage.style"
 import useIsVisible from "../hooks/useIsVisible"
 
 const IndexPage = ({ data }) => {

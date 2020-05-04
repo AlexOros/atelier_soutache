@@ -32,11 +32,6 @@ module.exports = {
     },
 
     {
-      resolve: "gatsby-plugin-exclude",
-      // Ignoring anything inside the styles folder in pages
-      options: { paths: ["/styles/", "/styles/**"] },
-    },
-    {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: process.env.GATSBY_API_BASE_URL,

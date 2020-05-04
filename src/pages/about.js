@@ -6,7 +6,10 @@ import Img from "gatsby-image"
 
 import { getRevealAnimation } from "../utils"
 import { SEO, Section, Title, Slider } from "../components"
-import { StyledHero, StyledStorySection } from "./styles/about.style.js"
+import {
+  StyledHero,
+  StyledStorySection,
+} from "../assets/styles/aboutPage.style.js"
 
 const getStartingNumber = str => str.replace(/\D+/, "")
 

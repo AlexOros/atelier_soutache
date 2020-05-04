@@ -8,7 +8,7 @@ import { Title, Section, SEO } from "../components"
 import { navigate } from "gatsby"
 import { getRevealAnimation } from "../utils"
 
-import StyledSummary from "./styles/checkout.style"
+import StyledSummary from "../assets/styles/checkoutPage.style"
 
 const Checkout = () => {
   const { t, i18n } = useTranslation(["common", "checkout"])
