@@ -25,8 +25,9 @@ const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isNavbarOpen, setIsNavbarOpen] = useState(false)
   const {
-    productsInCart,
+    totalProductsInCart,
     cart,
+    currency,
     totalSumInCart,
     handleRemoveProductFromCart,
     handleEmptyCart,
@@ -116,7 +117,7 @@ const Header = () => {
         <Box className="shop">
           {!showMobileHeader && <LanguageSelector />}
           <CartIcon
-            productsInCart={productsInCart}
+            totalProductsInCart={totalProductsInCart}
             handleClick={handleClickCart}
           />
         </Box>
@@ -137,11 +138,12 @@ const Header = () => {
           handleCloseDrawer={() => setIsCartOpen(false)}
         >
           <Cart
+            currency={currency}
             handleCloseDrawer={() => setIsCartOpen(false)}
             handleRemoveProductFromCart={handleRemoveProductFromCart}
             handleEmptyCart={handleEmptyCart}
             cart={cart}
-            productsInCart={productsInCart}
+            totalProductsInCart={totalProductsInCart}
             totalSumInCart={totalSumInCart}
           />
         </Drawer>

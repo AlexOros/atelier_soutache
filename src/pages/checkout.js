@@ -12,9 +12,12 @@ import StyledSummary from "./styles/checkout.style"
 
 const Checkout = () => {
   const { t, i18n } = useTranslation(["common", "checkout"])
-  const { cart, totalSumInCart, handleRemoveProductFromCart } = useContext(
-    ProductsContext
-  )
+  const {
+    cart,
+    currency,
+    totalSumInCart,
+    handleRemoveProductFromCart,
+  } = useContext(ProductsContext)
 
   const handleRemove = useCallback(
     item => {
@@ -53,7 +56,9 @@ const Checkout = () => {
                   <Typography variant="h6">{item.title}</Typography>
                 </Box>
                 <Box className="quantity"> Quantity: {item.quantity}</Box>
-                <Box className="price">Price: {item.price} EUR</Box>
+                <Box className="price">
+                  Price: {item.price.toLocaleString()} {currency}
+                </Box>
                 <Box className="delete">
                   <IconButton
                     color="primary"
@@ -75,7 +80,10 @@ const Checkout = () => {
                   0
                 )}
               </Box>
-              <Box className="sum">Total: {totalSumInCart} EUR</Box>
+              <Box className="sum">
+                Total: {totalSumInCart.toLocaleString()}{" "}
+                <span className="currency">{currency}</span>
+              </Box>
             </Box>
           </Box>
         </StyledSummary>

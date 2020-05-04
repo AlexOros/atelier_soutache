@@ -38,7 +38,13 @@ const CartNoProduct = ({ t }) => (
   </Box>
 )
 
-const Total = ({ totalSumInCart, t, handleEmptyCart, handleCloseDrawer }) => {
+const Total = ({
+  totalSumInCart,
+  currency,
+  t,
+  handleEmptyCart,
+  handleCloseDrawer,
+}) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const classes = useStyles()
   const handleTogglePopper = event => {
@@ -54,7 +60,7 @@ const Total = ({ totalSumInCart, t, handleEmptyCart, handleCloseDrawer }) => {
         <div></div>
         <Typography variant="h6">
           Total: {totalSumInCart}
-          <span className="euro"> &euro;</span>{" "}
+          <span className="currency">{currency}</span>
         </Typography>
         <ClickAwayListener onClickAway={() => setAnchorEl(null)}>
           <Box>
@@ -116,6 +122,7 @@ const Total = ({ totalSumInCart, t, handleEmptyCart, handleCloseDrawer }) => {
 }
 
 const CartProduct = ({
+  currency,
   title,
   image,
   price,
@@ -149,7 +156,9 @@ const CartProduct = ({
             {title}
           </Typography>
           <div>
-            {price} &euro; <span> &#x2715;</span> {quantity}
+            {price.toLocaleString()}{" "}
+            <span className="currency">{currency}</span> <span> &#x2715;</span>{" "}
+            {quantity}
           </div>
         </div>
 
@@ -163,7 +172,8 @@ const CartProduct = ({
 
 const Cart = ({
   cart = [],
-  productsInCart,
+  currency,
+  totalProductsInCart,
   handleRemoveProductFromCart,
   handleEmptyCart,
   totalSumInCart,
@@ -172,12 +182,13 @@ const Cart = ({
   const { t } = useTranslation("common")
 
   return (
-    <StyledCartDrawer productsInCart={productsInCart}>
+    <StyledCartDrawer totalProductsInCart={totalProductsInCart}>
       <Box>
         <Box mb={[1, 2, 3]} className="header-title">
           <Typography variant="h6">{t("my_bag")}</Typography>
           <span className="count">
-            {productsInCart} {t("products", { count: productsInCart })}
+            {totalProductsInCart}{" "}
+            {t("products", { count: totalProductsInCart })}
             <ShoppingBasketRoundedIcon />
           </span>
         </Box>
@@ -187,6 +198,7 @@ const Cart = ({
         {cart.length ? (
           cart.map(item => (
             <CartProduct
+              currency={currency}
               key={item.strapiId}
               handleRemoveProductFromCart={() =>
                 handleRemoveProductFromCart(item)
@@ -201,6 +213,7 @@ const Cart = ({
       <Box my={1}>
         <Divider />
         <Total
+          currency={currency}
           handleCloseDrawer={handleCloseDrawer}
           handleEmptyCart={handleEmptyCart}
           t={t}

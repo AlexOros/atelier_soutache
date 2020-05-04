@@ -5,7 +5,8 @@ const ProductsContext = createContext()
 const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
-  const [productsInCart, setProductsInCart] = useState(0)
+  const [totalProductsInCart, setProductsInCart] = useState(0)
+  const [currency /*setCurrency*/] = useState("RON")
 
   const totalSumInCart = useMemo(() => {
     return cart.reduce((total, currItem) => {
@@ -103,10 +104,11 @@ const ProductsProvider = ({ children }) => {
   return (
     <ProductsContext.Provider
       value={{
+        currency,
         cart,
-        productsInCart,
+        totalProductsInCart,
         products,
-        totalSumInCart,
+        totalSumInCart: totalSumInCart.toLocaleString(),
         handleSetInitialProducts,
         handleEmptyCart,
         handleRemoveProductFromCart,

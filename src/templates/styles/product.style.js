@@ -107,6 +107,10 @@ const StyledProductPage = styled(Box)`
       display: flex;
       justify-content: space-between;
     }
+
+    .currency {
+      font-size: ${({ theme }) => theme.typography.pxToRem(14)};
+    }
   }
 `
 

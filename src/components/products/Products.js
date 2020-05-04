@@ -37,6 +37,7 @@ const query = graphql`
 
 const Products = ({ showPagination, amount = 6 }) => {
   const {
+    currency,
     products,
     handleSetInitialProducts,
     handleAddProductToCart,
@@ -82,6 +83,7 @@ const Products = ({ showPagination, amount = 6 }) => {
               }}
             >
               <Product
+                currency={currency}
                 product={paginatedItems[index]}
                 handleAddProductToCart={handleAddProductToCart}
               />

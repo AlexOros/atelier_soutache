@@ -46,13 +46,13 @@ export const StyledCartDrawer = styled.div`
 
   .items {
     max-height: ${THREE_ITEMS_HEIGHT + "px"};
-    overflow-y: ${({ productsInCart }) =>
-      productsInCart > 3 ? "scroll" : "inherit"};
+    overflow-y: ${({ totalProductsInCart }) =>
+      totalProductsInCart > 3 ? "scroll" : "inherit"};
 
     ${({ theme }) => theme.breakpoints.up("md")} {
       max-height: ${FOUR_ITEMS_HEIGHT + "px"};
-        overflow-y: ${({ productsInCart }) =>
-          productsInCart > 4 ? "scroll" : "inherit"};
+        overflow-y: ${({ totalProductsInCart }) =>
+          totalProductsInCart > 4 ? "scroll" : "inherit"};
       }
 
     .title {
@@ -83,6 +83,8 @@ export const StyledCartDrawer = styled.div`
       border-radius: 6px;
       border: 3px solid  rgba(77, 77, 77, 0.99);
     }
+
+
   }
 
   .no-item {
@@ -108,6 +110,10 @@ export const StyledCartDrawer = styled.div`
       grid-template-columns: 120px 1fr 50px;
       grid-gap: 15px;
     }
+
+   .currency {
+      font-size: ${({ theme }) => theme.typography.pxToRem(11)};
+    }
    
 
   .image {
@@ -120,6 +126,7 @@ export const StyledCartDrawer = styled.div`
       max-height: 120px;
     }
   }
+
 `
 
 export const StyledTotal = styled(Box)`
@@ -133,8 +140,7 @@ export const StyledTotal = styled(Box)`
     }
   }
 
-  .euro {
-    font-weight: 400;
-    font-size: 1rem;
+  .currency {
+    font-size: ${({ theme }) => theme.typography.pxToRem(14)};
   }
 `

@@ -64,6 +64,10 @@ const StyledSummary = styled.div`
       }
     }
   }
+
+  .currency {
+    font-size: ${({ theme }) => theme.typography.pxToRem(14)};
+  }
 `
 
 export default StyledSummary

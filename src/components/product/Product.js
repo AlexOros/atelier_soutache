@@ -9,7 +9,7 @@ import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded"
 import { isMobile } from "../../utils"
 import StyledProduct from "./Product.style"
 
-const Product = ({ handleAddProductToCart, product }) => {
+const Product = ({ handleAddProductToCart, product, currency }) => {
   const { title, price, old_price, image, stock } = product
   const [showDetails, setShowDetails] = useState(false)
   const [outOfStock, setOutOfStock] = useState(false)
@@ -62,9 +62,17 @@ const Product = ({ handleAddProductToCart, product }) => {
           </Box>
 
           <Typography className="price" variant="body1">
-            {old_price && <span className="old">{old_price} &euro;</span>}
+            {old_price && (
+              <span className="old">
+                {old_price.toLocaleString()}{" "}
+                <span className="currency">{currency}</span>
+              </span>
+            )}
             <span className="new">
-              <span>{price} &euro;</span>
+              <span>
+                {price.toLocaleString()}{" "}
+                <span className="currency">{currency}</span>
+              </span>
               <span>
                 <span className="stock">
                   {t("stock")}: {stock}

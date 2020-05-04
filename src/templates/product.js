@@ -35,7 +35,9 @@ export default ({ data }) => {
   const [name, setName] = useState({ first: "", last: "" })
   const [seeMore, setSeeMore] = useState(false)
   const [storeProduct, setStore] = useState(null)
-  const { products, handleAddProductToCart } = useContext(ProductsContext)
+  const { currency, products, handleAddProductToCart } = useContext(
+    ProductsContext
+  )
 
   useEffect(() => {
     if (products.length === 0) navigate("/")
@@ -178,12 +180,18 @@ export default ({ data }) => {
             )}
             <Box mb={1} className="price">
               {product.old_price && (
-                <span className="old">{product.old_price} &euro;</span>
+                <div className="old">
+                  {product.old_price.toLocaleString()}
+                  <span className="currency">{currency}</span>
+                </div>
               )}
-              <span className="new">{product.price} &euro;</span>
+              <div className="new">
+                {product.price.toLocaleString()}
+                <span className="currency">{currency}</span>
+              </div>
             </Box>
             <Box className="stock">
-              {t("common:stock")}{" "}
+              {t("common:stock")}
               {storeProduct && (
                 <span className="stock-number">{storeProduct.stock}</span>
               )}

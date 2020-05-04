@@ -201,6 +201,10 @@ const StyledProduct = styled(Box)`
       font-weight: ${({ theme }) => theme.typography.fontWeightBold};
     }
   }
+
+  .currency {
+    font-size: ${({ theme }) => theme.typography.pxToRem(14)};
+  }
 `
 
 export default StyledProduct

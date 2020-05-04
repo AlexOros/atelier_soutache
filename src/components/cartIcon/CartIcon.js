@@ -8,7 +8,6 @@ const StyledBadge = withStyles(theme => ({
     right: 5,
     top: 15,
     border: `2px solid ${theme.palette.background.paper}`,
-    background: `${theme.palette.error.dark}`,
     padding: "0 4px",
     background: "orangered",
   },
@@ -32,10 +31,10 @@ const StyledCart = styled(Box)`
   }
 `
 
-const Cart = ({ handleClick, productsInCart }) => {
+const Cart = ({ handleClick, totalProductsInCart }) => {
   return (
     <StyledCart>
-      <StyledBadge color="primary" badgeContent={productsInCart}>
+      <StyledBadge color="primary" badgeContent={totalProductsInCart}>
         <ShoppingBasketRoundedIcon onClick={() => handleClick()} />
       </StyledBadge>
     </StyledCart>
