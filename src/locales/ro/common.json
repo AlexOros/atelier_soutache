@@ -18,5 +18,8 @@
   "remove_all_products": "Scoate toate produsele din geantă?",
   "find_out_more": "află mai multe",
   "all_rights_reserved": "toate drepturile reservate",
-  "coded_by": "Conceput si codat de"
+  "coded_by": "Conceput si codat de",
+  "quantity": "cantitate",
+  "price": "preț",
+  "items": "produse"
 }

@@ -55,9 +55,12 @@ const Checkout = () => {
                 <Box className="title">
                   <Typography variant="h6">{item.title}</Typography>
                 </Box>
-                <Box className="quantity"> Quantity: {item.quantity}</Box>
+                <Box className="quantity">
+                  {" "}
+                  {t("common:quantity")}: {item.quantity}
+                </Box>
                 <Box className="price">
-                  Price: {item.price.toLocaleString()} {currency}
+                  {t("common:price")}: {item.price.toLocaleString()} {currency}
                 </Box>
                 <Box className="delete">
                   <IconButton
@@ -74,14 +77,14 @@ const Checkout = () => {
             ))}
             <Box className="total">
               <Box className="quantity">
-                Items:{" "}
+                {t("common:items")}:{" "}
                 {cart.reduce(
                   (total, currItem) => (total += currItem.quantity),
                   0
                 )}
               </Box>
               <Box className="sum">
-                Total: {totalSumInCart.toLocaleString()}{" "}
+                total: {totalSumInCart.toLocaleString()}{" "}
                 <span className="currency">{currency}</span>
               </Box>
             </Box>

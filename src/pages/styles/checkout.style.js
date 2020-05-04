@@ -15,6 +15,7 @@ const itemBase = css`
 const StyledSummary = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  text-transform: capitalize;
 
   .summary {
     display: grid;
@@ -24,6 +25,7 @@ const StyledSummary = styled.div`
     .item {
       ${itemBase};
       transition: background-color 200ms ease-in;
+      text-transform: capitalized;
     }
 
     .item:hover {
@@ -41,10 +43,6 @@ const StyledSummary = styled.div`
       border-radius: 3px 0 0 3px;
       margin: -10px 10px -10px -10px;
       transition: all 200ms ease-in;
-    }
-
-    .title {
-      text-transform: capitalize;
     }
 
     .delete {
