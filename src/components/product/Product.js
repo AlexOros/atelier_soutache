@@ -13,6 +13,7 @@ const Product = ({ handleAddProductToCart, product, currency }) => {
   const { title, price, old_price, image, stock } = product
   const [showDetails, setShowDetails] = useState(false)
   const [outOfStock, setOutOfStock] = useState(false)
+  const [isMobileFlag, setIsMobileFlag] = useState(false)
   const [name, setName] = useState({ first: "", last: "" })
   const { t } = useTranslation("common")
 
@@ -31,7 +32,9 @@ const Product = ({ handleAddProductToCart, product, currency }) => {
     }
   }, [stock])
 
-  const isMobileBool = useMemo(() => isMobile(), [])
+  useEffect(() => {
+    setIsMobileFlag(() => isMobile())
+  }, [])
 
   const handleAddProductToCartWithCheck = useCallback(() => {
     if (!showDetails) return
@@ -40,12 +43,12 @@ const Product = ({ handleAddProductToCart, product, currency }) => {
 
   return (
     <ClickAwayListener
-      onClickAway={() => isMobileBool && setShowDetails(false)}
+      onClickAway={() => isMobileFlag && setShowDetails(false)}
     >
       <StyledProduct
-        onMouseEnter={() => !isMobileBool && setShowDetails(true)}
-        onMouseLeave={() => !isMobileBool && setShowDetails(false)}
-        onClick={() => isMobileBool && setShowDetails(oldShowDetails => true)}
+        onMouseEnter={() => !isMobileFlag && setShowDetails(true)}
+        onMouseLeave={() => !isMobileFlag && setShowDetails(false)}
+        onClick={() => isMobileFlag && setShowDetails(oldShowDetails => true)}
         details={showDetails ? 1 : 0}
         boxShadow={3}
       >
@@ -85,7 +88,7 @@ const Product = ({ handleAddProductToCart, product, currency }) => {
             <Button
               disabled={outOfStock}
               onClick={handleAddProductToCartWithCheck}
-              size={!isMobileBool ? "small" : "medium"}
+              size={!isMobileFlag ? "small" : "medium"}
               startIcon={<ShoppingBasketRoundedIcon />}
               className={`button ${outOfStock && "disabled"}`}
             >
@@ -94,7 +97,7 @@ const Product = ({ handleAddProductToCart, product, currency }) => {
             <Button
               onClick={() => showDetails && navigate(product.slug)}
               mt={[1, 0]}
-              size={!isMobileBool ? "small" : "medium"}
+              size={!isMobileFlag ? "small" : "medium"}
               endIcon={<ArrowForwardRoundedIcon />}
               className="button"
             >

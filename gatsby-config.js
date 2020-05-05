@@ -24,8 +24,8 @@ module.exports = {
         name: `Atelier Soutache`,
         short_name: `Soutache`,
         start_url: `/`,
-        background_color: `#606060`,
-        theme_color: `#606060`,
+        background_color: `#f9d2d0`,
+        theme_color: `#f9d2d0`,
         display: `minimal-ui`,
         icon: `static/favicon.png`, // This path is relative to the root of the site.
       },

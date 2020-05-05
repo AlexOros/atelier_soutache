@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React, { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { Box } from "@material-ui/core"
 
@@ -7,8 +7,11 @@ import { getRevealAnimation, isMobile } from "../utils"
 
 export default () => {
   const { t } = useTranslation("shop")
+  const [isMobileFlag, setIsMobile] = useState(false)
 
-  const isMobileScreen = useMemo(() => isMobile(), [])
+  useEffect(() => {
+    setIsMobile(isMobile())
+  }, [])
 
   return (
     <>
@@ -23,7 +26,7 @@ export default () => {
             title={t("title")}
           />
         </Box>
-        <Products showPagination amount={isMobileScreen ? 2 : 6} />
+        <Products showPagination amount={isMobileFlag ? 2 : 6} />
       </Section>
     </>
   )
