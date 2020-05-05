@@ -15,7 +15,10 @@ const isMobile = () => {
   ]
 
   return toMatch.some(toMatchItem => {
-    return navigator.userAgent.match(toMatchItem)
+    if (process.env.BROWSER) {
+      return navigator.userAgent.match(toMatchItem)
+    }
+    return false
   })
 }
 
