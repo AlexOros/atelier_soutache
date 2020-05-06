@@ -172,33 +172,36 @@ export default ({ data }) => {
             </Box>
           </Box>
 
-          <Box {...getRevealAnimation("slide-left")} className="info" mt={2}>
+          <Box {...getRevealAnimation("slide-left")} mt={2}>
             {!smallScreens && (
               <Box ml={[0, -5]} mt={[-1, -4]} mb={[2, 3, 4]}>
                 <Title variant="h5" title={name.first} subtitle={name.last} />
               </Box>
             )}
-            <Box mb={1} className="price">
+            <Box mb={1} className="old-price">
               {product.old_price && (
-                <div className="old">
+                <>
                   {product.old_price.toLocaleString()}
                   <span className="currency">{currency}</span>
-                </div>
+                </>
               )}
+            </Box>
+            <Box className="details">
               <div className="new">
                 {product.price.toLocaleString()}
                 <span className="currency">{currency}</span>
               </div>
-            </Box>
-            <Box className="stock">
-              {t("common:stock")}
-              {storeProduct && (
-                <span className="stock-number">{storeProduct.stock}</span>
-              )}
+              <div>
+                <span className="stock"> {t("common:stock")}</span>
+                {storeProduct && (
+                  <span className="stock-number">{storeProduct.stock}</span>
+                )}
+              </div>
             </Box>
 
             <Box my={4} className="button-group">
               <Button
+                disableElevation
                 onClick={() => window && window.history.back()}
                 startIcon={<ArrowBackIosRoundedIcon />}
                 variant="contained"
@@ -208,6 +211,7 @@ export default ({ data }) => {
               </Button>
 
               <Button
+                disableElevation
                 onClick={() => handleAddProductToCart(storeProduct)}
                 disabled={storeProduct && storeProduct.stock < 1}
                 startIcon={<ShoppingBasketRoundedIcon />}

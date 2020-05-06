@@ -14,7 +14,7 @@ const StyledProductPage = styled(Box)`
   .product {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: ${({ theme }) => theme.spacing(5)};
+    grid-gap: ${({ theme }) => theme.spacing(3)};
     max-width: 1200px;
     margin: 0 auto;
 
@@ -49,11 +49,17 @@ const StyledProductPage = styled(Box)`
         box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
         ${({ theme }) => theme.breakpoints.down("xs")} {
           width: 100vw;
-          border-radius: 0;
         }
 
         ${({ theme }) => theme.breakpoints.up("md")} {
           width: 50vw;
+          border-radius: 3px;
+        }
+
+        img {
+          ${({ theme }) => theme.breakpoints.up("md")} {
+            border-radius: 3px;
+          }
         }
       }
     }
@@ -75,42 +81,38 @@ const StyledProductPage = styled(Box)`
     }
   }
 
-  .info {
-    .price {
-      font-size: ${({ theme }) => theme.typography.pxToRem(20)};
-      .new {
-        margin-left: ${({ theme }) => theme.spacing(1)};
-      }
-      .old {
-        font-size: 0.9rem;
-        text-decoration: line-through;
-        color: ${({ theme }) => theme.palette.grey[500]};
-        opacity: 1.7;
-        ${({ theme }) => theme.breakpoints.up("sm")} {
-          font-size: 1.2rem;
-        }
-      }
-    }
+  .old-price {
+    font-size: ${({ theme }) => theme.typography.pxToRem(15)};
+    text-decoration: line-through;
+    color: ${({ theme }) => theme.palette.grey[500]};
+    opacity: 1.7;
+  }
+
+  .details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: capitalize;
+    font-size: ${({ theme }) => theme.typography.pxToRem(20)};
+
     .stock {
-      text-transform: capitalize;
       font-size: ${({ theme }) => theme.typography.pxToRem(16)};
-      display: flex;
-      align-items: center;
-      &-number {
-        margin-left: ${({ theme }) => theme.spacing(1)};
-        font-size: ${({ theme }) => theme.typography.pxToRem(20)};
-        font-weight: ${({ theme }) => theme.typography.fontWeightMedium};
-      }
     }
 
-    .button-group {
-      display: flex;
-      justify-content: space-between;
+    .stock-number {
+      margin-left: ${({ theme }) => theme.spacing(1)};
+      font-size: ${({ theme }) => theme.typography.pxToRem(20)};
+      font-weight: ${({ theme }) => theme.typography.fontWeightMedium};
     }
+  }
 
-    .currency {
-      font-size: ${({ theme }) => theme.typography.pxToRem(14)};
-    }
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .currency {
+    font-size: ${({ theme }) => theme.typography.pxToRem(14)};
   }
 `
 
