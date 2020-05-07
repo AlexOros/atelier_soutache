@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import { useTranslation } from "react-i18next"
-import { navigate } from "gatsby"
 import Img from "gatsby-image"
 import { Box, Typography, Button, ClickAwayListener } from "@material-ui/core"
 import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded"
 
+import { ButtonLink } from "../../components"
 import { isMobile } from "../../utils"
 import StyledProduct from "./Product.style"
 
@@ -94,15 +94,14 @@ const Product = ({ handleAddProductToCart, product, currency }) => {
             >
               {t("add_to_bag")}
             </Button>
-            <Button
-              onClick={() => showDetails && navigate(product.slug)}
-              mt={[1, 0]}
-              size={!isMobileFlag ? "small" : "medium"}
-              endIcon={<ArrowForwardRoundedIcon />}
+            <ButtonLink
               className="button"
+              endIcon={<ArrowForwardRoundedIcon />}
+              to={`/${product.slug}`}
+              size={!isMobileFlag ? "small" : "medium"}
             >
               {t("to_product")}
-            </Button>
+            </ButtonLink>
           </Box>
         </Box>
         <Box letterSpacing={2} pt={1} px={2} className="footer">

@@ -31,6 +31,7 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: '"Poppins", "sans-serif"',
   },
+
   spacing: factor => `${0.5 * factor}rem`,
 
   mixins: {

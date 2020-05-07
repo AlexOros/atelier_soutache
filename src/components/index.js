@@ -14,6 +14,7 @@ import Info from "./info/Info"
 import Testimonials from "./testimonials/Testimonials"
 import Footer from "./footer/Footer"
 import Slider from "./slider/Slider"
+import ButtonLink from "./buttonLink/ButtonLink"
 
 export {
   Layout,
@@ -32,4 +33,5 @@ export {
   Testimonials,
   Footer,
   Slider,
+  ButtonLink,
 }
