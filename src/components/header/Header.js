@@ -1,12 +1,10 @@
 import React, { useState, useContext, useCallback } from "react"
 import { useTranslation } from "react-i18next"
-import { Box, IconButton, useMediaQuery } from "@material-ui/core"
+import { Box, IconButton, Hidden } from "@material-ui/core"
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded"
-import { useTheme } from "@material-ui/core/styles"
 import MenuOpenRoundedIcon from "@material-ui/icons/MenuOpenRounded"
 import { navigate } from "gatsby"
 
-import { isMobile } from "../../utils"
 import { ProductsContext } from "../../context"
 import {
   NavLink,
@@ -32,26 +30,14 @@ const Header = () => {
     handleRemoveProductFromCart,
     handleEmptyCart,
   } = useContext(ProductsContext)
-
   const hasScrolledMoreThen20px = useWindowTopDistance(20)
-  const theme = useTheme()
-  const showMobileHeader = useMediaQuery(theme.breakpoints.down("sm"))
 
   const handleClickCart = useCallback(() => {
-    let ms = 0
-    if (isNavbarOpen) {
-      ms = 500
-      setIsNavbarOpen(() => false)
-    }
-    setTimeout(() => setIsCartOpen(oldState => !oldState), ms)
-  }, [isNavbarOpen])
+    setIsCartOpen(oldState => !oldState)
+  }, [])
 
   const handleClickNavbar = useCallback(() => {
     setIsNavbarOpen(oldState => !oldState)
-  }, [])
-
-  const handleCloseNavbar = useCallback(() => {
-    isMobile() && setIsNavbarOpen(false)
   }, [])
 
   const getPageLinks = useCallback(
@@ -59,38 +45,39 @@ const Header = () => {
       return (
         <Box className={className}>
           <Box>
-            <NavLink to="/" onClick={handleCloseNavbar}>
+            <NavLink to="/" onClick={() => setIsNavbarOpen(false)}>
               {t("home:title")}
             </NavLink>
           </Box>
           <Box>
-            <NavLink to="/about" onClick={handleCloseNavbar}>
+            <NavLink to="/about" onClick={() => setIsNavbarOpen(false)}>
               {t("about:title")}
             </NavLink>
           </Box>
           <Box>
-            <NavLink to="/shop" onClick={handleCloseNavbar}>
+            <NavLink to="/shop" onClick={() => setIsNavbarOpen(false)}>
               {t("shop:title")}
             </NavLink>
           </Box>
         </Box>
       )
     },
-    [handleCloseNavbar, t]
+    [t]
   )
 
   return (
     <StyledHeader isFixed={hasScrolledMoreThen20px}>
-      <Box className="header">
-        <Box>
-          {!showMobileHeader ? (
-            <img
-              onClick={() => navigate("/")}
-              className="logo-large"
-              src={LogoLargeImage}
-              alt="logo"
-            />
-          ) : (
+      <Box className="container">
+        <Hidden smDown implementation="css">
+          <img
+            onClick={() => navigate("/")}
+            className="logo-large"
+            src={LogoLargeImage}
+            alt="logo"
+          />
+        </Hidden>
+        <Hidden mdUp implementation="css">
+          <Box>
             <IconButton
               onClick={() => handleClickNavbar()}
               color="primary"
@@ -98,12 +85,12 @@ const Header = () => {
             >
               <MenuRoundedIcon />
             </IconButton>
-          )}
-        </Box>
-
-        {!showMobileHeader ? (
-          getPageLinks("nav-links-desktop")
-        ) : (
+          </Box>
+        </Hidden>
+        <Hidden smDown implementation="css">
+          {getPageLinks("nav-links-desktop")}
+        </Hidden>
+        <Hidden mdUp implementation="css">
           <Box textAlign="center">
             <img
               onClick={() => navigate("/")}
@@ -112,10 +99,11 @@ const Header = () => {
               alt="logo"
             />
           </Box>
-        )}
-
+        </Hidden>
         <Box className="shop">
-          {!showMobileHeader && <LanguageSelector />}
+          <Hidden smDown implementation="css">
+            <LanguageSelector />
+          </Hidden>
           <CartIcon
             totalProductsInCart={totalProductsInCart}
             handleClick={handleClickCart}
@@ -131,7 +119,6 @@ const Header = () => {
           </Box>
           {getPageLinks("nav-links-mobile")}
         </Drawer>
-
         <Drawer
           side="right"
           isDrawerOpen={isCartOpen}

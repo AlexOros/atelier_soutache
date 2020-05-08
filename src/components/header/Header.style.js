@@ -30,12 +30,17 @@ const StyledHeader = styled.header`
       isFixed ? `0 ${theme.spacing(2)}` : theme.spacing(2)};
   }
 
-  .header {
+  .container {
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: ${({ theme }) => theme.spacing(2)};
     margin: 0 auto;
     max-width: 1600px;
+
+    ${({ theme }) => theme.breakpoints.up("md")} {
+      grid-template-columns: 1fr 400px 1fr;
+    }
   }
 
   .logo-large {
@@ -49,10 +54,10 @@ const StyledHeader = styled.header`
 
   .nav-links-desktop {
     display: grid;
-    max-width: 800px;
-    gap: ${({ theme }) => theme.spacing(4)};
-    justify-self: center;
+    justify-items: center;
+    align-content: center;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: ${({ theme }) => theme.spacing(4)};
   }
 
   .language-select-mobile {
@@ -77,9 +82,14 @@ const StyledHeader = styled.header`
 
   .shop {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-around;
     align-items: center;
+    justify-content: flex-end;
+
+    button {
+      ${({ theme }) => theme.breakpoints.up("lg")} {
+        margin-right: ${({ theme }) => theme.spacing(4)};
+      }
+    }
   }
 `
 
