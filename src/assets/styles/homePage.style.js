@@ -51,7 +51,7 @@ const StyledHomePage = styled.div`
       justify-content: center;
 
       ${({ theme }) => theme.breakpoints.down("sm")} {
-        margin-top: ${({ theme }) => theme.spacing(20)};
+        margin-top: ${({ theme }) => theme.spacing(13)};
       }
 
       ${({ theme }) => theme.breakpoints.up("md")} {
@@ -62,6 +62,7 @@ const StyledHomePage = styled.div`
       h1 {
         font-size: 3rem;
         position: relative;
+        line-height: 5rem;
 
         ${({ theme }) => theme.breakpoints.down("sm")} {
           text-align: center;

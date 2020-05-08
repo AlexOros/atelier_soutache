@@ -18,7 +18,7 @@ const StyledHeader = styled.header`
   position: relative;
   overflow-y: hidden;
   z-index: ${({ theme }) => theme.zIndex.drawer};
-  padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(3)} `};
+  padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(2)} `};
   height: 5rem;
   background: ${({ theme }) => theme.palette.background.default};
   transition: all 0.5s;

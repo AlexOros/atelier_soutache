@@ -34,7 +34,7 @@ const IndexPage = ({ data }) => {
           />
         </Box>
 
-        <Box my={[6, 4, 0]} className="content">
+        <Box className="content">
           <Box {...getRevealAnimation("slide-left")}>
             <Typography variant="h1">
               <strong>{t("home:section-1.title.1")}</strong>{" "}
