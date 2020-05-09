@@ -15,7 +15,7 @@ const query = graphql`
     allStrapiProduct(filter: { show_product: { eq: true } }) {
       nodes {
         title
-        strapiId
+        uid
         price
         old_price
         stock
@@ -76,7 +76,7 @@ const Products = ({ showPagination, amount = 6 }) => {
         {paginatedItems.length &&
           trail.map(({ y, ...rest }, index) => (
             <animated.div
-              key={paginatedItems[index].strapiId}
+              key={paginatedItems[index].uid}
               style={{
                 ...rest,
                 transform: y.interpolate(y => `translate3d(${y}px,0,0)`),

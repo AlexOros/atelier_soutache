@@ -196,7 +196,7 @@ const Cart = ({
           cart.map(item => (
             <CartProduct
               currency={currency}
-              key={item.strapiId}
+              key={item.uid}
               handleRemoveProductFromCart={() =>
                 handleRemoveProductFromCart(item)
               }

@@ -44,12 +44,12 @@ const ProductsProvider = ({ children }) => {
       let existingProductInCart = null
       setProducts(oldProducts =>
         oldProducts.map(prod => {
-          if (prod.strapiId === product.strapiId && product.stock > 0) {
+          if (prod.uid === product.uid && product.stock > 0) {
             prod.stock -= 1
 
             setProductsInCart(amount => (amount += 1))
             existingProductInCart = cart.find(
-              cartProd => cartProd.strapiId === product.strapiId
+              cartProd => cartProd.uid === product.uid
             )
           }
           return prod
@@ -59,7 +59,7 @@ const ProductsProvider = ({ children }) => {
       setCart(oldCartProducts => {
         if (existingProductInCart) {
           return oldCartProducts.map(cartProd =>
-            cartProd.strapiId === product.strapiId
+            cartProd.uid === product.uid
               ? { ...cartProd, quantity: cartProd.quantity + 1 }
               : cartProd
           )
@@ -74,22 +74,22 @@ const ProductsProvider = ({ children }) => {
     product => {
       setCart(oldCart => {
         const existingProductInCart = oldCart.find(
-          cartProd => cartProd.strapiId === product.strapiId
+          cartProd => cartProd.uid === product.uid
         )
         if (!existingProductInCart) return
         if (existingProductInCart.quantity === 1) {
-          return oldCart.filter(prod => prod.strapiId !== product.strapiId)
+          return oldCart.filter(prod => prod.uid !== product.uid)
         }
 
         return oldCart.map(prod => {
-          if (prod.strapiId === product.strapiId) prod.quantity -= 1
+          if (prod.uid === product.uid) prod.quantity -= 1
           return prod
         })
       })
 
       setProducts(oldProducts =>
         oldProducts.map(prod => {
-          if (prod.strapiId === product.strapiId) {
+          if (prod.uid === product.uid) {
             prod.stock += 1
             setProductsInCart(amount => (amount -= 1))
           }
@@ -100,6 +100,10 @@ const ProductsProvider = ({ children }) => {
 
     []
   )
+
+  const handleSetProducts = products => {
+    console.log("𝕃𝕆𝔾 ⟹: ProductsProvider -> data", products)
+  }
 
   return (
     <ProductsContext.Provider
@@ -113,6 +117,7 @@ const ProductsProvider = ({ children }) => {
         handleEmptyCart,
         handleRemoveProductFromCart,
         handleAddProductToCart,
+        handleSetProducts,
       }}
     >
       {children}

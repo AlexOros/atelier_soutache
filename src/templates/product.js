@@ -41,8 +41,8 @@ export default ({ data }) => {
 
   useEffect(() => {
     if (products.length === 0) navigate("/")
-    setStore(() => products.find(prod => prod.strapiId === product.strapiId))
-  }, [product.strapiId, products])
+    setStore(() => products.find(prod => prod.uid === product.uid))
+  }, [product.uid, products])
 
   useEffect(() => {
     if (product.title) {
@@ -233,7 +233,7 @@ export default ({ data }) => {
 export const query = graphql`
   query($slug: String!) {
     strapiProduct(slug: { eq: $slug }) {
-      strapiId
+      uid
       info_en
       info_ro
       old_price
