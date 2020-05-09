@@ -108,7 +108,7 @@ const ProductsProvider = ({ children }) => {
         cart,
         totalProductsInCart,
         products,
-        totalSumInCart: totalSumInCart.toLocaleString(),
+        totalSumInCart,
         handleSetInitialProducts,
         handleEmptyCart,
         handleRemoveProductFromCart,

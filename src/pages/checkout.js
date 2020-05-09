@@ -43,7 +43,11 @@ const Checkout = () => {
           </Box>
 
           {cart.length ? (
-            <Box my={[2, 4]} className="summary">
+            <Box
+              {...getRevealAnimation("slide-left")}
+              my={[2, 4]}
+              className="summary"
+            >
               {cart.map(item => (
                 <Box
                   onClick={() => navigate(`/${item.slug}`)}

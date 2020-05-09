@@ -51,22 +51,19 @@ const Total = ({
     setAnchorEl(anchorEl ? null : event.currentTarget)
   }
 
-  const open = Boolean(anchorEl)
-  const id = open ? "simple-popper" : undefined
-
   return (
     <StyledTotal m={1}>
       <Box className="total">
         <div></div>
         <Typography variant="h6">
-          Total: {totalSumInCart}
+          Total: {totalSumInCart.toLocaleString()}
           <span className="currency">{currency}</span>
         </Typography>
         <ClickAwayListener onClickAway={() => setAnchorEl(null)}>
           <Box>
             <IconButton
               disabled={!totalSumInCart}
-              aria-describedby={id}
+              aria-describedby={"popper"}
               onClick={handleTogglePopper}
               color="secondary"
             >
@@ -76,8 +73,8 @@ const Total = ({
               transition
               style={{ zIndex: 1300 }}
               placement="left"
-              id={id}
-              open={open}
+              id={"popper"}
+              open={Boolean(anchorEl)}
               anchorEl={anchorEl}
             >
               <Paper className={classes.totalPopperContent}>
