@@ -1,26 +1,36 @@
 import styled, { css } from "styled-components"
+import Box from "@material-ui/core/Box"
 
 const itemBase = css`
   display: grid;
-  grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.2fr;
+  grid-template-columns: 1fr;
+  grid-gap: 15px;
   border-radius: 3px;
-  background: white;
   background: ${({ theme }) => theme.palette.background.default};
   padding: 10px;
   box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
-  align-items: center;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    font-size: 1rem;
+  }
+
+  ${({ theme }) => theme.breakpoints.up("sm")} {
+    grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.2fr;
+    align-items: center;
+    justify-content: center;
+  }
+
   /*  */
 `
 
-const StyledSummary = styled.div`
-  max-width: 1200px;
+const StyledSummary = styled(Box)`
+  max-width: 1000px;
   margin: 0 auto;
-  text-transform: capitalize;
 
   .summary {
     display: grid;
     grid-gap: 1rem;
-    margin: 5rem;
+    text-transform: capitalize;
 
     .item {
       ${itemBase};
@@ -29,20 +39,28 @@ const StyledSummary = styled.div`
     }
 
     .item:hover {
-      background: ${({ theme }) => theme.palette.background.paper};
-      cursor: pointer;
+      ${({ theme }) => theme.breakpoints.up("md")} {
+        background: ${({ theme }) => theme.palette.background.paper};
+        cursor: pointer;
 
-      .image {
-        width: 150px;
+        .image {
+          width: 150px;
+        }
       }
     }
 
     .image {
-      height: 100px;
-      width: 100px;
-      border-radius: 3px 0 0 3px;
-      margin: -10px 10px -10px -10px;
-      transition: all 200ms ease-in;
+      height: 100%;
+      width: 100%;
+      border-radius: 3px;
+
+      ${({ theme }) => theme.breakpoints.up("sm")} {
+        margin: -10px 10px -10px -10px;
+        height: 100px;
+        width: 100px;
+        border-radius: 3px 0 0 3px;
+        transition: all 200ms ease-in;
+      }
     }
 
     .delete {
@@ -52,14 +70,42 @@ const StyledSummary = styled.div`
     .total {
       ${itemBase}
       font-size: 1.2rem;
+      text-transform: capitalize;
 
-      .quantity {
-        grid-column: 3 / span 1;
+      ${({ theme }) => theme.breakpoints.up("sm")} {
+        .quantity {
+          grid-column: 3 / span 1;
+        }
+
+        .sum {
+          grid-column: 4 / span 2;
+        }
       }
 
-      .sum {
-        column-span: 4 / span 1;
+      ${({ theme }) => theme.breakpoints.down("xs")} {
+        grid-template-columns: 1fr;
       }
+    }
+  }
+
+  .empty {
+    display: flex;
+    min-height: 100px;
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background: ${({ theme }) => theme.palette.background.default};
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+
+  .empty-bag {
+    svg {
+      width: 3.5rem;
+      height: 3.5rem;
     }
   }
 
