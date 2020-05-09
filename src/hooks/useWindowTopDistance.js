@@ -14,7 +14,7 @@ const useWindowSizeActions = maxNumber => {
           } else {
             setIsPassedMaxNumber(false)
           }
-        }, 100)
+        }, 200)
       )
     }
 

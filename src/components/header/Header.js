@@ -30,7 +30,7 @@ const Header = () => {
     handleRemoveProductFromCart,
     handleEmptyCart,
   } = useContext(ProductsContext)
-  const hasScrolledMoreThen20px = useWindowTopDistance(20)
+  const hasScrolledMoreThen20px = useWindowTopDistance(3)
 
   const handleClickCart = useCallback(() => {
     setIsCartOpen(oldState => !oldState)
