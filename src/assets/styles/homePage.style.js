@@ -85,8 +85,8 @@ const StyledHomePage = styled.div`
             linear;
 
           ${({ theme }) => theme.breakpoints.up("md")} {
-            top: -100px;
-            left: 45%;
+            top: -180px;
+            left: 80px;
             width: 100px;
             height: 450px;
           }
@@ -100,9 +100,8 @@ const StyledHomePage = styled.div`
         justify-content: center;
         align-items: center;
       }
-
-      p {
-        text-transform: none !important;
+      p::first-letter {
+        text-transform: capitalize;
       }
     }
   }

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { graphql, navigate } from "gatsby"
 import Img from "gatsby-image"
@@ -7,7 +7,15 @@ import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded"
 import ArrowForwardIosRoundedIcon from "@material-ui/icons/ArrowForwardIosRounded"
 
 import { randomNumFromZeroTo, getRevealAnimation } from "../utils"
-import { Title, Section, SEO, Products, Testimonials } from "../components"
+import {
+  Title,
+  Section,
+  SEO,
+  Products,
+  Testimonials,
+  BeginningVideo,
+  PulsatingButton,
+} from "../components"
 import StyledHomePage from "../assets/styles/homePage.style"
 import useIsVisible from "../hooks/useIsVisible"
 
@@ -17,8 +25,10 @@ const IndexPage = ({ data }) => {
     homeSection2: { nodes: moreImage },
   } = data
   const { t } = useTranslation(["home", "common"])
-
   const [areProductsVisible, setProductsRef] = useIsVisible({ threshold: 1 })
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+
+  const handleCloseVideo = () => setIsVideoPlaying(!isVideoPlaying)
 
   return (
     <StyledHomePage>
@@ -42,17 +52,16 @@ const IndexPage = ({ data }) => {
             </Typography>
 
             <Box className="creation" mt={[5, 3]} textAlign="center">
-              <Box mb={[1, 0]}>
-                <Title
-                  variant="body2"
-                  title={t("home:section-1.subtitle.1")}
-                  subtitle={t("home:section-1.subtitle.2")}
+              <PulsatingButton handleClick={() => setIsVideoPlaying(true)}>
+                <Typography>
+                  <strong>{t("home:section-1.subtitle.1")}</strong>{" "}
+                  {t("home:section-1.subtitle.2")}
+                </Typography>
+                <PlayArrowRoundedIcon
+                  style={{ color: "orangered" }}
+                  fontSize="large"
                 />
-              </Box>
-
-              <IconButton style={{ color: "orangered" }}>
-                <PlayArrowRoundedIcon fontSize="large" />
-              </IconButton>
+              </PulsatingButton>
             </Box>
           </Box>
         </Box>
@@ -136,6 +145,10 @@ const IndexPage = ({ data }) => {
           </Button>
         </Box>
       </Section>
+
+      {isVideoPlaying && (
+        <BeginningVideo open={isVideoPlaying} handleClose={handleCloseVideo} />
+      )}
     </StyledHomePage>
   )
 }

@@ -15,6 +15,8 @@ import Testimonials from "./testimonials/Testimonials"
 import Footer from "./footer/Footer"
 import Slider from "./slider/Slider"
 import ButtonLink from "./buttonLink/ButtonLink"
+import BeginningVideo from "./beginningVideo/BeginningVideo"
+import PulsatingButton from "./pulsatingButton/PulsatingButton"
 
 export {
   Layout,
@@ -34,4 +36,6 @@ export {
   Footer,
   Slider,
   ButtonLink,
+  BeginningVideo,
+  PulsatingButton,
 }
