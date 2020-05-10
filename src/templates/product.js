@@ -40,7 +40,6 @@ export default ({ data }) => {
   )
 
   useEffect(() => {
-    if (products.length === 0) navigate("/")
     setStore(() => products.find(prod => prod.uid === product.uid))
   }, [product.uid, products])
 

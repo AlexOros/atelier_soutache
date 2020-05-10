@@ -1,5 +1,4 @@
-import React, { useEffect, useContext, useState } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import React, { useContext, useState } from "react"
 import Pagination from "@material-ui/lab/Pagination"
 import { config, animated, useTrail } from "react-spring"
 
@@ -10,41 +9,11 @@ import { Product } from "../../components"
 import { StyledProducts, StyledPaginationComponent } from "./Products.style"
 import useEffectAfterMount from "../../hooks/useEffectAfterMount"
 
-const query = graphql`
-  query ProductsQuery {
-    allStrapiProduct(filter: { show_product: { eq: true } }) {
-      nodes {
-        title
-        uid
-        price
-        old_price
-        stock
-        slug
-        image {
-          childImageSharp {
-            fluid(maxWidth: 900, quality: 80) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
-            fixed(width: 400, height: 400) {
-              ...GatsbyImageSharpFixed
-            }
-          }
-        }
-      }
-    }
-  }
-`
-
 const Products = ({ showPagination, amount = 6 }) => {
-  const {
-    currency,
-    products,
-    handleSetInitialProducts,
-    handleAddProductToCart,
-  } = useContext(ProductsContext)
-  const {
-    allStrapiProduct: { nodes },
-  } = useStaticQuery(query)
+  const { currency, products, handleAddProductToCart } = useContext(
+    ProductsContext
+  )
+
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"))
 
@@ -52,10 +21,6 @@ const Products = ({ showPagination, amount = 6 }) => {
     items: products,
     itemsPerPage: amount,
   })
-
-  useEffect(() => {
-    handleSetInitialProducts(nodes)
-  }, [handleSetInitialProducts, nodes])
 
   useEffectAfterMount(() => {
     setReset(() => false)
@@ -73,22 +38,21 @@ const Products = ({ showPagination, amount = 6 }) => {
   return (
     <Box>
       <StyledProducts>
-        {paginatedItems.length &&
-          trail.map(({ y, ...rest }, index) => (
-            <animated.div
-              key={paginatedItems[index].uid}
-              style={{
-                ...rest,
-                transform: y.interpolate(y => `translate3d(${y}px,0,0)`),
-              }}
-            >
-              <Product
-                currency={currency}
-                product={paginatedItems[index]}
-                handleAddProductToCart={handleAddProductToCart}
-              />
-            </animated.div>
-          ))}
+        {trail.map(({ y, ...rest }, index) => (
+          <animated.div
+            key={paginatedItems[index].uid}
+            style={{
+              ...rest,
+              transform: y.interpolate(y => `translate3d(${y}px,0,0)`),
+            }}
+          >
+            <Product
+              currency={currency}
+              product={paginatedItems[index]}
+              handleAddProductToCart={handleAddProductToCart}
+            />
+          </animated.div>
+        ))}
       </StyledProducts>
 
       {showPagination && (

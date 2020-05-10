@@ -28,7 +28,7 @@ const ProductsProvider = ({ children }) => {
     setProductsInCart(0)
   }, [])
 
-  const handleSetInitialProducts = useCallback(products => {
+  const handleSetStaticInitialProducts = useCallback(products => {
     setProducts(() =>
       products.reverse().map(prod => {
         prod.originalStock = prod.stock
@@ -113,7 +113,7 @@ const ProductsProvider = ({ children }) => {
         totalProductsInCart,
         products,
         totalSumInCart,
-        handleSetInitialProducts,
+        handleSetStaticInitialProducts,
         handleEmptyCart,
         handleRemoveProductFromCart,
         handleAddProductToCart,
