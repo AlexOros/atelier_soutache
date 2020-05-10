@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import { Dialog, Fade } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
 
@@ -14,6 +14,16 @@ const TransitionFade = React.forwardRef(function Transition(props, ref) {
 })
 
 const BeginningVideo = ({ open, handleClose, maxWidth = "lg" }) => {
+  const videoEl = useRef(null)
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (videoEl?.current) {
+        videoEl.current.play()
+      }
+    }, 1000)
+  }, [])
+
   return (
     <Dialog
       fullWidth
@@ -26,7 +36,7 @@ const BeginningVideo = ({ open, handleClose, maxWidth = "lg" }) => {
       aria-describedby="A short film about the process of making soutache jewelry"
     >
       <StyledDialogContent style={{ padding: "0" }}>
-        <StyledVideo autoplay="true" controls>
+        <StyledVideo ref={videoEl} preload="metadata" controls>
           <source src={BeginningVideoMp4} />
         </StyledVideo>
       </StyledDialogContent>

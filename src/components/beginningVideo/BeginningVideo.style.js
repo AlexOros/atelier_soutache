@@ -8,7 +8,6 @@ export const StyledDialogContent = styled(DialogContent)`
 
 export const StyledVideo = styled.video`
   position: relative;
-
   width: 100%;
   margin-bottom: -5px;
 `
