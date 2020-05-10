@@ -2,7 +2,9 @@ import React, { useRef, useEffect } from "react"
 import { Dialog, Fade } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
 
-import BeginningVideoMp4 from "../../../static/Atelier Soutache (1).mp4"
+import BeginningVideoMp4 from "../../../static/atelier-soutache.mp4"
+import BeginningVideoWebm from "../../../static/atelier-soutache.webm"
+
 import {
   StyledDialogContent,
   StyledVideo,
@@ -37,7 +39,8 @@ const BeginningVideo = ({ open, handleClose, maxWidth = "lg" }) => {
     >
       <StyledDialogContent style={{ padding: "0" }}>
         <StyledVideo ref={videoEl} preload="metadata" controls>
-          <source src={BeginningVideoMp4} />
+          <source src={BeginningVideoMp4} type="video/mp4" />
+          <source src={BeginningVideoWebm} type="video/webm" />
         </StyledVideo>
       </StyledDialogContent>
       <StyledCloseButton
