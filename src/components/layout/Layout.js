@@ -46,7 +46,7 @@ const query = graphql`
 //----------------------------------------------
 const GET_PRODUCTS_STOCK = gql`
   {
-    products {
+    products(where: { show_product: true }) {
       stock
       uid
     }

@@ -201,12 +201,12 @@ export default ({ data }) => {
             <Box my={4} className="button-group">
               <Button
                 disableElevation
-                onClick={() => window && window.history.back()}
+                onClick={() => navigate("/shop")}
                 startIcon={<ArrowBackIosRoundedIcon />}
                 variant="contained"
                 color="primary"
               >
-                {t("common:back")}
+                {t("common:shop")}
               </Button>
 
               <Button

@@ -101,9 +101,16 @@ const ProductsProvider = ({ children }) => {
     []
   )
 
-  const handleSetProducts = products => {
-    console.log("𝕃𝕆𝔾 ⟹: ProductsProvider -> data", products)
-  }
+  const handleSetProducts = useCallback(newProducts => {
+    setProducts(products =>
+      products.filter(oldProd => {
+        const matchedProd = newProducts.find(p => p?.uid === oldProd?.uid)
+        if (matchedProd) {
+          return { ...oldProd, stock: matchedProd.stock }
+        }
+      })
+    )
+  }, [])
 
   return (
     <ProductsContext.Provider
