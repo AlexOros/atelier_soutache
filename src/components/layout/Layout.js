@@ -10,9 +10,9 @@ import { Header, Footer } from "../../components"
 import useEffectAfterMount from "../../hooks/useEffectAfterMount"
 import StyledMainLayout from "./Layout.style"
 
-//----------------------------------------------
+//-----------------------------------------------
 // Gatsby Initial Query (runs on build time)
-//----------------------------------------------
+//-----------------------------------------------
 const query = graphql`
   query ProductsQuery {
     allStrapiProduct(
@@ -41,9 +41,9 @@ const query = graphql`
   }
 `
 
-//----------------------------------------------
+//-----------------------------------------------
 // Apollo Query (runs once on first load of website)
-//----------------------------------------------
+//-----------------------------------------------
 const GET_PRODUCTS_STOCK = gql`
   {
     products(where: { show_product: true }) {
