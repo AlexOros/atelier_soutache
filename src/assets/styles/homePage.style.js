@@ -6,7 +6,7 @@ const StyledHomePage = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     gap: 2.3rem;
-
+    min-height: 85vh;
     ${({ theme }) => theme.breakpoints.up("md")} {
       grid-template-columns: 1fr 1.5fr;
     }
@@ -51,7 +51,7 @@ const StyledHomePage = styled.div`
       justify-content: center;
 
       ${({ theme }) => theme.breakpoints.down("sm")} {
-        margin-top: ${({ theme }) => theme.spacing(13)};
+        margin-top: ${({ theme }) => theme.spacing(12)};
       }
 
       ${({ theme }) => theme.breakpoints.up("md")} {

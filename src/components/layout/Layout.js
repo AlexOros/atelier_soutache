@@ -5,6 +5,7 @@ import gql from "graphql-tag"
 import "../../../node_modules/sal.js/dist/sal.css"
 import { ProductsContext } from "../../context"
 import { graphql, useStaticQuery } from "gatsby"
+import classNames from "classnames"
 
 import { Header, Footer } from "../../components"
 import useEffectAfterMount from "../../hooks/useEffectAfterMount"
@@ -79,21 +80,21 @@ const Layout = ({ children, props }) => {
 
   const [reRender, setReRender] = useState(false)
   useEffectAfterMount(() => {
-    setReRender(() => true)
+    setReRender(true)
 
     setTimeout(() => {
-      setReRender(() => false)
+      setReRender(false)
     }, 400)
   }, [children])
 
   return (
-    <>
+    <StyledMainLayout>
       <Header />
-      <StyledMainLayout>
-        <main className={reRender ? "fadeIn" : null}>{children}</main>
-      </StyledMainLayout>
+      <main className={classNames("main", { fadeIn: reRender })}>
+        {children}
+      </main>
       <Footer />
-    </>
+    </StyledMainLayout>
   )
 }
 

@@ -1,5 +1,4 @@
 import styled, { css, keyframes } from "styled-components"
-import Container from "@material-ui/core/Container"
 
 const fadeIn = keyframes`
    to {
@@ -15,17 +14,20 @@ const fadeBase = css`
   animation-delay: 100ms;
 `
 
-export default styled(Container)`
-  min-height: calc(100vh - 87px);
-  max-width: 1600px;
-  overflow-x: hidden;
+export default styled.div`
+  .main {
+    min-height: calc(100vh - 87px);
+    max-width: 1600px;
+    overflow-x: hidden;
+    padding: ${({ theme }) => theme.typography.pxToRem(10)};
+
+    ${({ theme }) => theme.breakpoints.up("sm")} {
+      overflow-x: inherit;
+      padding: 0;
+    }
+  }
 
   .fadeIn {
     ${fadeBase}
-  }
-
-  ${({ theme }) => theme.breakpoints.up("sm")} {
-    overflow-x: inherit;
-    padding: 0;
   }
 `
