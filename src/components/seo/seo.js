@@ -5,12 +5,16 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useMemo } from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { useTranslation } from "react-i18next"
 
 function SEO({ description, lang, meta, title }) {
+  const { i18n } = useTranslation()
+  const memoizedLang = useMemo(() => i18n.language, [i18n.language])
+
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -30,7 +34,7 @@ function SEO({ description, lang, meta, title }) {
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: memoizedLang,
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
