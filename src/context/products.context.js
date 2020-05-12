@@ -102,14 +102,16 @@ const ProductsProvider = ({ children }) => {
   )
 
   const handleSetProducts = useCallback(newProducts => {
-    setProducts(products =>
-      products.filter(oldProd => {
-        const matchedProd = newProducts.find(p => p?.uid === oldProd?.uid)
-        if (matchedProd) {
-          return { ...oldProd, stock: matchedProd.stock }
-        }
-      })
-    )
+    const newProductsMap = newProducts.reduce((prodMap, item) => {
+      prodMap[item.uid] = item
+      return prodMap
+    }, {})
+
+    setProducts(products => {
+      return products
+        .filter(product => !!newProductsMap[product.uid])
+        .map(product => ({ ...product, ...newProductsMap[product.uid] }))
+    })
   }, [])
 
   return (

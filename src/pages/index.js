@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { graphql, navigate } from "gatsby"
 import Img from "gatsby-image"
-import { Box, Typography, IconButton, Button } from "@material-ui/core"
+import { Box, Typography, Button } from "@material-ui/core"
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded"
 import ArrowForwardIosRoundedIcon from "@material-ui/icons/ArrowForwardIosRounded"
 
@@ -30,6 +30,11 @@ const IndexPage = ({ data }) => {
 
   const handleCloseVideo = () => setIsVideoPlaying(!isVideoPlaying)
 
+  const memoizedHeroImage = useMemo(
+    () => heroImages[randomNumFromZeroTo(4)].childImageSharp.fluid,
+    [heroImages]
+  )
+
   return (
     <StyledHomePage>
       {/* TODO add description in en and ro for each page */}
@@ -39,9 +44,7 @@ const IndexPage = ({ data }) => {
 
       <Section className="section-1" paddingTop={0}>
         <Box {...getRevealAnimation("slide-right")} className="image">
-          <Img
-            fluid={heroImages[randomNumFromZeroTo(4)].childImageSharp.fluid}
-          />
+          <Img fluid={memoizedHeroImage} />
         </Box>
 
         <Box className="content">
@@ -114,13 +117,17 @@ const IndexPage = ({ data }) => {
 
       {/* ------------------ Section 3 ------------------- */}
 
-      <Box my={[5, 15]} {...getRevealAnimation("slide-right")}>
+      <Box
+        component="section"
+        my={[8, 15]}
+        {...getRevealAnimation("slide-right")}
+      >
         <Testimonials />
       </Box>
 
       {/* ------------------ Section 4 ------------------- */}
 
-      <Section paddingTop={0} deg={9}>
+      <Section deg={9}>
         <Box mt={[2, 5]} mb={[4, 6]} mx={3}>
           <Title
             {...getRevealAnimation("slide-left")}
