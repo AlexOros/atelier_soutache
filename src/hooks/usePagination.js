@@ -19,10 +19,8 @@ const usePagination = ({ itemsPerPage = 2, items }) => {
 
   // Init the first items
   useEffect(() => {
-    if (!paginatedItems.length) {
-      handleChangePage({}, 1)
-    }
-  }, [handleChangePage, paginatedItems.length])
+    handleChangePage({}, 1)
+  }, [items, handleChangePage])
 
   return {
     maxPages: memoMaxPages,

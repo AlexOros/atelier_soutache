@@ -178,22 +178,28 @@ export default ({ data }) => {
               </Box>
             )}
             <Box mb={1} className="old-price">
-              {product.old_price && (
+              {storeProduct?.old_price && (
                 <>
-                  {product.old_price.toLocaleString()}
+                  {storeProduct?.old_price.toLocaleString()}
                   <span className="currency">{currency}</span>
                 </>
               )}
             </Box>
             <Box className="details">
               <div className="new">
-                {product.price.toLocaleString()}
-                <span className="currency">{currency}</span>
+                {storeProduct?.price && (
+                  <>
+                    {storeProduct.price.toLocaleString()}
+                    <span className="currency">{currency}</span>
+                  </>
+                )}
               </div>
               <div>
-                <span className="stock"> {t("common:stock")}</span>
                 {storeProduct && (
-                  <span className="stock-number">{storeProduct.stock}</span>
+                  <>
+                    <span className="stock"> {t("common:stock")}</span>
+                    <span className="stock-number">{storeProduct.stock}</span>
+                  </>
                 )}
               </div>
             </Box>
@@ -211,8 +217,10 @@ export default ({ data }) => {
 
               <Button
                 disableElevation
-                onClick={() => handleAddProductToCart(storeProduct)}
-                disabled={storeProduct && storeProduct.stock < 1}
+                onClick={() =>
+                  storeProduct && handleAddProductToCart(storeProduct)
+                }
+                disabled={!storeProduct || storeProduct?.stock < 1}
                 startIcon={<ShoppingBasketRoundedIcon />}
                 variant="contained"
                 color="primary"

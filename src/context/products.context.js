@@ -102,7 +102,6 @@ const ProductsProvider = ({ children }) => {
   )
 
   const handleSetProducts = useCallback(newProducts => {
-    console.log("𝕃𝕆𝔾 ⟹: ProductsProvider -> newProducts", newProducts)
     const newProductsMap = newProducts.reduce((prodMap, item) => {
       prodMap[item.uid] = item
       return prodMap

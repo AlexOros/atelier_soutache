@@ -20,6 +20,7 @@ export default styled.div`
     max-width: 1600px;
     overflow-x: hidden;
     padding: ${({ theme }) => theme.typography.pxToRem(10)};
+    margin: 0 auto;
 
     ${({ theme }) => theme.breakpoints.up("sm")} {
       overflow-x: inherit;
