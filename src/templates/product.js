@@ -178,7 +178,7 @@ export default ({ data }) => {
               </Box>
             )}
             <Box mb={1} className="old-price">
-              {storeProduct?.old_price && (
+              {!!storeProduct?.old_price && (
                 <>
                   {storeProduct?.old_price.toLocaleString()}
                   <span className="currency">{currency}</span>

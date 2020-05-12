@@ -65,7 +65,7 @@ const Product = ({ handleAddProductToCart, product, currency }) => {
           </Box>
 
           <Typography className="price" variant="body1">
-            {old_price && (
+            {!!old_price && (
               <span className="old">
                 {old_price.toLocaleString()}{" "}
                 <span className="currency">{currency}</span>
