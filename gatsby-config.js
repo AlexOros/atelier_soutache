@@ -63,7 +63,12 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        ssr: true,
+      },
+    },
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
