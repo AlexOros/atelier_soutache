@@ -56,7 +56,7 @@ const StyledHeader = styled.header`
     display: grid;
     justify-items: center;
     align-content: center;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: ${({ theme }) => theme.spacing(4)};
   }
 
