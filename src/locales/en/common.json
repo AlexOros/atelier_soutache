@@ -20,5 +20,7 @@
   "coded_by": "Designed and coded by",
   "quantity": "quantity",
   "price": "price",
-  "items": "items"
+  "items": "items",
+  "address": "Company's headquarters: City of Alba Iulia, 83 Zlateni street, Alba county",
+  "phone": "Phone"
 }

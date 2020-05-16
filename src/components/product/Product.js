@@ -97,7 +97,7 @@ const Product = ({ handleAddProductToCart, product, currency }) => {
             <ButtonLink
               className="button"
               endIcon={<ArrowForwardRoundedIcon />}
-              to={`/${product.slug}`}
+              to={`/shop/${product.slug}`}
               size={!isMobileFlag ? "small" : "medium"}
             >
               {t("to_product")}

@@ -59,6 +59,11 @@ const Header = () => {
               {t("shop:title")}
             </NavLink>
           </Box>
+          <Box>
+            <NavLink to="/contact" onClick={() => setIsNavbarOpen(false)}>
+              Contact
+            </NavLink>
+          </Box>
         </Box>
       )
     },

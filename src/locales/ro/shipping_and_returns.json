@@ -1,4 +1,26 @@
 {
   "title": "Transport și Retur",
-  "description": "Page description"
+  "description": "Page description",
+
+  "section-1": {
+    "title": "Livrarea produselor",
+    "text": {
+      "0": "Livrarea se va face la adresa de expediere indicată de client.",
+      "1": "Timpul de livrare este de de 3-5 zile lucrătoare. Trimitem coletele de Luni până Vineri; zilele de sărbători legale sunt considerate zile nelucrătoare. Calculul zilelor de livrare începe după transmiterea confirmării de expediere. În cazul în care un produs nu mai este disponibil sau din orice alt motiv nu poate fi trimis vom trimite o notificare către client.",
+      "2": "În cazul bijuteriilor personalizate, timpul de livrare este de pȃnă la 15-20 zile lucrătoare.",
+      "3": "Livrarea se face prin curier, iar costul de livrare este 21 lei pentru comenzile mai mici de 250 lei.",
+      "4": "Costul de livrare este gratuit în cazul în care comanda se livreazǎ ȋn orașul Alba Iulia.",
+      "5": "Costul de livrare este gratuit în cazul în care comanda este mai mare de 250 lei.",
+      "6": "În cazul în care dorești livrarea coletului în afara teritoriului României, te rugăm să ne trimiţi un e-mail pe {{ mailTo }}, pentru stabilirea metodei de livrare. În acest caz, costul transportului este suportat de către client."
+    }
+  },
+  "section-2": {
+    "title": "Politica de retur",
+    "text": {
+      "0": "Dacă dorești să schimbi produsul sau dacă te-ai răzgândit și dorești să primești banii înapoi, tot ceea ce trebuie să faci este să ne trimiţi un e-mail pe {{ mailTo }}. Îţi vom înlocui produsul sau îţi vom returna banii, după caz.",
+      "1": "În situaţia aceasta ești responsabil pentru costurile transportului, costuri ce nu sunt rambursabile.",
+      "2": "Dacă produsul este defect, costurile transportului vor fi suporate de noi.",
+      "3": "<strong> ⚠️ De reţinut: produsele personalizate, nu se returnează! ⚠️ </strong>."
+    }
+  }
 }

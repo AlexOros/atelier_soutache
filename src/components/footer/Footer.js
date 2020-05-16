@@ -4,7 +4,10 @@ import { Box, Typography, IconButton } from "@material-ui/core"
 import { useTranslation } from "react-i18next"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
+import LaunchRoundedIcon from "@material-ui/icons/LaunchRounded"
 
+import VisaSvg from "../../assets/svg/visa.svg"
+import MasterCardSvg from "../../assets/svg/mastercard.svg"
 import { StyledFooter } from "./Footer.style"
 
 const Footer = () => {
@@ -30,20 +33,24 @@ const Footer = () => {
             Help
           </Typography>
           <Box className="column links">
-            <Link /*to="/shipping-and-returns"*/>
+            <Link to="/shipping-and-returns">
               {t("shipping_and_returns:title")}
             </Link>
-            <Link /*to="/payment-methods"*/>{t("payment_methods:title")}</Link>
-            <Link /*to="/terms-and-services"*/>
+
+            <Link to="/terms-and-services">
               {t("terms_and_services:title")}
             </Link>
-            <Link /*to="/privacy-policy"*/>{t("privacy_policy:title")}</Link>
+            <Link /*to="/privacy-policy" */>{t("privacy_policy:title")}</Link>
+
             <a
               href="https://anpc.ro/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              ANPC
+              <Box display="flex" alignItems="center">
+                <LaunchRoundedIcon fontSize="small" />
+                ANPC
+              </Box>
             </a>
           </Box>
         </Box>
@@ -51,11 +58,17 @@ const Footer = () => {
           <Typography className="title" variant="h5">
             Contact
           </Typography>
-          <Box className="column ">
-            <a href="mailto:www.ateliersoutache@gmail.com?Subject=Support">
-              www.ateliersoutache@gmail.com
-            </a>
+          <Box className="column">
+            <Box mt={1}>
+              <Typography variant="body2">GA Studio II</Typography>
+              <Typography variant="body2">{t("common:address")}</Typography>
+
+              <a href="mailto:www.ateliersoutache@gmail.com?Subject=Support">
+                www.ateliersoutache@gmail.com
+              </a>
+            </Box>
           </Box>
+
           <Box my={1} className="social">
             <a
               href="https://www.facebook.com/DianaAtelierSoutache"
@@ -89,6 +102,10 @@ const Footer = () => {
           {" "}
           Oros Alexandru
         </a>
+      </Box>
+      <Box className="payment-logos" maxWidth={50}>
+        <VisaSvg />
+        <MasterCardSvg />
       </Box>
     </StyledFooter>
   )

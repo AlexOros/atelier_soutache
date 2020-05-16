@@ -1,8 +1,10 @@
 import React from "react"
 import styled from "styled-components"
+import { Box } from "@material-ui/core"
 
-const StyledSection = styled.section`
+const StyledSection = styled(Box)`
   min-height: 100vh;
+  height: inherit;
   position: relative;
   padding: ${({ theme, paddingTop }) => `${theme.spacing(paddingTop)} 0 `};
 
@@ -19,8 +21,7 @@ const StyledSection = styled.section`
     margin: 0 calc(-50vw + 53.6%);
     z-index: -1;
     transform: ${({ deg }) => `rotate(${deg}deg)`};
-    background: ${({ theme, showShape }) =>
-      showShape && theme.palette.pink.light};
+    background: ${({ theme, show }) => show && theme.palette.pink.light};
     margin: ${({ width }) => (width < 100 ? "0 auto" : "")};
     overflow-x: hidden;
   }
@@ -31,6 +32,7 @@ const Section = ({
   deg = 9,
   height = 90,
   width,
+  tag = "article",
   showShape = true,
   paddingTop = 15,
   ...restOfProps
@@ -38,7 +40,8 @@ const Section = ({
   return (
     <StyledSection
       {...restOfProps}
-      showShape={showShape}
+      component={tag}
+      show={showShape ? 1 : 0}
       paddingTop={paddingTop}
       deg={deg}
       height={height}

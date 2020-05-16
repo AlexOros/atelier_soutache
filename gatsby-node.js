@@ -13,12 +13,15 @@ exports.createPages = async function({ actions, graphql }) {
         }
       }
     `)
+
+    if (!data.allStrapiProduct) return null
+
     data.allStrapiProduct.nodes.forEach(node => {
       let { slug, show_product } = node
       slug = slug.toLowerCase()
       if (show_product) {
         actions.createPage({
-          path: slug,
+          path: `/shop/${slug}`,
           component: require.resolve(`./src/templates/product.js`),
           context: { slug: slug },
         })

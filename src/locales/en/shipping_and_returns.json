@@ -1,4 +1,27 @@
 {
   "title": "Shipping and Returns",
-  "description": "Page description"
+  "description": "Page description",
+
+  "section-1": {
+    "title": "Product delivery",
+    "text": {
+      "0": "The delivery will be made to the shipping address indicated by the customer.",
+      "1": "The delivery time is 3-5 working days. We send packages from Monday to Friday; legal holidays are considered non-working days.",
+      "2": "The calculation of the delivery days begins after the delivery confirmation is sent. In case a product is no longer available or for any other reason cannot be sent we will send you a notification.",
+      "3": "For the customed jewelry, the delivery time is up to 15-20 working days.",
+      "4": "The delivery is by courier, and the cost of delivery is 21 lei, for  orders less than 250 lei.",
+      "5": "The cost of delivery is free, if the order is shipped to the city of Alba Iulia",
+      "6": "The cost of delivery is free, if the order is more than 250 lei.",
+      "7": "If you wish to deliver the package outside Romania, the Customer must send an e-mail to the Seller at  {{ mailTo}}, in order to establish the method of delivery. In this case the cost is borne by the Customer."
+    }
+  },
+  "section-2": {
+    "title": "Refund policy",
+    "text": {
+      "0": "If you want to change the product or if you want to receive your money back, we will replace or return your money. You must send us an email at {{ mailTo}} and we will solve it.",
+      "1": "In this situation you are responsible for the transport costs, which are not refundable.",
+      "2": "If the product is defective, the transport costs will be borne by us.",
+      "3": "<strong> ⚠️ Please note, custom and personalized items cannot be returned or exchanged! ⚠️ </strong>."
+    }
+  }
 }

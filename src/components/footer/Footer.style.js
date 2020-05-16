@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 export const StyledFooter = styled.footer`
+  position: relative;
   color: ${({ theme }) => theme.palette.secondary.light};
   background: ${({ theme }) => theme.palette.primary.main};
   margin-top: ${({ theme }) => theme.spacing(13)};
@@ -59,5 +60,24 @@ export const StyledFooter = styled.footer`
   .copy {
     text-align: center;
     ${({ theme }) => theme.mixins.linkHover("pink")}
+  }
+
+  .payment-logos {
+    max-width: 160px;
+    margin: 0 auto;
+
+    ${({ theme }) => theme.breakpoints.up("md")} {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+    }
+
+    svg {
+      width: ${({ theme }) => theme.typography.pxToRem(40)};
+      ${({ theme }) => theme.breakpoints.up("md")} {
+        width: ${({ theme }) => theme.typography.pxToRem(60)};
+      }
+      margin-right: ${({ theme }) => theme.spacing(1)};
+    }
   }
 `

@@ -1,4 +1,38 @@
 {
-  "title": "Terms and Services",
-  "description": "Page description"
+  "title": "Terms And Conditions",
+  "description": "Page description",
+
+  "section-1": {
+    "title": "Purpose of terms and conditions, contact",
+    "text": {
+      "0": "The Terms and Conditions apply to all transactions between GA STUDIO II, located on Zlatnei Street, no.83, Alba Iulia, Alba County, (hereinafter referred to as “ Atelier Soutache” or “Seller”) and User or Customer in valid version when making a transaction on the online store:  <a href={{selfLink}}>www.ateliersoutache.com</a>.",
+      "1": "You can contact us by email at {{ mailTo }}  or by <strong>phone at 0727.818.482</strong>. Please keep in mind that the operating program of the support department is between Monday - Friday, 8:00 am - 16:00 pm (excluding Holidays)."
+    }
+  },
+  "section-2": {
+    "title": "General rules for using the Atelier Soutache online store",
+    "text": {
+      "0": "The online store can only be used by persons over 18 years old.",
+      "1": "Persons under the age of 18 years may use the online store only with the consent of their parents or legal guardian.",
+      "2": "The customer is considered a consumer as long as the purpose for ordering supplies and services cannot be attributed primarily to the commercial or independent professional activities of that party. A trader is a legal or natural person who acts in the exercise of commercial or independent activities at the conclusion of the contract.",
+      "3": "The seller's online store represents only a catalog of products. By displaying the products on the online store, the Seller invites the Customer to make a purchase of the presented products and to conclude a sales contract (hereinafter referred to as “Order”)."
+    }
+  },
+  "section-3": {
+    "title": "Personal data processing",
+    "text": {
+      "0": "To place an order there is no need for an account, but we collect the information from customers in order to honor the orders and to serve our clients as best as possible with complete information regarding the status of the orders or the delivery. The collected information includes first and last name, delivery address, billing address, telephone number.",
+      "1": "The agreement regarding the processing of personal data is voluntary. However, we mention that all information regarding the processing of personal data is available on the <a href={{privacyLink}}>Privacy Policy page</a>."
+    }
+  },
+  "section-4": {
+    "title": "Orders",
+    "text": {
+      "0": "The shipment of an order is made only after the Seller contacts you by telephone (if you have entered a valid telephone number) or by e-mail to confirm the order and any aspects regarding the delivery or products.",
+      "1": "If the order is not confirmed neither by telephone nor by e-mail, it will not be sent.",
+      "2": "The phone number and email address will only be used for the purpose of processing the order and its delivery, not for promotional purposes without your consent.",
+      "3": "Please ensure that all delivery and contact details provided are complete and correct otherwise the delivery process may be affected.",
+      "4": "As a customer, you can declare your intention to cancel the order, in accordance with the return policy available on the page <a href={{shippingAndReturnLink}}>Shipping and Returns</a>."
+    }
+  }
 }

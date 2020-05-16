@@ -1,4 +1,38 @@
 {
   "title": "Termeni și Condiții",
-  "description": "Page description"
+  "description": "Page description",
+
+  "section-1": {
+    "title": "Scopul Termenilor și Condițiilor, Contact",
+    "text": {
+      "0": "Termenii și Condițiile se aplică tuturor tranzacțiilor dintre GA STUDIO II, Strada Zlatnei, nr. 83, municipiul Alba Iulia, jud. Alba, (denumit în continuare “Atelier Soutache” sau “Vânzător”) și Utilizator sau Client în momentul efectuării unei tranzacții în magazinul <a href={{selfLink}}>www.ateliersoutache.com</a>. ",
+      "1": "Ne poți contacta prin e-mail la {{ mailTo }} sau <strong> telefonic la 0727.818.482</strong>. Te rugăm să ai în vedere că programul de funcționare este în intervalul <br/> Luni – Vineri, 8:00 – 16:00 (cu excepția Sărbătorilor și a zilelor anunțate)"
+    }
+  },
+  "section-2": {
+    "title": "Reguli Generale pentru folosirea magazinului online Atelier Soutache",
+    "text": {
+      "0": "Magazinul online poate fi folosit doar de către persoanele care au vârsta peste 18 ani.",
+      "1": "Persoanele care nu au împlinit 18 ani pot folosi magazinul online numai cu acordul părinților sau al tutorelui legal.",
+      "2": "Clientul este considerat consumator, cu condiția ca scopul pentru comandarea livrărilor și serviciilor să nu poată fi atribuit în primul rând activităților profesionale comerciale sau independente ale acelei părți. Un comerciant este orice persoană juridică sau persoană fizică care acționează în exercitarea activităților comerciale sau independente la încheierea contractului.",
+      "3": "Magazinul online al vânzătorului constituie doar un catalog de produse. Prin afișarea produselor în magazinul online, vânzătorul invită clientul să facă o achiziție din produsele prezentate și să încheie un contract de vânzare (denumit în continuare “Comandă”)."
+    }
+  },
+  "section-3": {
+    "title": "Procesarea datelor cu caracter personal",
+    "text": {
+      "0": "Pentru plasarea unei comenzi nu este nevoie de crearea unui cont, ȋnsă colectăm informaţiile de la client pentru a onora comenzile şi pentru a servi cât mai bine clientul cu informaţii complete referitoare la starea comenzilor sau a livrării. Informaţiile colectate includ: numele și prenumele, adresa de livrare, adresa de facturare, adresa de email și numărul de telefon.",
+      "1": "Acordul cu privire la prelucrarea datelor cu caracter personal este voluntar. Cu toate acestea, menționăm că lipsa consimțământului duce la imposibilitatea de a prelua și expedia comanda către client. Toate informațiile cu privire la procesarea datelor cu caracter personal sunt disponibile în <a href={{privacyLink}}>Politica de confidențialitate</a>."
+    }
+  },
+  "section-4": {
+    "title": "Comenzi",
+    "text": {
+      "0": "Expedierea unei comenzii se face doar după ce clientul a fost contactat telefonic (dacă a introdus un număr de telefon valid) sau prin e-mail pentru a confirma comanda sau orice aspecte cu privire la livrare sau produse. ",
+      "1": "În cazul în care comanda nu se confirmă nici telefonic, nici prin email, aceasta nu se va procesa.",
+      "2": "Datele personale amintite mai sus vor fi folosite doar în scopul procesării comenzii și a livrării acesteia, nu în scopuri promoționale fără acordul clientului.",
+      "3": "Clientul este rugat sa se asigure că toate datele de livrare și de contact furnizate sunt complete și corecte în caz contrar poate fi afectat procesul de livrare.",
+      "4": "În calitate de client, se poate anunța intenția de a renunța la comandă, în acord cu politica de retur disponibilă pe pagina <a href={{shippingAndReturnLink}}>Transport și Retur</a>."
+    }
+  }
 }

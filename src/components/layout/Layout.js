@@ -6,6 +6,7 @@ import "../../../node_modules/sal.js/dist/sal.css"
 import { ProductsContext } from "../../context"
 import { graphql, useStaticQuery } from "gatsby"
 import classNames from "classnames"
+import { useTranslation } from "react-i18next"
 
 import { Header, Footer } from "../../components"
 import useEffectAfterMount from "../../hooks/useEffectAfterMount"
@@ -56,10 +57,15 @@ const GET_PRODUCTS_STOCK = gql`
   }
 `
 
+const LANGUAGE_KEY = "lang"
+const LANGUAGES = { RO: "ro", EN: "en" }
+
 const Layout = ({ children, props }) => {
   const { handleSetProducts, handleSetStaticInitialProducts } = useContext(
     ProductsContext
   )
+
+  const { i18n } = useTranslation()
 
   const {
     allStrapiProduct: { nodes },
@@ -79,6 +85,20 @@ const Layout = ({ children, props }) => {
   useEffect(() => {
     sal({ threshold: 0.1, once: true })
   }, [children])
+
+  /**** Handle Language persistence *****/
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem(LANGUAGE_KEY) || LANGUAGES.RO
+    const saveToLocalStorage = value => {
+      localStorage.setItem(LANGUAGE_KEY, value)
+    }
+    i18n.on("languageChanged", saveToLocalStorage)
+    i18n.changeLanguage(savedLanguage)
+
+    return () => {
+      i18n.off("languageChanged", saveToLocalStorage)
+    }
+  }, [i18n])
 
   const [reRender, setReRender] = useState(false)
   useEffectAfterMount(() => {

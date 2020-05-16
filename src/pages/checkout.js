@@ -50,9 +50,9 @@ const Checkout = () => {
             >
               {cart.map(item => (
                 <Box
+                  key={item.uid}
                   onClick={() => navigate(`/${item.slug}`)}
                   className="item"
-                  key={item.id}
                 >
                   <Img
                     className="image"
