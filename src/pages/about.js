@@ -65,6 +65,9 @@ const AboutPage = ({ data }) => {
                 <Typography variant="body1">{text}</Typography>
               </Box>
             ))}
+            <Typography style={{ textAlign: "center" }} variant="body1">
+              <strong>A</strong>uthentic is the new black!
+            </Typography>
           </Box>
         </StyledHero>
       </Section>

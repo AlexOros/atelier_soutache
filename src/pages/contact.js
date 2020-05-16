@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
-import { getRevealAnimation } from "../utils"
+import { getRevealAnimation, mailTo } from "../utils"
 import { SEO, Title, Section } from "../components"
 
 const StyledContact = styled(Section)`
@@ -60,10 +60,12 @@ const StyledContact = styled(Section)`
     }
   }
 
-  h6 {
+  p {
     justify-content: center;
     line-height: 3rem;
   }
+
+  ${({ theme }) => theme.mixins.linkHover()}
 `
 
 const StyledContactData = styled(Box)`
@@ -105,20 +107,23 @@ const AboutPage = ({ data }) => {
             <Typography variant="h5">GA Studio II</Typography>
             <Box>
               <Typography
-                variant="h6"
+                variant="body1"
                 dangerouslySetInnerHTML={{ __html: t("common:address") }}
               />
             </Box>
             <Box>
-              <Typography variant="h6">
+              <Typography variant="body1">
                 {t("common:phone")}: +40 727 818 482
               </Typography>
             </Box>
 
             <Box>
-              <Typography variant="h6">
-                E-mail: ateliersoutache@gmail.com
-              </Typography>
+              <Typography
+                variant="body1"
+                dangerouslySetInnerHTML={{
+                  __html: `E-mail: ${mailTo("contact")}`,
+                }}
+              />
             </Box>
           </StyledContactData>
         </StyledContact>
