@@ -21,5 +21,7 @@
   "coded_by": "Conceput si codat de",
   "quantity": "cantitate",
   "price": "preț",
-  "items": "produse"
+  "items": "produse",
+  "address": "Sediul firmei: municipiul Alba Iulia, strada Zlatnei, nr. 83, jud. Alba",
+  "phone": "Telefon"
 }
