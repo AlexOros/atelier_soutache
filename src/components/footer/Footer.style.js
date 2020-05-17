@@ -46,13 +46,14 @@ export const StyledFooter = styled.footer`
         padding: 0;
       }
       ${({ theme }) => theme.mixins.linkHover("pink")}
-      a {
+      a, p {
         margin: ${({ theme }) => `${theme.spacing(1)} 0`};
       }
     }
   }
 
   .social {
+    max-width: 200px;
     display: flex;
     justify-content: space-evenly;
   }
@@ -60,6 +61,10 @@ export const StyledFooter = styled.footer`
   .copy {
     text-align: center;
     ${({ theme }) => theme.mixins.linkHover("pink")}
+
+    p {
+      margin-top: ${({ theme }) => theme.spacing(1)};
+    }
   }
 
   .payment-logos {

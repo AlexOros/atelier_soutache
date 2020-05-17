@@ -9,6 +9,7 @@ import LaunchRoundedIcon from "@material-ui/icons/LaunchRounded"
 import VisaSvg from "../../assets/svg/visa.svg"
 import MasterCardSvg from "../../assets/svg/mastercard.svg"
 import { StyledFooter } from "./Footer.style"
+import { mailTo } from "../../utils"
 
 const Footer = () => {
   const { t } = useTranslation()
@@ -59,14 +60,13 @@ const Footer = () => {
             Contact
           </Typography>
           <Box className="column">
-            <Box mt={1}>
-              <Typography variant="body2">GA Studio II</Typography>
-              <Typography variant="body2">{t("common:address")}</Typography>
+            <Typography variant="body2">GA Studio II</Typography>
+            <Typography variant="body2">{t("common:address")}</Typography>
 
-              <a href="mailto:www.ateliersoutache@gmail.com?Subject=Support">
-                www.ateliersoutache@gmail.com
-              </a>
-            </Box>
+            <Typography
+              variant="body2"
+              dangerouslySetInnerHTML={{ __html: mailTo("Contact") }}
+            />
           </Box>
 
           <Box my={1} className="social">
@@ -91,17 +91,33 @@ const Footer = () => {
           </Box>
         </Box>
       </Box>
+
       <Box className="copy" pt={[0, 1, 3]} pb={3} px={1}>
-        &copy; {memoYear} Atelier Soutache, {t("common:all_rights_reserved")}.
-        <br /> {t("common:coded_by")}{" "}
-        <a
-          href="https://www.linkedin.com/in/oros-alexandru/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {" "}
-          Oros Alexandru
-        </a>
+        <Typography variant="body2">
+          &copy; {memoYear} Atelier Soutache, {t("common:all_rights_reserved")}.
+        </Typography>
+
+        <Typography variant="body2">
+          {t("common:photo_by")}{" "}
+          <a
+            href="https://www.instagram.com/silvia_aftene/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Silvia Aftene
+          </a>
+        </Typography>
+
+        <Typography variant="body2">
+          {t("common:coded_by")}{" "}
+          <a
+            href="https://www.linkedin.com/in/oros-alexandru/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Oros Alexandru
+          </a>
+        </Typography>
       </Box>
       <Box className="payment-logos" maxWidth={50}>
         <VisaSvg />
