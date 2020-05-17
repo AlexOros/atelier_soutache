@@ -1,4 +1,14 @@
 {
   "title": "Politică de Confidenţialitate",
-  "description": "Page description"
+  "description": "Page description",
+
+  "section-1": {
+    "title": "Ce date colectam, care este scopul si cine mai are acces la datele tale:",
+    "text": {
+      "0": "GA STUDIO II, prin <a href={{selfLink}}>www.ateliersoutache.com</a> colecteazǎ informațiile necesare pentru gestionarea comenzilor și notificarea cu caracter comercial: nume, prenume, adresa de livrare, adresa de email și numǎrul de telefon. De asemenea, acestea sunt comunicate și intermediarilor care fac parte din procesul comenzilor: firma de curierat și procesatorul de plǎți.",
+      "1": "Sunteţi obligat să furnizaţi datele, acestea fiind necesare pentru prelucrarea comenzilor de pe site-ul nostru. Refuzul dvs. determină neacceptarea termenilor și condițiilor de pe site-ul nostru și imposibilitatea de a prelua comenzi.",
+      "2": "Pentru orice întrebari suplimentare cu privire la modul în care datele cu caracter personal sunt prelucrate și pentru a vă exercita drepturile menţionate mai sus, vă rugăm să vă adresaţi la adresa de email: {{mailTo}}",
+      "3": "Dacă consideraţi necesar vă puteţi oricând adresa Autorităţii Naţionale de Supraveghere a Datelor cu Caracter Personal: <a href={{dataProtectionLink}}  target='_blank' rel='noopener noreferrer'>www.dataprotection.ro</a>."
+    }
+  }
 }

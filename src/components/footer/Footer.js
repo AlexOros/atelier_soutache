@@ -41,7 +41,7 @@ const Footer = () => {
             <Link to="/terms-and-services">
               {t("terms_and_services:title")}
             </Link>
-            <Link /*to="/privacy-policy" */>{t("privacy_policy:title")}</Link>
+            <Link to="/privacy-policy">{t("privacy_policy:title")}</Link>
 
             <a
               href="https://anpc.ro/"
