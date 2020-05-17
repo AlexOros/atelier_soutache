@@ -99,7 +99,7 @@ const AboutPage = ({ data }) => {
 
 export const query = graphql`
   {
-    hero: allFile(filter: { name: { regex: "/hero/" } }) {
+    hero: allFile(filter: { name: { regex: "/about-hero/" } }) {
       nodes {
         childImageSharp {
           fluid(maxWidth: 800, webpQuality: 95) {

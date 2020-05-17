@@ -88,13 +88,13 @@ const AboutPage = ({ data }) => {
       <Box>
         <Box mb={[0, 8, 12]} mt={[4, 8, 10]}>
           <Title
-            // {...getRevealAnimation("slide-down")}
+            {...getRevealAnimation("slide-down")}
             align="center"
             title="Contact"
             variant="h4"
           />
         </Box>
-        <StyledContact paddingTop="0" deg={9}>
+        <StyledContact paddingTop={0} deg={9}>
           <Box className="image" {...getRevealAnimation("slide-right")}>
             <Img fluid={heroImg[0].childImageSharp.fluid} />
           </Box>
