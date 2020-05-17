@@ -1,4 +1,13 @@
 {
   "title": "Privacy Policy",
-  "description": "Page description"
+  "description": "Page description",
+  "section-1": {
+    "title": "What data we collect, what is the purpose and who else has access to your data:",
+    "text": {
+      "0": "GA STUDIO II, through <a href={{selfLink}}>www.ateliersoutache.com</a> collects the necessary information for order management and commercial notification: name, first name, delivery address, email address and telephone number. They are also communicated to intermediaries that are part of the order process: the courier company and the payment processor.",
+      "1": "You are obliged to provide the data, which is necessary for the processing of orders on our website. Your refusal to do so is to non-acceptance of the terms and conditions on our website and inability to take orders.",
+      "2": "For any further questions about how your personal data is processed and to exercise your rights, please contact the email address: {{mailTo}}.",
+      "3": "If you consider it necessary, you can always contact the National Personal Data Supervisory Authority: <a href={{dataProtectionLink}}  target='_blank' rel='noopener noreferrer'>www.dataprotection.ro</a>."
+    }
+  }
 }
