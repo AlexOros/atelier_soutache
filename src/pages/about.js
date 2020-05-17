@@ -65,6 +65,9 @@ const AboutPage = ({ data }) => {
                 <Typography variant="body1">{text}</Typography>
               </Box>
             ))}
+            <Typography style={{ textAlign: "center" }} variant="body1">
+              <strong>A</strong>uthentic is the new black!
+            </Typography>
           </Box>
         </StyledHero>
       </Section>
@@ -96,7 +99,7 @@ const AboutPage = ({ data }) => {
 
 export const query = graphql`
   {
-    hero: allFile(filter: { name: { regex: "/hero/" } }) {
+    hero: allFile(filter: { name: { regex: "/about-hero/" } }) {
       nodes {
         childImageSharp {
           fluid(maxWidth: 800, webpQuality: 95) {
