@@ -5,10 +5,8 @@ const itemBase = css`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 15px;
-  border-radius: 3px;
   background: ${({ theme }) => theme.palette.background.default};
   padding: 10px;
-  box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
     font-size: 1rem;

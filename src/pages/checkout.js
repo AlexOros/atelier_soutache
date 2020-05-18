@@ -103,7 +103,7 @@ const Checkout = () => {
               />
             </Box>
           ) : (
-            <Box className="empty" {...getRevealAnimation("slide-left")}>
+            <Box className="empty">
               <Typography component="p" variant="h5">
                 {t("common:no_product_in_bag")}
               </Typography>
@@ -143,7 +143,6 @@ const Checkout = () => {
 
         <Box
           my={[4, 8]}
-          borderRadius={3}
           bgcolor="rgb(250, 250, 250)"
           p={2}
           maxWidth={600}
