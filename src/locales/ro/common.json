@@ -24,5 +24,8 @@
   "price": "preț",
   "items": "produse",
   "address": "Sediul firmei: municipiul Alba Iulia, strada Zlatnei, nr. 83, jud. Alba",
-  "phone": "Telefon"
+  "phone": "Telefon",
+  "i_agree": "Sunt de acord cu ",
+  "terms_and_services": "termeni si condiții",
+  "agree_to_advance": "Trebuie să accepți pentru a putea plasa comanda"
 }

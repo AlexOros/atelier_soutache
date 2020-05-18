@@ -23,5 +23,8 @@
   "price": "price",
   "items": "items",
   "address": "Company's headquarters: City of Alba Iulia, 83 Zlatnei street, Alba county",
-  "phone": "Phone"
+  "phone": "Phone",
+  "i_agree": "I agree to the ",
+  "terms_and_services": "terms and conditions",
+  "agree_to_advance": "You have to agree in order to complete the checkout"
 }

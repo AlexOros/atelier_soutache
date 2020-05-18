@@ -1,15 +1,19 @@
-import React, { useContext, useCallback } from "react"
-import { Box, Typography, IconButton } from "@material-ui/core"
+import React, { useContext, useCallback, useState } from "react"
+import { Box, Typography, IconButton, Checkbox } from "@material-ui/core"
 import BackspaceIcon from "@material-ui/icons/Backspace"
 import { ProductsContext } from "../context"
 import { useTranslation } from "react-i18next"
 import Img from "gatsby-image"
-import { Title, Section, SEO } from "../components"
-import { navigate } from "gatsby"
-import { getRevealAnimation } from "../utils"
+import { navigate, Link } from "gatsby"
 import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
 
-import StyledSummary from "../assets/styles/checkoutPage.style"
+import { Title, Section, SEO } from "../components"
+import { getRevealAnimation } from "../utils"
+
+import {
+  StyledSummary,
+  StyledConsent,
+} from "../assets/styles/checkoutPage.style"
 
 const Checkout = () => {
   const { t, i18n } = useTranslation(["common", "checkout"])
@@ -19,6 +23,7 @@ const Checkout = () => {
     totalSumInCart,
     handleRemoveProductFromCart,
   } = useContext(ProductsContext)
+  const [hasAgreed, setHasAgreed] = useState(false)
 
   const handleRemove = useCallback(
     item => {
@@ -27,13 +32,18 @@ const Checkout = () => {
     [handleRemoveProductFromCart]
   )
 
+  const totalItems = cart.reduce(
+    (total, currItem) => (total += currItem.quantity),
+    0
+  )
+
   return (
     <>
       <SEO title={t("checkout:title")} />
 
       <Section paddingTop={0}>
         <StyledSummary px={[2, 4, 6]}>
-          <Box mb={[0, 6, 8]} mt={[4, 8, 10]}>
+          <Box mb={[6, 8]} mt={[4, 8, 10]}>
             <Title
               {...getRevealAnimation("slide-down")}
               variant="h4"
@@ -51,7 +61,7 @@ const Checkout = () => {
               {cart.map(item => (
                 <Box
                   key={item.uid}
-                  onClick={() => navigate(`/${item.slug}`)}
+                  onClick={() => navigate(`/shop/${item.slug}`)}
                   className="item"
                 >
                   <Img
@@ -84,29 +94,53 @@ const Checkout = () => {
                   </Box>
                 </Box>
               ))}
-              <Box className="total">
-                <Box className="quantity">
-                  {t("common:items")}:{" "}
-                  {cart.reduce(
-                    (total, currItem) => (total += currItem.quantity),
-                    0
-                  )}
-                </Box>
-                <Box className="sum">
-                  total: {totalSumInCart.toLocaleString()}{" "}
-                  <span className="currency">{currency}</span>
-                </Box>
-              </Box>
+              <Total
+                {...getRevealAnimation("slide-right")}
+                t={t}
+                totalItems={totalItems}
+                totalSumInCart={totalSumInCart}
+                currency={currency}
+              />
             </Box>
           ) : (
-            <Box className="empty">
-              {t("common:no_product_in_bag")}
+            <Box className="empty" {...getRevealAnimation("slide-left")}>
+              <Typography component="p" variant="h5">
+                {t("common:no_product_in_bag")}
+              </Typography>
               <span className="empty-bag">
                 <ShoppingBasketRoundedIcon />
               </span>
             </Box>
           )}
         </StyledSummary>
+
+        <StyledConsent
+          py={2}
+          px={[0, 2]}
+          className="consent"
+          {...getRevealAnimation("slide-right")}
+        >
+          <Typography>
+            <Checkbox
+              color="default"
+              checked={hasAgreed}
+              onChange={() => setHasAgreed(!hasAgreed)}
+              inputProps={{
+                "aria-label": "I agree to terms and conditions checkbox",
+              }}
+            />
+            {t("common:i_agree")}{" "}
+            <Link to="/terms-and-services">
+              {t("common:terms_and_services")}
+            </Link>
+            .
+          </Typography>
+
+          <Typography className="note" variant="caption">
+            ( {t("common:agree_to_advance")} )
+          </Typography>
+        </StyledConsent>
+
         <Box
           my={[4, 8]}
           borderRadius={3}
@@ -128,3 +162,17 @@ const Checkout = () => {
 }
 
 export default Checkout
+
+function Total({ t, totalItems, totalSumInCart, currency }) {
+  return (
+    <Box className="total">
+      <Box className="quantity">
+        {t("common:items")}: {totalItems}
+      </Box>
+      <Box className="sum">
+        total: {totalSumInCart.toLocaleString()}{" "}
+        <span className="currency">{currency}</span>
+      </Box>
+    </Box>
+  )
+}

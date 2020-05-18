@@ -23,7 +23,7 @@ const itemBase = css`
   /*  */
 `
 
-const StyledSummary = styled(Box)`
+export const StyledSummary = styled(Box)`
   max-width: 1000px;
   margin: 0 auto;
 
@@ -97,12 +97,14 @@ const StyledSummary = styled(Box)`
     align-items: center;
     font-size: 2rem;
     background: ${({ theme }) => theme.palette.background.default};
-    &::first-letter {
+
+    p::first-letter {
       text-transform: capitalize;
     }
   }
 
   .empty-bag {
+    margin-left: ${({ theme }) => theme.spacing(2)};
     svg {
       width: 3.5rem;
       height: 3.5rem;
@@ -114,4 +116,21 @@ const StyledSummary = styled(Box)`
   }
 `
 
-export default StyledSummary
+export const StyledConsent = styled(Box)`
+  display: grid;
+  place-items: center;
+  max-width: 400px;
+  margin: ${({ theme }) => theme.spacing(4)} auto;
+  background: ${({ theme }) => theme.palette.background.default};
+
+  ${({ theme }) => theme.mixins.linkHover()}
+
+  .checkbox {
+    color: "orangered";
+  }
+
+  .note {
+    opacity: 0.8;
+    color: #666;
+  }
+`
