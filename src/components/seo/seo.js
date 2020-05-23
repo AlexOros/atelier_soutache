@@ -21,8 +21,9 @@ function SEO({ description, lang, meta, title }) {
         site {
           siteMetadata {
             title
-            description
             author
+            image
+            description
           }
         }
       }
@@ -71,17 +72,12 @@ function SEO({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: "og:image",
+          image: site.siteMetadata.image,
+        },
       ].concat(meta)}
-    >
-      <link
-        href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700&display=swap"
-        rel="stylesheet"
-      />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      />
-    </Helmet>
+    ></Helmet>
   )
 }
 

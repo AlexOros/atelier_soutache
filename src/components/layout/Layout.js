@@ -7,6 +7,7 @@ import { ProductsContext } from "../../context"
 import { graphql, useStaticQuery } from "gatsby"
 import classNames from "classnames"
 import { useTranslation } from "react-i18next"
+import Helmet from "react-helmet"
 
 import { Header, Footer } from "../../components"
 import useEffectAfterMount from "../../hooks/useEffectAfterMount"
@@ -111,6 +112,16 @@ const Layout = ({ children, props }) => {
 
   return (
     <StyledMainLayout>
+      <Helmet>
+        <link
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+      </Helmet>
       <Header />
       <main className={classNames("main", { fadeIn: reRender })}>
         {children}

@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { useTranslation } from "react-i18next"
 import { Box } from "@material-ui/core"
 
 import { Section, Products, Title, SEO } from "../components"
-import { getRevealAnimation, isMobile } from "../utils"
+import { getRevealAnimation } from "../utils"
 
 export default () => {
   const { t } = useTranslation("shop")
-  const [isMobileFlag, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    setIsMobile(isMobile())
-  }, [])
 
   return (
     <>
@@ -26,7 +21,7 @@ export default () => {
             title={t("title")}
           />
         </Box>
-        <Products showPagination amount={isMobileFlag ? 2 : 6} />
+        <Products showPagination amount={6} />
       </Section>
     </>
   )
