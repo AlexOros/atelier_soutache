@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Atelier Soutache`,
-    description: `Bijuterii handmade unicat în tehnica Soutache. Șnurul se îmbină cu cristale Swarowski, mărgele, tortițe de aur și argint pentru a crea cele mai de preț bijuterii pentru femei delicate.`,
+    description: `Bijuterii handmade unicat lucrate în tehnica Soutache. Cele mai de preț accesorii pentru femei delicate! 💎`,
     author: `Pasaroiu Diana`,
     image: "./static/meta_image.jpg",
   },
