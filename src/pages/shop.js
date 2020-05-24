@@ -1,16 +1,16 @@
-import React, { useContext, useMemo } from "react"
+import React, { useContext } from "react"
 import { useTranslation } from "react-i18next"
-import { Box } from "@material-ui/core"
+import { Box, useTheme, useMediaQuery } from "@material-ui/core"
 
 import { ProductsContext } from "../context"
 import { Section, Products, Title, SEO } from "../components"
-import { getRevealAnimation, isMobile } from "../utils"
+import { getRevealAnimation } from "../utils"
 
 export default () => {
   const { storePage, setStorePage } = useContext(ProductsContext)
   const { t } = useTranslation("shop")
-
-  const isSmallScreen = useMemo(() => isMobile(), [])
+  const theme = useTheme()
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"))
 
   return (
     <>
