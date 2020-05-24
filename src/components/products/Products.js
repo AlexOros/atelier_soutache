@@ -9,18 +9,31 @@ import { Product } from "../../components"
 import { StyledProducts, StyledPaginationComponent } from "./Products.style"
 import useEffectAfterMount from "../../hooks/useEffectAfterMount"
 
-const Products = ({ showPagination, amount = 6 }) => {
-  const { currency, products, handleAddProductToCart } = useContext(
+const Products = ({ amount = 6, currentPage, handleSetCurrentPage }) => {
+  const { currency, handleAddProductToCart, products } = useContext(
     ProductsContext
   )
-
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"))
 
-  const { paginatedItems, maxPages, handleChangePage } = usePagination({
+  const { paginatedItems, maxPages, changePage } = usePagination({
     items: products,
     itemsPerPage: amount,
+    currentPage,
   })
+
+  const handleChangePage = (event, nextPage) => {
+    changePage(event, nextPage)
+    handleSetCurrentPage(nextPage)
+    setReset(() => true)
+
+    if (window && isSmallScreen)
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      })
+  }
 
   useEffectAfterMount(() => {
     setReset(() => false)
@@ -55,14 +68,12 @@ const Products = ({ showPagination, amount = 6 }) => {
         ))}
       </StyledProducts>
 
-      {showPagination && (
+      {handleSetCurrentPage && typeof handleAddProductToCart === "function" && (
         <StyledPaginationComponent my={3}>
           <Pagination
-            onChange={(event, nextPage) => {
-              handleChangePage(event, nextPage)
-              setReset(() => true)
-            }}
-            size={isSmallScreen ? "small" : "large"}
+            color={isSmallScreen ? "secondary" : "standard"}
+            onChange={(event, nextPage) => handleChangePage(event, nextPage)}
+            page={currentPage}
             count={maxPages}
           />
         </StyledPaginationComponent>

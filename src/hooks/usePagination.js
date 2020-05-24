@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback, useEffect } from "react"
 
-const usePagination = ({ itemsPerPage = 2, items }) => {
+const usePagination = ({ itemsPerPage = 2, items, currentPage }) => {
   const [paginatedItems, setPaginatedItems] = useState([])
 
   const memoMaxPages = useMemo(() => Math.ceil(items.length / itemsPerPage), [
@@ -8,7 +8,7 @@ const usePagination = ({ itemsPerPage = 2, items }) => {
     items,
   ])
 
-  const handleChangePage = useCallback(
+  const changePage = useCallback(
     (e, nextPage) => {
       const nextTo = itemsPerPage * nextPage
       const nextFrom = nextTo - itemsPerPage
@@ -19,12 +19,12 @@ const usePagination = ({ itemsPerPage = 2, items }) => {
 
   // Init the first items
   useEffect(() => {
-    handleChangePage({}, 1)
-  }, [items, handleChangePage])
+    changePage({}, currentPage)
+  }, [items, changePage, currentPage])
 
   return {
     maxPages: memoMaxPages,
-    handleChangePage,
+    changePage,
     paginatedItems,
   }
 }

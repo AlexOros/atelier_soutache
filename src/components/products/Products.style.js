@@ -8,7 +8,8 @@ export const StyledProducts = styled(Box)`
   margin: 0 auto;
   width: 100%;
   max-width: 450px;
-  min-height: 85vh;
+
+  transition: height 200 ms ease-in;
 
   ${({ theme }) => theme.breakpoints.up("1060")} {
     max-width: unset;

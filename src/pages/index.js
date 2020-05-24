@@ -137,7 +137,9 @@ const IndexPage = ({ data }) => {
             subtitle={t("section-4.title.2")}
           />
         </Box>
-        <Box ref={setProductsRef}>{areProductsVisible && <Products />}</Box>
+        <Box ref={setProductsRef}>
+          {areProductsVisible && <Products currentPage={1} />}
+        </Box>
         <Box my={5} textAlign="center">
           <Button
             {...getRevealAnimation("slide-left")}

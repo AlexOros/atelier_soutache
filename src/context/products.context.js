@@ -6,6 +6,7 @@ const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
   const [totalProductsInCart, setProductsInCart] = useState(0)
+  const [storePage, setStorePage] = useState(1)
   const [currency /*setCurrency*/] = useState("RON")
 
   const totalSumInCart = useMemo(() => {
@@ -122,6 +123,8 @@ const ProductsProvider = ({ children }) => {
         totalProductsInCart,
         products,
         totalSumInCart,
+        storePage,
+        setStorePage,
         handleSetStaticInitialProducts,
         handleEmptyCart,
         handleRemoveProductFromCart,
