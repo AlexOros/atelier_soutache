@@ -1,22 +1,45 @@
-import React, { useContext, useCallback, useState } from "react"
-import { Box, Typography, IconButton, Checkbox } from "@material-ui/core"
+import React, {
+  useContext,
+  useCallback,
+  useState,
+  useRef,
+  useEffect,
+} from "react"
+import {
+  Box,
+  Typography,
+  IconButton,
+  Checkbox,
+  Button,
+} from "@material-ui/core"
 import BackspaceIcon from "@material-ui/icons/Backspace"
+import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
 import { ProductsContext } from "../context"
 import { useTranslation } from "react-i18next"
 import Img from "gatsby-image"
 import { navigate, Link } from "gatsby"
-import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
+import { AnimatePresence, motion } from "framer-motion"
 
-import { Title, Section, SEO } from "../components"
+import { Title, Section, SEO, WindowLoader } from "../components"
 import { getRevealAnimation } from "../utils"
-
+import postData from "../api/postData"
 import {
   StyledSummary,
-  StyledConsent,
+  StyledFinishPay,
 } from "../assets/styles/checkoutPage.style"
+import { scaleInOut } from "../animationsVariants"
+
+const scaleInPutOpts = {
+  variants: scaleInOut,
+  initial: "hidden",
+  animate: "visible",
+  exit: "hidden",
+}
+
+const PURCHASE_URL = `${process.env.GATSBY_API_BASE_URL}/purchase`
 
 const Checkout = () => {
-  const { t, i18n } = useTranslation(["common", "checkout"])
+  const { t } = useTranslation(["common", "checkout"])
   const {
     cart,
     currency,
@@ -24,13 +47,30 @@ const Checkout = () => {
     handleRemoveProductFromCart,
   } = useContext(ProductsContext)
   const [hasAgreed, setHasAgreed] = useState(false)
-
   const handleRemove = useCallback(
     item => {
       handleRemoveProductFromCart(item)
     },
     [handleRemoveProductFromCart]
   )
+
+  const formRef = useRef(null)
+  const [formState, setFormState] = useState({
+    hostName: "",
+    base64JsonRequest: "",
+    base64Checksum: "",
+  })
+  const handlePostData = async () => {
+    const payload = await postData(PURCHASE_URL, cart)
+
+    setFormState(() => payload)
+  }
+
+  useEffect(() => {
+    if (formState.base64Checksum) {
+      formRef.current.submit()
+    }
+  }, [formState])
 
   const totalItems = cart.reduce(
     (total, currItem) => (total += currItem.quantity),
@@ -42,7 +82,7 @@ const Checkout = () => {
       <SEO title={t("checkout:title")} />
 
       <Section paddingTop={0}>
-        <StyledSummary px={[2, 4, 6]}>
+        <StyledSummary>
           <Box mb={[6, 8]} mt={[4, 8, 10]}>
             <Title
               {...getRevealAnimation("slide-down")}
@@ -52,117 +92,160 @@ const Checkout = () => {
             />
           </Box>
 
-          {cart.length ? (
-            <Box
-              {...getRevealAnimation("slide-left")}
-              my={[2, 4]}
-              className="summary"
-            >
-              {cart.map(item => (
-                <Box
-                  key={item.uid}
-                  onClick={() => navigate(`/shop/${item.slug}`)}
-                  className="item"
-                >
-                  <Img
-                    className="image"
-                    fluid={item.image.childImageSharp.fluid}
-                    alt=""
-                  />
-
-                  <Box className="title">
-                    <Typography variant="h6">{item.title}</Typography>
-                  </Box>
-                  <Box className="quantity">
-                    {" "}
-                    {t("common:quantity")}: {item.quantity}
-                  </Box>
-                  <Box className="price">
-                    {t("common:price")}: {item.price.toLocaleString()}{" "}
-                    {currency}
-                  </Box>
-                  <Box className="delete">
-                    <IconButton
-                      color="primary"
-                      onClick={e => {
-                        e.stopPropagation()
-                        handleRemove(item)
-                      }}
+          <AnimatePresence exitBeforeEnter>
+            {cart.length ? (
+              <motion.div key="0" {...scaleInPutOpts} className="summary">
+                <AnimatePresence>
+                  {cart.map(item => (
+                    <motion.div
+                      whileTap={{ scale: 0.98 }}
+                      key={item.uid}
+                      onClick={() => navigate(`/shop/${item.slug}`)}
+                      className="item"
+                      {...scaleInPutOpts}
                     >
-                      <BackspaceIcon />
-                    </IconButton>
-                  </Box>
-                </Box>
-              ))}
-              <Total
-                {...getRevealAnimation("slide-right")}
-                t={t}
-                totalItems={totalItems}
-                totalSumInCart={totalSumInCart}
-                currency={currency}
-              />
-            </Box>
-          ) : (
-            <Box className="empty">
-              <Typography component="p" variant="h5">
-                {t("common:no_product_in_bag")}
-              </Typography>
-              <span className="empty-bag">
-                <ShoppingBasketRoundedIcon />
-              </span>
-            </Box>
-          )}
+                      <Img
+                        className="image"
+                        fluid={item.image.childImageSharp.fluid}
+                        alt=""
+                      />
+
+                      <Box className="title">
+                        <Typography variant="h6">{item.title}</Typography>
+                      </Box>
+                      <Box className="quantity">
+                        {t("common:quantity")}: {item.quantity}
+                      </Box>
+                      <Box className="price">
+                        {t("common:price")}: {item.price.toLocaleString()}{" "}
+                        {currency}
+                      </Box>
+
+                      <Box className="delete">
+                        <IconButton
+                          color="primary"
+                          onClick={e => {
+                            e.stopPropagation()
+                            handleRemove(item)
+                          }}
+                        >
+                          <BackspaceIcon />
+                        </IconButton>
+                      </Box>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+
+                <Total
+                  {...getRevealAnimation("slide-right")}
+                  t={t}
+                  totalItems={totalItems}
+                  totalSumInCart={totalSumInCart}
+                  currency={currency}
+                />
+              </motion.div>
+            ) : (
+              <motion.div key="1" {...scaleInPutOpts} className="empty">
+                <Typography component="p" variant="h5">
+                  {t("common:no_product_in_bag")}
+                </Typography>
+                <span className="empty-bag">
+                  <ShoppingBasketRoundedIcon />
+                </span>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </StyledSummary>
 
-        <StyledConsent
-          py={2}
-          px={[0, 2]}
-          className="consent"
-          {...getRevealAnimation("slide-right")}
-        >
-          <Typography>
-            <Checkbox
-              color="default"
-              checked={hasAgreed}
-              onChange={() => setHasAgreed(!hasAgreed)}
-              inputProps={{
-                "aria-label": "I agree to terms and conditions checkbox",
-              }}
-            />
-            {t("common:i_agree")}{" "}
-            <Link to="/terms-and-services">
-              {t("common:terms_and_services")}
-            </Link>
-            .
-          </Typography>
+        <Consent
+          productsInCart={cart.length}
+          hasAgreed={hasAgreed}
+          setHasAgreed={setHasAgreed}
+          handlePostData={handlePostData}
+        />
 
-          <Typography className="note" variant="caption">
-            ( {t("common:agree_to_advance")} )
-          </Typography>
-        </StyledConsent>
-
-        <Box
-          my={[4, 8]}
-          bgcolor="rgb(250, 250, 250)"
-          p={2}
-          maxWidth={600}
-          textAlign="center"
-          mx="auto"
+        <form
+          ref={formRef}
+          action={formState.hostName}
+          method="post"
+          acceptCharset="UTF-8"
         >
-          <Typography variant="h5">
-            {i18n.language === "ro"
-              ? "Serviciul nu este disponibil momentan"
-              : "Checkout service not available yet, coming soon..."}
-          </Typography>
-        </Box>
+          <input
+            type="hidden"
+            name="jsonRequest"
+            value={`${formState.base64JsonRequest}`}
+          />
+          <input
+            type="hidden"
+            name="checksum"
+            value={`${formState.base64Checksum}`}
+          />
+        </form>
       </Section>
+      <WindowLoader
+        open={!!formState.base64Checksum}
+        handleClose={() => {}}
+        text={t("checkout:cart.loading")}
+      />
     </>
   )
 }
 
 export default Checkout
 
-function Total({ t, totalItems, totalSumInCart, currency }) {
+const Consent = ({
+  hasAgreed,
+  setHasAgreed,
+  handlePostData,
+  productsInCart,
+}) => {
+  const { t } = useTranslation(["common"])
+
+  return (
+    <StyledFinishPay py={2} px={[0, 2]} className="consent">
+      <AnimatePresence exitBeforeEnter>
+        {hasAgreed ? (
+          <motion.div key="0" {...scaleInPutOpts} transition="transition">
+            <Button
+              disabled={!productsInCart}
+              disableElevation
+              color="primary"
+              variant="contained"
+              className="consent"
+              onClick={handlePostData}
+            >
+              {t("common:pay")}
+            </Button>
+          </motion.div>
+        ) : (
+          <motion.div key="1" {...scaleInPutOpts} transition="transition">
+            <Typography>
+              <Checkbox
+                color="default"
+                checked={hasAgreed}
+                onChange={() => setHasAgreed(!hasAgreed)}
+                inputProps={{
+                  "aria-label": "I agree to terms and conditions checkbox",
+                }}
+              />
+              {t("common:i_agree")}{" "}
+              <Link to="/terms-and-services">
+                {t("common:terms_and_services")}
+              </Link>
+              .
+            </Typography>
+
+            <Typography className="note" variant="caption">
+              ( {t("common:agree_to_advance")} )
+            </Typography>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </StyledFinishPay>
+  )
+}
+
+const Total = ({ t, totalItems, totalSumInCart, currency }) => {
   return (
     <Box className="total">
       <Box className="quantity">

@@ -2,7 +2,7 @@
   "yes": "da",
   "no": "nu",
   "shop": "butic",
-  "checkout": "finalizează comanda",
+  "checkout": "vezi produsele din geantă",
   "close": "închide",
   "cancel": "renunța",
   "back": "înapoi",
@@ -27,5 +27,6 @@
   "phone": "Telefon",
   "i_agree": "Sunt de acord cu ",
   "terms_and_services": "termeni si condiții",
-  "agree_to_advance": "Trebuie să accepți pentru a putea plasa comanda"
+  "agree_to_advance": "Trebuie să accepți pentru a putea plasa comanda",
+  "pay": "Către plată"
 }

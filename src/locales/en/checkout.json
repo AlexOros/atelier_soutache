@@ -7,5 +7,9 @@
       "1": "Complete",
       "2": "The Checkout"
     }
+  },
+
+  "cart": {
+    "loading": "Moving you to the payment form, please wait 🤗"
   }
 }

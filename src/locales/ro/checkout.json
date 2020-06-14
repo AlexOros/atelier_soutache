@@ -7,5 +7,9 @@
       "1": "Finalizare",
       "2": "Comanda"
     }
+  },
+
+  "cart": {
+    "loading": "Te mutăm către formularul de finalizat comandat, te rugăm să aștepți 🤗"
   }
 }

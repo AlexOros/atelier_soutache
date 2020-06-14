@@ -24,6 +24,11 @@ const itemBase = css`
 export const StyledSummary = styled(Box)`
   max-width: 1000px;
   margin: 0 auto;
+  text-align: center;
+
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    text-align: left;
+  }
 
   .summary {
     display: grid;
@@ -62,6 +67,12 @@ export const StyledSummary = styled(Box)`
     }
 
     .delete {
+      border-top: 1px solid ${({ theme }) => theme.palette.grey[300]};
+      padding: ${({ theme }) => theme.spacing(1.1)};
+      ${({ theme }) => theme.breakpoints.up("sm")} {
+        border-top: none;
+        border-left: 1px solid ${({ theme }) => theme.palette.grey[300]};
+      }
       z-index: 1;
     }
 
@@ -87,14 +98,19 @@ export const StyledSummary = styled(Box)`
   }
 
   .empty {
-    display: flex;
+    display: grid;
+    place-content: center;
+    gap: ${({ theme }) => theme.spacing(4)};
     min-height: 100px;
     max-width: 1000px;
     margin: 0 auto;
-    justify-content: center;
-    align-items: center;
     font-size: 2rem;
     background: ${({ theme }) => theme.palette.background.default};
+    padding: ${({ theme }) => theme.spacing(1)};
+
+    ${({ theme }) => theme.breakpoints.down("xs")} {
+      grid-template-columns: 1fr;
+    }
 
     p::first-letter {
       text-transform: capitalize;
@@ -102,7 +118,7 @@ export const StyledSummary = styled(Box)`
   }
 
   .empty-bag {
-    margin-left: ${({ theme }) => theme.spacing(2)};
+    justify-self: center;
     svg {
       width: 3.5rem;
       height: 3.5rem;
@@ -114,7 +130,7 @@ export const StyledSummary = styled(Box)`
   }
 `
 
-export const StyledConsent = styled(Box)`
+export const StyledFinishPay = styled(Box)`
   display: grid;
   place-items: center;
   max-width: 400px;

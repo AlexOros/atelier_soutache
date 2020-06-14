@@ -17,6 +17,7 @@ import Slider from "./slider/Slider"
 import ButtonLink from "./buttonLink/ButtonLink"
 import BeginningVideo from "./beginningVideo/BeginningVideo"
 import PulsatingButton from "./pulsatingButton/PulsatingButton"
+import WindowLoader from "./windowLoader/WindowLoader"
 
 export {
   Layout,
@@ -38,4 +39,5 @@ export {
   ButtonLink,
   BeginningVideo,
   PulsatingButton,
+  WindowLoader,
 }

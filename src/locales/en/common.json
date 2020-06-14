@@ -2,7 +2,7 @@
   "yes": "yes",
   "no": "no",
   "shop": "shop",
-  "checkout": "go to checkout",
+  "checkout": "see products in bag",
   "close": "close",
   "cancel": "cancel",
   "back": "back",
@@ -26,5 +26,6 @@
   "phone": "Phone",
   "i_agree": "I agree to the ",
   "terms_and_services": "terms and conditions",
-  "agree_to_advance": "You have to agree in order to complete the checkout"
+  "agree_to_advance": "You have to agree in order to complete the checkout",
+  "pay": "to checkout"
 }

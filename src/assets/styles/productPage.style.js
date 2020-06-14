@@ -28,8 +28,18 @@ const StyledProductPage = styled(Box)`
     position: relative;
     display: grid;
     justify-self: center;
+    width: 100%;
+
     ${({ theme }) => theme.breakpoints.up("md")} {
       justify-self: end;
+    }
+
+    .story-text {
+      background-color: ${({ theme }) => theme.palette.background.default};
+      padding: ${({ theme }) => theme.spacing(1)};
+      ${({ theme }) => theme.breakpoints.down("xs")} {
+        margin: 0 calc(-50vw + 50%);
+      }
     }
 
     .image-container {
@@ -46,7 +56,6 @@ const StyledProductPage = styled(Box)`
       }
 
       .image {
-        box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
         ${({ theme }) => theme.breakpoints.down("xs")} {
           width: 100vw;
         }

@@ -14,6 +14,7 @@ import StyledExpansionPanel from "./Info.style"
 
 const Info = ({ info, handleChange, expanded, t }) => (
   <StyledExpansionPanel
+    elevation={false}
     expanded={expanded === info.panel}
     onChange={handleChange(info.panel)}
   >

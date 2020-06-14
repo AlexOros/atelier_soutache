@@ -145,29 +145,14 @@ export default ({ data }) => {
                 />
               </Box>
             </Box>
-            <Box my={[1, 2, 3]} className="story-text">
-              <Collapse in={seeMore} collapsedHeight={140}>
-                <Typography variant="body2" component="span">
-                  <ReactMarkdown
-                    source={
-                      i18n.language === "ro"
-                        ? product.story_ro
-                        : product.story_en
-                    }
-                  />
-                </Typography>
-              </Collapse>
-              {smallScreens && (
-                <Box textAlign="center" className="more">
-                  <IconButton onClick={() => setSeeMore(old => !old)}>
-                    <ExpandMoreRoundedIcon
-                      className="icon"
-                      color="primary"
-                      fontSize="large"
-                    />
-                  </IconButton>
-                </Box>
-              )}
+            <Box className="story-text">
+              <Typography variant="body2" component="span">
+                <ReactMarkdown
+                  source={
+                    i18n.language === "ro" ? product.story_ro : product.story_en
+                  }
+                />
+              </Typography>
             </Box>
           </Box>
 
