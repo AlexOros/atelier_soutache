@@ -14,12 +14,9 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-  Collapse,
-  IconButton,
 } from "@material-ui/core"
 import { ProductsContext } from "../context"
 import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
-import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded"
 import ArrowBackIosRoundedIcon from "@material-ui/icons/ArrowBackIosRounded"
 import ReactMarkdown from "react-markdown"
 
