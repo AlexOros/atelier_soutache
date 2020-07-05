@@ -14,6 +14,8 @@ i18next.init({
       shipping_and_returns: require("../locales/ro/shipping_and_returns.json"),
       terms_and_services: require("../locales/ro/terms_and_services.json"),
       checkout: require("../locales/ro/checkout.json"),
+      thank_you: require("../locales/ro/thank_you.json"),
+      failed: require("../locales/ro/failed.json"),
     },
     en: {
       common: require("../locales/en/common.json"),
@@ -21,11 +23,12 @@ i18next.init({
       about: require("../locales/en/about.json"),
       product: require("../locales/en/product.json"),
       shop: require("../locales/en/shop.json"),
-
       privacy_policy: require("../locales/en/privacy_policy.json"),
       shipping_and_returns: require("../locales/en/shipping_and_returns.json"),
       terms_and_services: require("../locales/en/terms_and_services.json"),
       checkout: require("../locales/en/checkout.json"),
+      thank_you: require("../locales/en/thank_you.json"),
+      failed: require("../locales/en/failed.json"),
     },
   },
   load: "languageOnly",

@@ -11,6 +11,7 @@
   },
 
   "cart": {
-    "loading": "Te mutăm către formularul de finalizat comandat, te rugăm să aștepți 🤗"
+    "loading": "Te mutăm către formularul de finalizat comandat, te rugăm să aștepți 🤗",
+    "remove_extra_items": "Rezolvați erorile înainte de a efectua plata ⚠️"
   }
 }

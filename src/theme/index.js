@@ -41,4 +41,9 @@ const theme = createMuiTheme({
   keyframes: animationsKeyFrames,
 })
 
+theme.typography.h6 = {
+  ...theme.typography.h6,
+  fontWeight: theme.typography.fontWeightRegular,
+}
+
 export default theme

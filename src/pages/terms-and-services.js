@@ -1,8 +1,7 @@
 import React from "react"
-import { useTranslation, Trans } from "react-i18next"
+import { useTranslation } from "react-i18next"
 import { Box, Typography } from "@material-ui/core"
 import styled from "styled-components"
-import { Link } from "gatsby"
 
 import { Section, Title, SEO } from "../components"
 import { getRevealAnimation, mailTo } from "../utils"

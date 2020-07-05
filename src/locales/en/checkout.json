@@ -11,6 +11,7 @@
   },
 
   "cart": {
-    "loading": "Moving you to the payment form, please wait 🤗"
+    "loading": "Moving you to the payment form, please wait 🤗",
+    "remove_extra_items": "Please fix the errors before continuing with the payment ⚠️"
   }
 }

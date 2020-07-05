@@ -1,0 +1,14 @@
+{
+  "title": "Thank You",
+  "description": "Page description",
+
+  "section": {
+    "title": "done",
+    "message": {
+      "1": "Thank you, ",
+      "2": "for your purchase and support my business. You made my day and I hope I made yours.",
+      "3": "I will contact you as soon as I can. ",
+      "4": "Did you know that every time I make a customer happy, I do a happy dance?"
+    }
+  }
+}

@@ -104,7 +104,7 @@ const AboutPage = ({ data }) => {
             p={[1, 2, 5]}
             {...getRevealAnimation("slide-left")}
           >
-            <Typography variant="h5">GA Studio II</Typography>
+            <Typography variant="h4">GA Studio II</Typography>
             <Box>
               <Typography
                 variant="body1"

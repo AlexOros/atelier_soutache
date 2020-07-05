@@ -1,0 +1,14 @@
+{
+  "title": "Mulțumesc",
+  "description": "Page description",
+
+  "section": {
+    "title": "gata",
+    "message": {
+      "1": "Mulțumesc, ",
+      "2": "pentru comanda ta și pentru că susții afacerea mea. Mi-ai făcut ziua minunată și sper că și eu am făcut-o pe a ta.",
+      "3": "Te voi contacta cât de curând.",
+      "4": "Știai că de fiecare data cand fac un client fericit, fac un happy dance? "
+    }
+  }
+}

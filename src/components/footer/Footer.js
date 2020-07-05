@@ -20,7 +20,7 @@ const Footer = () => {
     <StyledFooter>
       <Box className="pages">
         <Box component="section">
-          <Typography className="title" variant="h5">
+          <Typography className="title" variant="h4">
             Soutache
           </Typography>
           <Box className="column links">
@@ -30,7 +30,7 @@ const Footer = () => {
           </Box>
         </Box>
         <Box component="section">
-          <Typography className="title" variant="h5">
+          <Typography className="title" variant="h4">
             Help
           </Typography>
           <Box className="column links">
@@ -56,7 +56,7 @@ const Footer = () => {
           </Box>
         </Box>
         <Box component="section">
-          <Typography className="title" variant="h5">
+          <Typography className="title" variant="h4">
             Contact
           </Typography>
           <Box className="column">

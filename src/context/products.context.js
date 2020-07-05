@@ -18,6 +18,20 @@ const ProductsProvider = ({ children }) => {
     }, 0)
   }, [cart])
 
+  const handleSetErrorOnCartProduct = errorProducts =>
+    errorProducts.forEach(errorProd => {
+      setCart(old => {
+        const foundProduct = old.find(oldProd => oldProd.uid === errorProd.uid)
+        if (foundProduct) {
+          return [
+            ...old.filter(o => o.uid !== errorProd.uid),
+            { ...foundProduct, error: errorProd.realStock },
+          ]
+        }
+        return old
+      })
+    })
+
   const handleEmptyCart = useCallback(() => {
     setProducts(products =>
       products.map(prod => {
@@ -65,7 +79,7 @@ const ProductsProvider = ({ children }) => {
               : cartProd
           )
         }
-        return [...cart, { ...product, quantity: 1 }]
+        return [...cart, { ...product, quantity: 1, error: 0 }]
       })
     },
     [cart]
@@ -83,7 +97,9 @@ const ProductsProvider = ({ children }) => {
         }
 
         return oldCart.map(prod => {
-          if (prod.uid === product.uid) prod.quantity -= 1
+          if (prod.uid === product.uid) {
+            prod.quantity -= 1
+          }
           return prod
         })
       })
@@ -130,6 +146,7 @@ const ProductsProvider = ({ children }) => {
         handleRemoveProductFromCart,
         handleAddProductToCart,
         handleSetProducts,
+        handleSetErrorOnCartProduct,
       }}
     >
       {children}

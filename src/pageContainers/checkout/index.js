@@ -1,6 +1,7 @@
-import React, { useContext, useState, useRef, useEffect } from "react"
-import { Box, Typography } from "@material-ui/core"
+import React, { useContext, useState, useRef, useEffect, useMemo } from "react"
+import { Box, Typography, Snackbar, IconButton } from "@material-ui/core"
 import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
+import CloseIcon from "@material-ui/icons/Close"
 import { useTranslation } from "react-i18next"
 import { AnimatePresence, motion } from "framer-motion"
 import { graphql, useStaticQuery } from "gatsby"
@@ -52,9 +53,10 @@ const Checkout = () => {
     totalSumInCart,
     currency,
     handleRemoveProductFromCart,
+    handleSetErrorOnCartProduct,
   } = useContext(ProductsContext)
+  const [snack, setSnack] = useState(false)
   const [hasAgreed, setHasAgreed] = useState(false)
-
   const formRef = useRef(null)
   const [formState, setFormState] = useState({
     hostName: "",
@@ -69,11 +71,10 @@ const Checkout = () => {
   const handlePostData = async () => {
     const cartAndDelivery = [...cart, delivery]
     const payload = await postData(PURCHASE_URL, cartAndDelivery)
-    console.log("𝕃𝕆𝔾 ⟹: handlePostData -> payload", payload)
 
     if (payload.hasError) {
-      setFormState(oldState => ({ ...oldState, hasError: payload.hasError }))
-      // TODO handle error (missing products) here
+      handleSetErrorOnCartProduct(payload.productsList)
+      setSnack(true)
     } else {
       setFormState(() => payload)
       setIsLoadingForm(true)
@@ -104,6 +105,17 @@ const Checkout = () => {
     }))
   }, [imageList, t, totalSumInCart])
 
+  const hasErrors = useMemo(
+    () =>
+      cart.reduce((diff, curr) => {
+        if (curr.error !== 0 && curr.error < curr.quantity) {
+          return (diff += curr.quantity - curr.error)
+        }
+        return diff
+      }, 0),
+    [cart]
+  )
+
   return (
     <>
       <SEO title={t("checkout:title")} />
@@ -126,12 +138,14 @@ const Checkout = () => {
                   <>
                     {cart.map(item => (
                       <ProductItem
+                        error={item.error && item.error < item.quantity}
                         key={item.uid}
                         scaleInPutOpts={scaleInPutOpts}
                         item={item}
+                        realStock={item.error}
                         currency={currency}
-                        handleRemoveProductFromCart={
-                          handleRemoveProductFromCart
+                        handleRemoveProductFromCart={() =>
+                          handleRemoveProductFromCart(item)
                         }
                       />
                     ))}
@@ -153,7 +167,7 @@ const Checkout = () => {
               </motion.div>
             ) : (
               <motion.div key="1" {...scaleInPutOpts} className="empty">
-                <Typography component="p" variant="h5">
+                <Typography component="p" variant="h4">
                   {t("common:no_product_in_bag")}
                 </Typography>
                 <span className="empty-bag">
@@ -170,7 +184,7 @@ const Checkout = () => {
           hasAgreed={hasAgreed}
           handleHasAgreed={handleHasAgreed}
           handlePostData={handlePostData}
-          hasError={formState.hasError}
+          hasError={hasErrors !== 0}
         />
 
         <form
@@ -191,6 +205,28 @@ const Checkout = () => {
           />
         </form>
       </Section>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+        open={snack}
+        autoHideDuration={10000}
+        onClose={() => setSnack(false)}
+        message={t("checkout:cart.remove_extra_items")}
+        action={
+          <>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={() => setSnack(false)}
+            >
+              <CloseIcon />
+            </IconButton>
+          </>
+        }
+      />
       <WindowLoader
         open={isLoadingForm}
         handleClose={() => {}}

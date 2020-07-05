@@ -156,7 +156,7 @@ export default ({ data }) => {
           <Box {...getRevealAnimation("slide-left")} mt={2}>
             {!smallScreens && (
               <Box ml={[0, -5]} mt={[-1, -4]} mb={[2, 3, 4]}>
-                <Title variant="h5" title={name.first} subtitle={name.last} />
+                <Title variant="h4" title={name.first} subtitle={name.last} />
               </Box>
             )}
             <Box mb={1} className="old-price">
