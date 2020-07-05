@@ -23,6 +23,8 @@ const scaleInPutOpts = {
   exit: "hidden",
 }
 
+const DELIVERY_COST = 0
+
 const deliveryDefault = {
   image: "",
   title: "Delivery",
@@ -93,7 +95,7 @@ const Checkout = () => {
   )
 
   const totalSumInCartWithDelivery =
-    totalSumInCart >= 250 ? totalSumInCart : totalSumInCart + 21
+    totalSumInCart >= 250 ? totalSumInCart : totalSumInCart + DELIVERY_COST
 
   const [delivery, setDelivery] = useState(deliveryDefault)
   useEffect(() => {
@@ -101,7 +103,7 @@ const Checkout = () => {
       ...oldDelivery,
       image: imageList[0],
       title: t("checkout:delivery"),
-      price: totalSumInCart >= 250 ? 0 : 21,
+      price: totalSumInCart >= 250 ? 0 : DELIVERY_COST,
     }))
   }, [imageList, t, totalSumInCart])
 

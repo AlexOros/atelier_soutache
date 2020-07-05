@@ -54,7 +54,7 @@ const ProductsProvider = ({ children }) => {
 
   const handleAddProductToCart = useCallback(
     product => {
-      if (product.stock < 1) return
+      if (product.stock < 1 || product.title.includes("title")) return
 
       let existingProductInCart = null
       setProducts(oldProducts =>
