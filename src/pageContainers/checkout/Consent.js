@@ -22,7 +22,8 @@ const Consent = ({
         {hasAgreed ? (
           <motion.div key="0" {...scaleInPutOpts} transition="transition">
             <Button
-              disabled={!productsInCart || hasError}
+              // disabled={!productsInCart || hasError}
+              disabled={true}
               disableElevation
               color="primary"
               variant="contained"
