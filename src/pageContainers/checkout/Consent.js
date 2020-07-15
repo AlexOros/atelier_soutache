@@ -1,5 +1,5 @@
 import React from "react"
-import { Typography, Checkbox, Button } from "@material-ui/core"
+import { Typography, Checkbox, Button, Box } from "@material-ui/core"
 import { useTranslation } from "react-i18next"
 import { Link } from "gatsby"
 import { AnimatePresence, motion } from "framer-motion"
@@ -21,16 +21,24 @@ const Consent = ({
       <AnimatePresence exitBeforeEnter>
         {hasAgreed ? (
           <motion.div key="0" {...scaleInPutOpts} transition="transition">
-            <Button
-              disabled={!productsInCart || hasError}
-              disableElevation
-              color="primary"
-              variant="contained"
-              className="consent"
-              onClick={handlePostData}
-            >
-              {t("common:pay")}
-            </Button>
+            <Box>
+              <Typography variant="h6">
+                {t("common:payment_disabled")}
+              </Typography>
+            </Box>
+            <Box my={2} mx="auto">
+              <Button
+                // disabled={!productsInCart || hasError}
+                disabled={true}
+                disableElevation
+                color="primary"
+                variant="contained"
+                className="consent"
+                onClick={handlePostData}
+              >
+                {t("common:pay")}
+              </Button>
+            </Box>
           </motion.div>
         ) : (
           <motion.div key="1" {...scaleInPutOpts} transition="transition">

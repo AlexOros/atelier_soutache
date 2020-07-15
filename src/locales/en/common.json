@@ -28,6 +28,7 @@
   "terms_and_services": "terms and conditions",
   "agree_to_advance": "You have to agree in order to complete the checkout",
   "pay": "to checkout",
+  "payment_disabled": "Card payment is not available at this moment, we are sorry for the inconvenience",
   "soutache_product": "Soutache product",
   "back_to_shop": "Back to shop",
   "back_to_home": "Back to the home page",
