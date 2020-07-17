@@ -6,6 +6,8 @@ import { AnimatePresence, motion } from "framer-motion"
 
 import { StyledFinishPay } from "./CheckoutPage.style"
 
+const isPaymentDisabled = false
+
 const Consent = ({
   scaleInPutOpts,
   hasAgreed,
@@ -21,15 +23,16 @@ const Consent = ({
       <AnimatePresence exitBeforeEnter>
         {hasAgreed ? (
           <motion.div key="0" {...scaleInPutOpts} transition="transition">
-            <Box>
-              <Typography variant="h6">
-                {t("common:payment_disabled")}
-              </Typography>
-            </Box>
+            {isPaymentDisabled && (
+              <Box>
+                <Typography variant="h6">
+                  {t("common:payment_disabled")}
+                </Typography>
+              </Box>
+            )}
             <Box my={2} mx="auto">
               <Button
-                disabled={!productsInCart || hasError}
-                // disabled={false}
+                disabled={isPaymentDisabled || !productsInCart || hasError}
                 disableElevation
                 color="primary"
                 variant="contained"
