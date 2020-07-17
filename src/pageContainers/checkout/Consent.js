@@ -28,8 +28,8 @@ const Consent = ({
             </Box>
             <Box my={2} mx="auto">
               <Button
-                // disabled={!productsInCart || hasError}
-                disabled={true}
+                disabled={!productsInCart || hasError}
+                // disabled={false}
                 disableElevation
                 color="primary"
                 variant="contained"
