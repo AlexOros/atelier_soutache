@@ -23,7 +23,7 @@ const scaleInPutOpts = {
   exit: "hidden",
 }
 
-const DELIVERY_COST = 0
+const DELIVERY_COST = 21
 
 const deliveryDefault = {
   image: "",
