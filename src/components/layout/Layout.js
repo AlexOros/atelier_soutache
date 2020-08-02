@@ -28,6 +28,7 @@ const query = graphql`
         price
         old_price
         stock
+        unique
         slug
         image {
           childImageSharp {

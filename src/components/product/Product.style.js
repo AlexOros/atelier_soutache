@@ -78,6 +78,7 @@ const StyledProduct = styled(Box)`
     right: 0;
     left: 0;
     bottom: 40px;
+    z-index: 1;
     background: rgba(77, 77, 77, 0.9);
     opacity: 0;
     transition: all 500ms ease-in-out;
@@ -204,6 +205,13 @@ const StyledProduct = styled(Box)`
 
   .currency {
     font-size: ${({ theme }) => theme.typography.pxToRem(14)};
+  }
+
+  .unique {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 0;
   }
 `
 

@@ -20,6 +20,7 @@ import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
 import ArrowBackIosRoundedIcon from "@material-ui/icons/ArrowBackIosRounded"
 import ReactMarkdown from "react-markdown"
 
+import UniqueSVG from "../assets/svg/unique.svg"
 import { Section, SEO, Title, Info } from "../components"
 import StyledProductPage from "../assets/styles/productPage.style"
 import { getRevealAnimation } from "../utils"
@@ -142,6 +143,7 @@ export default ({ data }) => {
                 />
               </Box>
             </Box>
+
             <Box className="story-text">
               <Typography variant="body2" component="span">
                 <ReactMarkdown
@@ -159,7 +161,7 @@ export default ({ data }) => {
                 <Title variant="h4" title={name.first} subtitle={name.last} />
               </Box>
             )}
-            <Box mb={1} className="old-price">
+            <Box className="old-price">
               {!!storeProduct?.old_price && (
                 <>
                   {storeProduct?.old_price.toLocaleString()}
@@ -167,6 +169,12 @@ export default ({ data }) => {
                 </>
               )}
             </Box>
+            <div className="unique">
+              <UniqueSVG />
+              <Typography variant="body2">
+                <strong>{t("common:unique")}</strong>
+              </Typography>
+            </div>
             <Box className="details">
               <div className="new">
                 {storeProduct?.price && (

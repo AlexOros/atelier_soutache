@@ -97,6 +97,15 @@ const StyledProductPage = styled(Box)`
     opacity: 1.7;
   }
 
+  .unique {
+    display: flex;
+    align-items: center;
+    svg {
+      width: 30px;
+      width: 30px;
+    }
+  }
+
   .details {
     display: flex;
     align-items: center;

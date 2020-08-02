@@ -6,11 +6,12 @@ import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded"
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded"
 
 import { ButtonLink } from "../../components"
+import UniqueSVG from "../../assets/svg/unique.svg"
 import { isMobile } from "../../utils"
 import StyledProduct from "./Product.style"
 
 const Product = ({ handleAddProductToCart, product, currency }) => {
-  const { title, price, old_price, image, stock } = product
+  const { title, price, old_price, image, stock, unique } = product
   const [showDetails, setShowDetails] = useState(false)
   const [outOfStock, setOutOfStock] = useState(false)
   const [isMobileFlag, setIsMobileFlag] = useState(false)
@@ -109,6 +110,11 @@ const Product = ({ handleAddProductToCart, product, currency }) => {
             <span className="first-word">{name.first}</span> {name.last}
           </Typography>
         </Box>
+        {unique && (
+          <div className="unique">
+            <UniqueSVG />
+          </div>
+        )}
       </StyledProduct>
     </ClickAwayListener>
   )
